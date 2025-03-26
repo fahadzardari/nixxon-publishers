@@ -1,0 +1,196 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../../assets/logo.png";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about-us" },
+  {
+    label: "Services",
+    href: "/services",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Web Development", href: "/services/web-development" },
+      // { label: "Mobile Development", href: "/services/mobile-development" },
+      { label: "UI/UX Design", href: "/services/ui-ux-design" },
+      { label: "Branding", href: "/services/branding" },
+      { label: "Video Animation", href: "/services/video-animation" },
+      {
+        label: "Mobile App Development",
+        href: "/services/mobile-app-development",
+      },
+      {
+        label: "Game Development",
+        href: "/services/game-development",
+      },
+      {
+        label: "Digital Marketing",
+        href: "/services/digital-marketing",
+      },
+      {
+        label: "DevOps Services",
+        href: "/services/devops-services",
+      },
+    ],
+  },
+  { label: "Contact", href: "/contact-us" },
+];
+
+// Get current path for active link highlighting
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="navbar"
+  class="bg-primary-blue fixed w-screen z-50 transition-all duration-300 border-b border-white/30 py-6"
+>
+  <div class="app-max-width">
+    <nav
+      class="flex justify-between items-center h-16"
+      aria-label="Main navigation"
+    >
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/">
+          <Image src={Logo} alt="Logo" class="h-14 w-auto" loading={"eager"} />
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex md:items-center space-x-8 list-none">
+        {
+          navItems.map((item) => {
+            const isActive =
+              (item.href === "/" && currentPath === "/") ||
+              (item.href !== "/" && currentPath.startsWith(item.href));
+
+            if (item.hasDropdown) {
+              const hasActiveChild = item.dropdownItems?.some((child) =>
+                currentPath.startsWith(child.href)
+              );
+
+              return (
+                <li class="relative group">
+                  <span
+                    class:list={[
+                      "transition duration-300 flex items-center text-sm  cursor-pointer py-1",
+                      "text-white",
+                      {
+                        "text-[#ff002d] ": isActive || hasActiveChild,
+                      },
+                    ]}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-[14px] w-[14px] ml-1"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  <div class="dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div class="py-1">
+                      {item.dropdownItems?.map((dropdownItem) => {
+                        const isDropdownItemActive = currentPath.startsWith(
+                          dropdownItem.href
+                        );
+                        return (
+                          <a
+                            href={dropdownItem.href}
+                            class:list={[
+                              "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",
+                              {
+                                "bg-gray-50 text-[#ff002d]":
+                                  isDropdownItemActive,
+                              },
+                            ]}
+                            aria-label="Dropdown item"
+                          >
+                            {dropdownItem.label}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </li>
+              );
+            }
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    "transition duration-300 text-sm py-1",
+                    "text-white",
+                    { "text-[#ff002d]  nav-active": isActive },
+                  ]}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <button
+        class="bg-primary-red text-white text-base capitalize px-6 py-2 rounded-md"
+      >
+        let's discuss
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // No need for complex GSAP animations for simple hover effects
+  // The navbar scroll behavior can remain if needed
+  const navbar = document.getElementById("navbar");
+</script>
+
+<style>
+  /* Style for active navigation link */
+  .nav-active {
+    border-bottom: #ff002d 1px solid;
+  }
+  
+  /* Simple hover effects for nav items */
+  #navbar ul > li > a,
+  #navbar ul > li > span {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover color change */
+  #navbar ul > li > a:hover,
+  #navbar ul > li > span:hover {
+    color: #ff002d;
+  }
+  
+  /* Optional: subtle underline effect on hover */
+  #navbar ul > li > a:after,
+  #navbar ul > li > span:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ff002d;
+    transition: width 0.3s ease;
+  }
+  
+  #navbar ul > li > a:hover:after,
+  #navbar ul > li > span:hover:after {
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../../assets/logo.png";
+---
+
+<footer
+  class="bg-footer-blue text-white text-base"
+  role="contentinfo"
+  aria-label="Site Footer"
+>
+  <div class="flex flex-row justify-center py-20 gap-x-16">
+    <section class="flex flex-col gap-y-6 w-1/4 max-w-[336px]">
+      <a href="/" title="Nixxon Publishers Home">
+        <Image
+          src={Logo}
+          alt="Nixxon Publishers Logo"
+          class="h-14 object-contain"
+          loading={"lazy"}
+          width={180}
+          height={56}
+        />
+      </a>
+      <p>
+        Nixxon Publishers service lets you enjoy the narrative. You may trust us
+        for quality book authoring and easy publication. Our talented teams
+        create and publish the best stories on major platforms.
+      </p>
+    </section>
+
+    <nav class="flex flex-col" aria-label="Services navigation">
+      <h2 class="pb-1 border-b border-primary-red w-fit mb-4">Services</h2>
+      <ul class="mt-2 space-y-2">
+        <li>
+          <a
+            href="/services/book-writing"
+            class="hover:text-primary-red transition-colors"
+            title="Professional book writing services"
+          >
+            Book Writing
+          </a>
+        </li>
+        <li>
+          <a
+            href="/services/cover-design"
+            class="hover:text-primary-red transition-colors"
+            title="Book cover design services"
+          >
+            Cover Design
+          </a>
+        </li>
+        <li>
+          <a
+            href="/services/book-publication"
+            class="hover:text-primary-red transition-colors"
+            title="Book publication services"
+          >
+            Book Publication
+          </a>
+        </li>
+        <li>
+          <a
+            href="/services/book-marketing"
+            class="hover:text-primary-red transition-colors"
+            title="Book marketing and promotion"
+          >
+            Book Marketing
+          </a>
+        </li>
+        <li>
+          <a
+            href="/services/book-video-trailer"
+            class="hover:text-primary-red transition-colors"
+            title="Book video trailer creation"
+          >
+            Book Video Trailer
+          </a>
+        </li>
+        <li>
+          <a
+            href="/services/web-design-seo"
+            class="hover:text-primary-red transition-colors"
+            title="Website design and SEO services"
+          >
+            Web Design & SEO
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="flex flex-col" aria-label="Help Center navigation">
+      <h2 class="pb-1 border-b border-primary-red w-fit mb-4">Help Center</h2>
+      <ul class="mt-2 space-y-2">
+        <li>
+          <a
+            href="/"
+            class="hover:text-primary-red transition-colors"
+            title="Nixxon Publishers home page">Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="hover:text-primary-red transition-colors"
+            title="About Nixxon Publishers">About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="hover:text-primary-red transition-colors"
+            title="Contact Nixxon Publishers"
+          >
+            Contact Us
+          </a>
+        </li>
+        <li>
+          <a
+            href="/terms-conditions"
+            class="hover:text-primary-red transition-colors"
+            title="Terms and conditions"
+          >
+            Terms & Conditions
+          </a>
+        </li>
+        <li>
+          <a
+            href="/privacy-policy"
+            class="hover:text-primary-red transition-colors"
+            title="Privacy policy"
+          >
+            Privacy Policy
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <address
+      class="flex flex-col not-italic"
+      itemscope
+      itemtype="https://schema.org/LocalBusiness"
+    >
+      <h2 class="pb-1 border-b border-primary-red w-fit mb-4">Get in Touch</h2>
+      <ul class="mt-2 space-y-2">
+        <li>
+          <a
+            href="tel:+16626527152"
+            class="hover:text-primary-red transition-colors"
+            itemprop="telephone"
+            title="Call Nixxon Publishers"
+          >
+            +1 (662) 652-71652
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:info@nixxonpublishers.com"
+            class="hover:text-primary-red transition-colors"
+            itemprop="email"
+            title="Email Nixxon Publishers"
+          >
+            info@nixxonpublishers.com
+          </a>
+        </li>
+        <li
+          class="hover:text-primary-red transition-colors"
+          itemprop="address"
+          itemscope
+          itemtype="https://schema.org/PostalAddress"
+        >
+          <span itemprop="streetAddress">Address xyz</span>,
+          <span itemprop="addressLocality">Los Angeles</span>,
+          <span itemprop="addressRegion">CA</span>
+          <span itemprop="postalCode">90017</span>
+        </li>
+      </ul>
+    </address>
+  </div>
+
+  <div class="w-full py-6 border-t-1 text-center">
+    <small
+      >&copy; <span itemprop="copyrightYear">2025</span>
+      <span itemprop="name">Nixxon Publishers</span> | All Rights Reserved.</small
+    >
+  </div>
+</footer>
+
+<style>
+  li {
+    list-style-type: none;
+    text-wrap: nowrap;
+  }
+</style>

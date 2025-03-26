@@ -1,0 +1,140 @@
+---
+import CommonHeaderSection from "../common/CommonHeaderSection.astro";
+import TestimonialCard from "../common/TestimonialCard.astro";
+---
+
+<section class="app-max-width py-16">
+  <CommonHeaderSection
+    title="WHAT OUR CLIENTS SAY ABOUT US"
+    subtitle=""
+    description="Thinking of getting your ideas published while not having to lift a finger? Our team of expert ghostwriters can help! We listen to your ideas, structure them, and provide excellent end-results that you’re looking for."
+  />
+
+  <div class="swiper services-swiper flex justify-center items-center">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="John Boucher"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="Jane Doe"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="John Boucher"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="Jane Doe"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="John Boucher"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="Jane Doe"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+      <div class="swiper-slide">
+        <TestimonialCard
+          name="Jane Doe"
+          description="Very creating and insightful work, made my ramblings make sense! I loved the added details and the way my characters were brought to life. The writer was prompt in her responses and catered to all last-minute adjustments patiently. Thank you for your help. I appreciate it. 100% recommended. "
+        />
+      </div>
+    </div>
+
+    <!-- <div class="swiper-pagination"></div> -->
+  </div>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <style>
+    .swiper-slide {
+      width: fit-content;
+    }
+    .services-swiper {
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    /* Custom pagination colors - making this more specific and !important */
+    .services-swiper .swiper-pagination-bullet-active {
+      background-color: #ff002d !important;
+    }
+
+    /* Enhance the look of all pagination bullets */
+    .services-swiper .swiper-pagination-bullet {
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .services-swiper .swiper-pagination-bullet:hover {
+      opacity: 1;
+      background-color: rgba(255, 0, 45, 0.5);
+    }
+  </style>
+
+  <script>
+    import Swiper from "swiper";
+    import { Pagination, Autoplay } from "swiper/modules";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const swiper = new Swiper(".services-swiper", {
+        modules: [Pagination, Autoplay],
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          // When screen width is >= 640px
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // When screen width is >= 768px
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          // When screen width is >= 1024px
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1440: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+        },
+      });
+    });
+  </script>
+</section>

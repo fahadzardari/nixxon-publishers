@@ -1,0 +1,158 @@
+---
+import Image from "astro/components/Image.astro";
+import QuoteSideImage from "../../assets/common/quote-image.png";
+---
+
+<section
+  id="quote-section"
+  class="bg-quote-maroon text-white app-left-padding flex flex-row items-stretch justify-between overflow-hidden"
+  aria-labelledby="quote-heading"
+>
+  <div class="w-1/2 py-6 flex flex-col gap-y-3 xl:gap-y-6 justify-center">
+    <h2
+      id="quote-heading"
+      class="md:text-2xl lg:text-3xl xl:text-4xl font-semibold split-heading"
+    >
+      THE PERFECT SOLUTION TO YOUR BOOK WRITING EDITING AND PUBLISHING PROBLEMS!
+    </h2>
+    <p class="text-sm xl:text-base quote-paragraph opacity-0">
+      Do you have an interesting story that you wish to convert in a book? We
+      have a team of award-winning book writers who can bring your ideas into
+      reality.
+    </p>
+    <div
+      class="flex gap-x-4 font-semibold text-sm xl:text-base quote-buttons opacity-0"
+    >
+      <a
+        href="/get-quote"
+        class="bg-primary-red py-2 px-6 rounded-md text-center quote-button-primary"
+        role="button"
+        aria-label="Request a free quote for book writing services"
+      >
+        Get A Quote
+      </a>
+      <a
+        href="/contact"
+        class="border border-white rounded-md py-2 px-6 text-center quote-button-secondary"
+        role="button"
+        aria-label="Start a conversation with our team"
+      >
+        Chat With Us
+      </a>
+    </div>
+  </div>
+  <div class="h-full quote-image overflow-hidden">
+    <Image
+      src={QuoteSideImage}
+      alt="Author working with Nixxon Publishers on book writing and publishing"
+      class="object-cover h-full w-full"
+      loading={"lazy"}
+    />
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for page to load
+  document.addEventListener("DOMContentLoaded", () => {
+    // Split heading text into characters
+    const headingText = new SplitType(".split-heading", {
+      types: "chars,words",
+      tagName: "span",
+    });
+
+    // Create timeline for the quote section
+    const quoteTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#quote-section",
+        start: "top 80%", // Start animation when the top of the section hits 80% from the top of viewport
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Animate heading characters with staggered effect
+    quoteTimeline.from(headingText.chars, {
+      opacity: 0,
+      y: 20,
+      rotateX: -90,
+      stagger: 0.02, // Stagger each character
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    });
+
+    // Animate paragraph
+    quoteTimeline.to(
+      ".quote-paragraph",
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    ); // Start slightly before previous animation finishes
+
+    // Animate buttons
+    quoteTimeline.to(
+      ".quote-buttons",
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.6"
+    );
+
+    // Add hover effect on buttons
+    const primaryBtn = document.querySelector(".quote-button-primary");
+    const secondaryBtn = document.querySelector(".quote-button-secondary");
+
+    [primaryBtn, secondaryBtn].forEach((btn) => {
+      if (!btn) return;
+
+      btn.addEventListener("mouseenter", () => {
+        gsap.to(btn, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power1.out",
+        });
+      });
+
+      btn.addEventListener("mouseleave", () => {
+        gsap.to(btn, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power1.out",
+        });
+      });
+    });
+
+    // Subtle image animation
+    gsap.from(".quote-image img", {
+      scrollTrigger: {
+        trigger: "#quote-section",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      scale: 1.1,
+      opacity: 0.8,
+      duration: 1.5,
+      ease: "power2.out",
+    });
+  });
+</script>
+
+<style>
+  /* Set initial states for animations */
+  .quote-paragraph,
+  .quote-buttons {
+    transform: translateY(20px);
+  }
+</style>

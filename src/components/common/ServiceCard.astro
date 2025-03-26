@@ -1,0 +1,115 @@
+---
+import Icon from "../../assets/home/publisher-services/book-writing.svg";
+import Image from "astro/components/Image.astro";
+---
+
+<article
+  class="service-card relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
+>
+  <div
+    class="icon-container flex items-center justify-center shadow-xl w-[52px] h-[52px] rounded-md transition-all duration-300"
+  >
+    <Image
+      src={Icon}
+      alt="Book Writing"
+      width={24}
+      height={24}
+      class="svg-icon"
+    />
+  </div>
+  <h3 class="md:text-base lg:text-xl font-semibold text-heading-black">
+    Book Writing
+  </h3>
+  <p class="text-sm text-center">
+    Beginning from the instant that you have an idea for a written work, Nixxon
+    Publishers Writing is here to help you bring it to life with our range of
+    specialized services. Whether you need book writing, editing, or marketing,
+    we have you covered.
+  </p>
+</article>
+
+<style>
+  .service-card {
+    overflow: hidden;
+  }
+
+  .service-card::before,
+  .service-card::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: transparent;
+  }
+
+  /* Top right corner */
+  .service-card::before {
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top-right-radius: 0.5rem;
+  }
+
+  /* Bottom left corner */
+  .service-card::after {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .service-card:hover {
+    border-color: transparent;
+  }
+
+  .service-card:hover::before {
+    width: 45%;
+    height: 35%;
+    border-top-color: #ff002d;
+    border-right-color: #ff002d;
+  }
+
+  .service-card:hover::after {
+    width: 45%;
+    height: 35%;
+    border-bottom-color: #ff002d;
+    border-left-color: #ff002d;
+  }
+
+  /* SVG icon color change on hover */
+  .svg-icon {
+    filter: brightness(0); /* Make it black by default */
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover .svg-icon {
+    filter: brightness(0) invert(1); /* Make it white on hover */
+  }
+  /* Optional: Change the background color of the icon container on hover */
+  .service-card:hover .icon-container {
+    background-color: #ff002d;
+  }
+</style>
+
+<script>
+  // Add this at the end of your file or in a separate script
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".service-card");
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        // Additional animation effects could be added here if needed
+      });
+
+      card.addEventListener("mouseleave", () => {
+        // Reset or additional animations on mouse leave
+      });
+    });
+  });
+</script>

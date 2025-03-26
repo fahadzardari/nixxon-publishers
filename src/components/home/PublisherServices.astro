@@ -1,0 +1,126 @@
+---
+import CommonHeaderSection from "../common/CommonHeaderSection.astro";
+import ServiceCard from "../common/ServiceCard.astro";
+---
+
+<section id="publisher-services" class="app-max-width">
+  <CommonHeaderSection
+    title="Nixxon Publishers Writing Services"
+    subtitle="Our Complete Support Services Mean You Won't Have to Lift Anything!"
+    description="Explore a publication experience that is completely smooth with Nixxon Publishers Writing. We offer a wide range of services that are tailored to meet the specific needs of each individual creator, including skilled textual modification, attractive cover design, and smart marketing."
+  />
+
+  <!-- Swiper container -->
+  <div class="swiper services-swiper">
+    <div class="swiper-wrapper pb-16">
+      <!-- Individual slides -->
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+      <div class="swiper-slide">
+        <ServiceCard />
+      </div>
+    </div>
+
+    <!-- Add pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Import Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<style>
+  .swiper-slide {
+    width: fit-content;
+  }
+  .services-swiper {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  /* Custom pagination colors - making this more specific and !important */
+  .services-swiper .swiper-pagination-bullet-active {
+    background-color: #ff002d !important;
+  }
+
+  /* Enhance the look of all pagination bullets */
+  .services-swiper .swiper-pagination-bullet {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .services-swiper .swiper-pagination-bullet:hover {
+    opacity: 1;
+    background-color: rgba(255, 0, 45, 0.5);
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = new Swiper(".services-swiper", {
+      modules: [Pagination, Autoplay],
+      slidesPerView: 1,
+      spaceBetween: 20,
+      centeredSlides: false,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        // When screen width is >= 640px
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        // When screen width is >= 768px
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        // When screen width is >= 1024px
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        1440: {
+          slidesPerView: 5,
+          spaceBetween: 10,
+        },
+      },
+    });
+  });
+</script>

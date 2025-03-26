@@ -1,0 +1,128 @@
+---
+// astro props for title, subtitle, and description
+const { title = "", subtitle = "", description = "" } = Astro.props;
+---
+
+<div
+  class="common-header-section flex flex-col gap-y-1 items-center justify-center py-10 text-center xl:w-[90%] 2xl:w-[85%] mx-auto"
+>
+  <h3
+    class="font-semibold text-heading-black text-2xl xl:text-4xl artwork-heading overflow-hidden"
+  >
+    {title}
+  </h3>
+  <p
+    class="font-semibold text-primary-red text-sm lg:text-base xl:text-xl artwork-subheading opacity-0"
+  >
+    {subtitle}
+  </p>
+  <p
+    class="text-xs lg:text-sm xl:text-base w-[90%] artwork-description opacity-0"
+  >
+    {description}
+  </p>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Create a unique animation for each header section
+    const setupAnimation = (section) => {
+      // Split heading text into characters for animation
+      const headingText = new SplitType(
+        section.querySelector(".artwork-heading"),
+        {
+          types: "chars",
+          tagName: "span",
+        }
+      );
+
+      // Create a timeline specific to this section
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          toggleActions: "play none none none",
+          // Only animate once
+          once: true,
+          // Add markers for debugging if needed
+          // markers: true,
+        },
+      });
+
+      // Animate heading characters with staggered effect
+      timeline.from(headingText.chars, {
+        opacity: 0,
+        y: 30,
+        stagger: 0.03,
+        duration: 0.7,
+        ease: "back.out(1.5)",
+      });
+
+      // Animate subheading
+      timeline.to(
+        section.querySelector(".artwork-subheading"),
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+
+      // Animate description paragraph
+      timeline.to(
+        section.querySelector(".artwork-description"),
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      );
+    };
+
+    // Use a mutation observer to handle components that might be added dynamically
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              // Element node
+              const sections = node.querySelectorAll
+                ? node.querySelectorAll(".common-header-section")
+                : [];
+
+              sections.forEach(setupAnimation);
+            }
+          });
+        }
+      });
+    });
+
+    // Setup animation for existing sections
+    document.querySelectorAll(".common-header-section").forEach(setupAnimation);
+
+    // Start observing for dynamic content
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+</script>
+
+<style>
+  /* Set initial states for animations */
+  .artwork-subheading,
+  .artwork-description {
+    transform: translateY(20px);
+  }
+</style>

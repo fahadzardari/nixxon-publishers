@@ -1,0 +1,66 @@
+---
+import Image from "astro/components/Image.astro";
+import Avatar from "../../assets/home/testimonial/avatar.png";
+const { avatar, name, description, stars = 4 } = Astro.props;
+---
+
+<article
+  class="testimonial-card flex flex-col gap-y-4 m-2 drop-shadow-lg p-6 bg-white rounded-lg h-[300px]"
+>
+  <div class="avatar-container relative flex items-center gap-x-4">
+    <Image src={Avatar} alt="Avatar" width={42} height={42} class="avatar" />
+    <h3 class="text-lg font-semibold text-heading-black">{name}</h3>
+  </div>
+
+  <!-- Option 1: Fixed height with scroll if needed -->
+  <p class="text-xs xl:text-sm flex-1 overflow-y-auto">
+    {description}
+  </p>
+
+  <!-- Option 2: Line clamp (uncomment to use) -->
+  <!-- <p class="text-xs xl:text-sm line-clamp-4">
+    {description}
+  </p> -->
+
+  <div class="flex gap-x-1 mt-auto">
+    {
+      Array.from({ length: 5 }).map((_, index) => (
+        <svg
+          key={index}
+          width="20"
+          height="19"
+          viewBox="0 0 20 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z"
+            fill={index < stars ? "#00B67A" : "#D9D9D9"}
+          />
+        </svg>
+      ))
+    }
+  </div>
+</article>
+
+<style>
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* For smooth scrolling if using Option 1 */
+  .testimonial-card p {
+    scrollbar-width: thin;
+    scrollbar-color: #00b67a #f1f1f1;
+  }
+
+  .testimonial-card p::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .testimonial-card p::-webkit-scrollbar-thumb {
+    background-color: #00b67a;
+    border-radius: 4px;
+  }
+</style>

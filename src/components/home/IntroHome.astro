@@ -1,0 +1,61 @@
+---
+import Image from "astro/components/Image.astro";
+import IntroImage from "../../assets/home/intro.png";
+---
+
+<section class="app-max-width flex items-stretch gap-x-8 py-16">
+  <div class="w-[55%]  flex flex-col gap-y-4 h-full">
+    <h3
+      class="text-heading-black md:text-xl lg:text-2xl xl:text-4xl font-semibold"
+    >
+      Turn your book ideas into reality with Nixxon Publishers—your trusted
+      writing partner.
+    </h3>
+    <div class="gap-y-2 flex flex-col text-xs xl:text-base flex-1">
+      <p>
+        If you're looking to take your book journey to the next level, Nixxon
+        Publishers Writing is the place for you. We offer complete book writing,
+        publishing, and marketing services. Experienced experts in our
+        leadership group are committed to making everything easy for you, and
+        that includes our Entire Book Writing service.
+      </p>
+      <p>
+        Whether you're just starting to write or are well into the process, our
+        professional services are available to help you polish your manuscript
+        and make it shine. Our Publishing Services come into play after your
+        work is complete, providing a variety of customizable packages that meet
+        your specific requirements.
+      </p>
+      <p>
+        We take care of every detail to make sure your book is visually stunning
+        as well as expertly produced, from the cover design to the printing.
+      </p>
+      <p>
+        The adventure doesn't end there, though, as our marketing services are
+        meant to get your work the recognition it needs. We use social media
+        campaigns, book launch parties, and focused communication as part of our
+        strategic marketing approach to reach your target demographic.
+      </p>
+      <p>
+        Your book will be read by people all over the world thanks to our
+        extensive distribution network, leaving a lasting impression on the
+        literary world. Regardless of your level of experience, Nixxon
+        Publishers Writing is dedicated to helping you every step of the way as
+        you transform your idea into a published reality.
+      </p>
+      <p>
+        Are you prepared to start this amazing adventure? Select Nixxon
+        Publishers Writing for a thorough experience that assures your next book
+        will get the recognition and success it so richly merits
+      </p>
+    </div>
+  </div>
+  <div class=" h-full flex-1">
+    <Image
+      src={IntroImage}
+      alt="Intro Image"
+      class="w-full h-full object-cover"
+      loading={"lazy"}
+    />
+  </div>
+</section>

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+@theme {
+  --color-primary-red: #ff002d;
+  --color-primary-blue: #120020;
+  --color-heading-black: #111111;
+  --color-footer-blue: #0e0019;
+  --color-quote-maroon: #4e010f;
+}
+
+.app-max-width {
+  padding-inline: 1rem;
+}
+
+.app-left-padding {
+  padding-left: 1rem;
+}
+
+.app-right-padding {
+  padding-right: 1rem;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .app-max-width {
+    padding-inline: 2rem;
+  }
+
+  .app-left-padding {
+    padding-left: 2rem;
+  }
+
+  .app-right-padding {
+    padding-right: 2rem;
+  }
+}
+
+/* Small Laptop */
+@media screen and (min-width: 1024px) {
+  .app-max-width {
+    padding-inline: 4rem;
+  }
+
+  .app-left-padding {
+    padding-left: 4rem;
+  }
+
+  .app-right-padding {
+    padding-right: 4rem;
+  }
+}
+
+/* Large Laptop */
+@media screen and (min-width: 1280px) {
+  .app-max-width {
+    padding-inline: 6rem;
+  }
+
+  .app-left-padding {
+    padding-left: 6rem;
+  }
+
+  .app-right-padding {
+    padding-right: 6rem;
+  }
+}
+
+/* Extra Large Screens */
+@media screen and (min-width: 1560px) {
+  .app-max-width {
+    margin: 0 auto;
+    padding-inline: 8rem;
+  }
+
+  .app-left-padding {
+    padding-left: 8rem;
+  }
+
+  .app-right-padding {
+    padding-right: 8rem;
+  }
+}
