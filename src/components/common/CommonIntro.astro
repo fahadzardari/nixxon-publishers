@@ -1,0 +1,129 @@
+---
+import { Image } from "astro:assets";
+
+const { title, description, image, getStartedButton = false } = Astro.props;
+---
+
+<section
+  class="app-max-width flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8 py-16"
+  id="common-intro-section"
+>
+  <Image class="w-1/2" src={image} alt={title} id="intro-image" />
+  <div class="w-1/2 flex flex-col gap-y-4">
+    <h1
+      class="font-semibold text-2xl xl:text-4xl 2xl:text-5xl"
+      id="intro-title"
+    >
+      {title}
+    </h1>
+    <p class="text-sm" id="intro-description">
+      {description}
+    </p>
+
+    {
+      getStartedButton && (
+        <a
+          href="/quote"
+          class="bg-primary-red w-fit text-white flex items-center gap-x-2 font-semibold text-base px-6 py-2 rounded-lg"
+          role="button"
+          aria-label="Get a quote for our services"
+          id="intro-button"
+        >
+          <span>Get Started </span>
+          <svg
+            width="24"
+            height="10"
+            viewBox="0 0 24 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.00700071 5.11557L-2.18699e-07 4.99857C6.08503e-05 4.75349 0.0901248 4.51695 0.253089 4.3339C0.416053 4.15084 0.640568 4.034 0.884001 4.00557L1 3.99857L20.584 3.99857L18.29 1.70557C18.1177 1.53351 18.0141 1.30447 17.9986 1.06144C17.9831 0.818414 18.0569 0.578093 18.206 0.385571L18.29 0.291571C18.4621 0.119247 18.6911 0.0156318 18.9341 0.000166065C19.1772 -0.0152997 19.4175 0.0584479 19.61 0.207571L19.704 0.291571L23.704 4.28757C23.8763 4.45964 23.9799 4.68867 23.9954 4.9317C24.0109 5.17473 23.9371 5.41505 23.788 5.60757L23.704 5.70157L19.704 9.70557C19.5245 9.88683 19.2824 9.9926 19.0275 10.0013C18.7725 10.0099 18.5238 9.92077 18.3324 9.75211C18.141 9.58344 18.0213 9.34799 17.9978 9.09395C17.9743 8.83991 18.0488 8.58649 18.206 8.38557L18.29 8.29157L20.579 5.99857L1 5.99857C0.755067 5.99854 0.518663 5.90862 0.335628 5.74586C0.152593 5.5831 0.0356579 5.35882 0.00700071 5.11557Z"
+              fill="white"
+            />
+          </svg>
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Split the title for character-based animation
+    const title = new SplitType("#intro-title", { types: "chars, words" });
+
+    // Create animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#common-intro-section",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Image animation - slide and fade in from left
+    tl.from("#intro-image", {
+      x: -100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+    });
+
+    // Title animation with staggered characters
+    tl.from(
+      title.chars,
+      {
+        opacity: 0,
+        y: 15,
+        rotateY: 90,
+        stagger: 0.03,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+      },
+      "-=0.7"
+    );
+
+    // Description paragraph fade in
+    tl.from(
+      "#intro-description",
+      {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    );
+
+    // Button animation (if present)
+    if (document.querySelector("#intro-button")) {
+      tl.from(
+        "#intro-button",
+        {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.5)",
+        },
+        "-=0.5"
+      );
+    }
+
+    // Add subtle hover effect on the image
+    gsap.to("#intro-image", {
+      scale: 1.03,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  });
+</script>

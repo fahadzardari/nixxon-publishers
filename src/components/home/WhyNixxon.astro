@@ -1,0 +1,129 @@
+<section
+  id="why-nixxon-section"
+  class="app-max-width relative flex flex-col items-center justify-center py-16 text-white"
+>
+  <!-- Your content goes here -->
+  <h1 id="why-nixxon-heading" class="text-4xl font-bold mb-2">Why Choose Nixxon Publishers</h1>
+  <p id="why-nixxon-description" class="text-center max-w-[974px]">
+    For eBooks, it's a good idea to use ghostwriters. The audience wants your
+    work to be eloquent, comprehensible, and fascinating. The best information
+    in the world won't get read unless it's presented in an appealing manner.
+  </p>
+  <div id="why-nixxon-cards" class="flex justify-between gap-x-6 mt-6">
+    <div id="why-nixxon-card-1" class="border flex flex-col rounded-lg max-w-[352px] px-4 py-4">
+      <h3 class="text-[80px] font-bold text-white/30">01</h3>
+      <h4 class="-mt-12 font-semibold mb-4">Unlimited Revisions</h4>
+      <p class="text-sm">
+        We've simplified the process of writing a book. Once in a while, you'll
+        have an epiphany regarding a chapter, a character's development, or the
+        entire plot. In order to ensure that the final product meets your
+        expectations, we offer unlimited modifications
+      </p>
+    </div>
+    <div id="why-nixxon-card-2" class="border flex flex-col rounded-lg max-w-[352px] px-4 py-4">
+      <h3 class="text-[80px] font-bold text-white/30">02</h3>
+      <h4 class="-mt-12 font-semibold mb-4">Experienced Designers</h4>
+      <p class="text-sm">
+        We've simplified the process of writing a book. Once in a while, you'll
+        have an epiphany regarding a chapter, a character's development, or the
+        entire plot. In order to ensure that the final product meets your
+        expectations, we offer unlimited modifications
+      </p>
+    </div>
+    <div id="why-nixxon-card-3" class="border flex flex-col rounded-lg max-w-[352px] px-4 py-4">
+      <h3 class="text-[80px] font-bold text-white/30">03</h3>
+      <h4 class="-mt-12 font-semibold mb-4">Award-Winning Writers</h4>
+      <p class="text-sm">
+        We've simplified the process of writing a book. Once in a while, you'll
+        have an epiphany regarding a chapter, a character's development, or the
+        entire plot. In order to ensure that the final product meets your
+        expectations, we offer unlimited modifications
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-image: url("../../assets/common/why-nixxon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+</style>
+
+
+<script>
+  import gsap from "gsap";
+  import SplitType from "split-type";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    // Split heading text for character animation
+    const headingText = new SplitType("#why-nixxon-heading", { types: "chars,words" });
+    
+    // Create timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#why-nixxon-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Animate heading with split characters
+    tl.from(headingText.chars, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.02,
+      duration: 0.8,
+      ease: "power2.out"
+    })
+    
+    // Animate main description
+    .from("#why-nixxon-description", {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.4")
+    
+    // Animate cards with staggered effect
+    .from(["#why-nixxon-card-1", "#why-nixxon-card-2", "#why-nixxon-card-3"], {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      stagger: 0.2,
+      duration: 0.7,
+      ease: "back.out(1.2)"
+    }, "-=0.6");
+    
+    // Add hover animations for cards
+    const cards = document.querySelectorAll("#why-nixxon-card-1, #why-nixxon-card-2, #why-nixxon-card-3");
+    
+    cards.forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+          y: -10,
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+      
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+  });
+</script>

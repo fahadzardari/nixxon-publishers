@@ -88,52 +88,117 @@ import TestimonialCard from "../common/TestimonialCard.astro";
       opacity: 1;
       background-color: rgba(255, 0, 45, 0.5);
     }
+
+    .tab-button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ddd; /* Add a visible border */
+        background-color: white; /* Add background color */
+      color: #333; /* Add text color */
+    }
+
+    .tab-button:hover {
+      transform: translateY(-2px);
+      border-color: #ff002d; /* Highlight border on hover */
+    }
+
+    .active-tab-button {
+      background-color: #ff002d;
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(255, 0, 45, 0.2);
+      border-color: #ff002d;
+    }
   </style>
 
   <script>
     import Swiper from "swiper";
     import { Pagination, Autoplay } from "swiper/modules";
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Register ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Initialize the swiper with your existing configuration
       const swiper = new Swiper(".services-swiper", {
         modules: [Pagination, Autoplay],
         slidesPerView: 1,
         spaceBetween: 20,
         centeredSlides: true,
+        freeMode: false,
         loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
         breakpoints: {
-          // When screen width is >= 640px
           640: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          // When screen width is >= 768px
           768: {
             slidesPerView: 3,
             spaceBetween: 20,
           },
-          // When screen width is >= 1024px
           1024: {
             slidesPerView: 3,
             spaceBetween: 20,
           },
-          1200: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          1440: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
         },
+      });
+
+      // Create animation timeline for the testimonials section
+      const testimonialTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".services-swiper",
+          start: "top 80%", 
+          end: "bottom 20%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      // Add subtle animations to the swiper container
+      testimonialTimeline
+        .from(".services-swiper", {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out"
+        })
+        .to(".services-swiper", {
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
+          duration: 1.2,
+          ease: "power1.inOut"
+        }, "-=0.4");
+
+      // Add a subtle pulse animation to highlight the swiper
+      testimonialTimeline.add(() => {
+        gsap.to(".services-swiper", {
+          scale: 1.01,
+          duration: 2,
+          repeat: 1,
+          yoyo: true,
+          ease: "sine.inOut",
+          onComplete: () => {
+            // Reset to original state after animation
+            gsap.to(".services-swiper", {
+              scale: 1,
+              duration: 0.5
+            });
+          }
+        });
+      }, "-=0.8");
+
+      // Add event listener for swiper transitions to create subtle effects
+      swiper.on('slideChangeTransitionStart', function() {
+        // Subtle flash effect when slides change
+        gsap.to(".services-swiper", {
+          brightness: 1.03,
+          duration: 0.3,
+          yoyo: true,
+          repeat: 1
+        });
       });
     });
   </script>

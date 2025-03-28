@@ -1,0 +1,43 @@
+---
+import Navbar from "../components/common/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/common/Footer.astro";
+import Quote from "../components/common/Quote.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import ServiceHero from "../components/common/ServiceHero.astro";
+const title = "Create Your Book Now with Nixxon Publisher";
+const description =
+  "We offer customized publishing services that value your vision.Nixxon Publisher delivers captivating book writing, beautiful cover design, smart marketing, and smooth publishing. Make your story shine in literature with our collaborative and fast workflow. Create literary legacies withNixxon Publisher.";
+import AboutUsImage from "../assets/about-us/hero.png";
+import CommonIntro from "../components/common/CommonIntro.astro";
+const intro = {
+  title: "Providing You Outstanding Book Services",
+  description:
+    "Our dedication to quality at Amz Gold Publishing exceeds expectations in the business, and it shows in the time and attention we give to each and every story. Our experienced service will see to it that every step of the process, from conception to publishing, enhances the overall quality of your creative work. To ensure that your book reflects our steadfast dedication to literary brilliance, we work tirelessly not only to fulfill but also exceed your expectations.",
+  getStartedButton: true,
+};
+import IntroImage from "../assets/home/intro.png";
+import WhyBetterAboutUs from "../components/WhyBetterAboutUs.astro";
+---
+
+<Layout title="About Us | Nixxon Publishers">
+  
+  <Navbar />
+  <ServiceHero
+    pageName="About Us"
+    title={title}
+    description={description}
+    image={AboutUsImage}
+    imageAlt="About Us Image"
+  />
+  <CommonIntro
+    title={intro.title}
+    description={intro.description}
+    image={IntroImage}
+    getStartedButton={intro.getStartedButton}
+  />
+  <WhyBetterAboutUs />
+  <Testimonials />
+  <Quote />
+  <Footer />
+</Layout>

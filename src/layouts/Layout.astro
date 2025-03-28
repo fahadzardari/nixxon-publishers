@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import "../index.css";
 const { title } = Astro.props;
 ---
 
@@ -12,7 +12,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="w-screen overflow-x-hidden">
+  <body class="w-screen overflow-x-hidden no-scrollbar">
     <slot />
   </body>
 </html>

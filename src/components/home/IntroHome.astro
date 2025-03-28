@@ -3,59 +3,136 @@ import Image from "astro/components/Image.astro";
 import IntroImage from "../../assets/home/intro.png";
 ---
 
-<section class="app-max-width flex items-stretch gap-x-8 py-16">
-  <div class="w-[55%]  flex flex-col gap-y-4 h-full">
+<section
+  class="app-max-width flex items-center gap-x-3 xl:gap-x-4 2xl:gap-x-8 py-16 overflow-hidden"
+  id="home-intro-section"
+>
+  <div class="w-[55%] flex flex-col gap-y-4 h-full" id="home-intro-content">
     <h3
       class="text-heading-black md:text-xl lg:text-2xl xl:text-4xl font-semibold"
+      id="home-intro-heading"
     >
       Turn your book ideas into reality with Nixxon Publishers—your trusted
       writing partner.
     </h3>
-    <div class="gap-y-2 flex flex-col text-xs xl:text-base flex-1">
-      <p>
+    <div
+      class="gap-y-2 flex flex-col text-xs xl:text-base flex-1 w-[90%]"
+      id="home-intro-paragraphs"
+    >
+      <p id="intro-p1">
         If you're looking to take your book journey to the next level, Nixxon
         Publishers Writing is the place for you. We offer complete book writing,
         publishing, and marketing services. Experienced experts in our
         leadership group are committed to making everything easy for you, and
         that includes our Entire Book Writing service.
       </p>
-      <p>
+      <p id="intro-p2">
         Whether you're just starting to write or are well into the process, our
         professional services are available to help you polish your manuscript
         and make it shine. Our Publishing Services come into play after your
         work is complete, providing a variety of customizable packages that meet
         your specific requirements.
       </p>
-      <p>
+      <p id="intro-p3">
         We take care of every detail to make sure your book is visually stunning
         as well as expertly produced, from the cover design to the printing.
       </p>
-      <p>
+      <p id="intro-p4">
         The adventure doesn't end there, though, as our marketing services are
         meant to get your work the recognition it needs. We use social media
         campaigns, book launch parties, and focused communication as part of our
         strategic marketing approach to reach your target demographic.
       </p>
-      <p>
+      <p id="intro-p5">
         Your book will be read by people all over the world thanks to our
         extensive distribution network, leaving a lasting impression on the
         literary world. Regardless of your level of experience, Nixxon
         Publishers Writing is dedicated to helping you every step of the way as
         you transform your idea into a published reality.
       </p>
-      <p>
+      <p id="intro-p6">
         Are you prepared to start this amazing adventure? Select Nixxon
         Publishers Writing for a thorough experience that assures your next book
         will get the recognition and success it so richly merits
       </p>
     </div>
   </div>
-  <div class=" h-full flex-1">
+  <div class="h-full w-[45%] overflow-hidden" id="home-intro-image-container">
     <Image
       src={IntroImage}
       alt="Intro Image"
       class="w-full h-full object-cover"
-      loading={"lazy"}
+      loading={"eager"}
+      id="home-intro-image"
     />
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Split heading text for character animation
+    const heading = new SplitType("#home-intro-heading", {
+      types: "chars, words",
+    });
+
+    // Get all paragraph elements
+    const paragraphs = document.querySelectorAll("#home-intro-paragraphs p");
+
+    // Create animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#home-intro-section",
+        start: "top 70%",
+        end: "bottom 70%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Heading animation with staggered characters
+    tl.from(heading.chars, {
+      opacity: 0,
+      y: 20,
+      rotateX: -90,
+      stagger: 0.02,
+      duration: 0.7,
+      ease: "back.out(1.5)",
+    });
+
+    // Animate paragraphs with staggered entrance
+    tl.from(
+      paragraphs,
+      {
+        opacity: 0,
+        y: 30,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    );
+
+    // Image animation - clip approach instead of transform
+    gsap.set("#home-intro-image", { 
+      clipPath: "inset(0 100% 0 0)",
+      scale: 1.05
+    });
+    
+    tl.to(
+      "#home-intro-image",
+      {
+        clipPath: "inset(0 0% 0 0)",
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+      },
+      "-=1.5"
+    );
+  });
+</script>

@@ -1,0 +1,130 @@
+---
+import Image from "astro/components/Image.astro";
+const { pageName = "", title, description, image, imageAlt } = Astro.props;
+---
+
+<section
+  class="service-hero-section app-max-width h-[725px] pt-[88px] pb-8 bg-primary-blue text-white flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8"
+  aria-labelledby="service-title"
+>
+  <article class="service-hero-content w-[60%] flex flex-col gap-y-8">
+    <h4 class="service-hero-pagename text-2xl font-semibold">
+      {pageName}
+    </h4>
+    <h1
+      id="service-title"
+      class="font-semibold text-4xl xl:text-[46px] 2xl:text-6xl"
+    >
+      {title}
+    </h1>
+    <p class="service-hero-description text-base leading-[150%] w-[80%]">
+      {description}
+    </p>
+    <div class="service-hero-buttons flex gap-x-4">
+      <a
+        href="/quote"
+        class="service-hero-button bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg"
+        role="button"
+        aria-label="Get a quote for our services"
+      >
+        Get a Quote
+      </a>
+      <a
+        href="/contact"
+        class="service-hero-button border border-white text-white font-semibold text-base px-6 py-2 rounded-lg"
+        role="button"
+        aria-label="Chat with our customer service team"
+      >
+        Chat With Us
+      </a>
+    </div>
+  </article>
+  <figure class="service-hero-image w-[40%]">
+    <Image
+      src={image}
+      alt={imageAlt || `${title} service illustration`}
+      loading="eager"
+    />
+  </figure>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    // Split title text for character animation
+    const title = new SplitType("#service-title", { types: "chars, words" });
+
+    // Create timeline for sequenced animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".service-hero-section",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Title animation - characters appear with stagger
+    tl.from(title.chars, {
+      opacity: 0,
+      y: 50,
+      rotateX: -90,
+      stagger: 0.02,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    });
+
+    // Description paragraph animation
+    tl.from(
+      ".service-hero-description",
+      {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    );
+
+    // Buttons animation
+    tl.from(
+      ".service-hero-button",
+      {
+        opacity: 0,
+        y: 20,
+        scale: 0.9,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power1.out",
+      },
+      "-=0.6"
+    );
+
+    // Image animation
+    tl.from(
+      ".service-hero-image",
+      {
+        opacity: 0,
+        x: 40,
+        duration: 1,
+        ease: "power2.out",
+      },
+      "-=0.8"
+    );
+
+    // Optional: Add a subtle floating animation to the image for continued visual interest
+    gsap.to(".service-hero-image", {
+      y: "10px",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  });
+</script>

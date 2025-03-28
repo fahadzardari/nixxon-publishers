@@ -7,6 +7,42 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Custom scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #120020;
+  opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff002d;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4e010f;
+}
+
+/* Custom scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: #ff002d #120020;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @theme {
   --color-primary-red: #ff002d;
   --color-primary-blue: #120020;
@@ -14,6 +50,18 @@ body {
   --color-footer-blue: #0e0019;
   --color-quote-maroon: #4e010f;
   --font-comme-regular: "Comme", sans-serif;
+}
+
+.common-heading {
+  @apply font-semibold text-heading-black text-2xl xl:text-4xl;
+}
+
+.tab-button {
+  @apply text-base font-medium text-[#303030] border border-[#303030] cursor-pointer rounded-md px-6 py-2;
+}
+
+.active-tab-button {
+  @apply border-none bg-primary-red text-white;
 }
 
 .app-max-width {
@@ -31,20 +79,35 @@ body {
 /* Tablet */
 @media screen and (min-width: 768px) {
   .app-max-width {
-    padding-inline: 2rem;
+    padding-inline: 1.5rem;
   }
 
   .app-left-padding {
-    padding-left: 2rem;
+    padding-left: 1.5rem;
   }
 
   .app-right-padding {
-    padding-right: 2rem;
+    padding-right: 1.5rem;
   }
 }
 
 /* Small Laptop */
 @media screen and (min-width: 1024px) {
+  .app-max-width {
+    padding-inline: 2.5rem;
+  }
+
+  .app-left-padding {
+    padding-left: 2.5rem;
+  }
+
+  .app-right-padding {
+    padding-right: 2.5rem;
+  }
+}
+
+/* Large Laptop */
+@media screen and (min-width: 1280px) {
   .app-max-width {
     padding-inline: 4rem;
   }
@@ -55,21 +118,6 @@ body {
 
   .app-right-padding {
     padding-right: 4rem;
-  }
-}
-
-/* Large Laptop */
-@media screen and (min-width: 1280px) {
-  .app-max-width {
-    padding-inline: 6rem;
-  }
-
-  .app-left-padding {
-    padding-left: 6rem;
-  }
-
-  .app-right-padding {
-    padding-right: 6rem;
   }
 }
 

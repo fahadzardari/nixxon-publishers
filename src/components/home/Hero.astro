@@ -1,3 +1,154 @@
-<section class="h-screen bg-primary-blue">
+---
+import Image from "astro/components/Image.astro";
+import HeroImage from "../../assets/home/hero.png";
+import ChatIcon from "../../assets/home/chat.png";
+import CallIcon from "../../assets/home/call.png";
+---
 
+<section
+  id="hero-section"
+  class="min-h-screen h-[1041px] relative bg-primary-blue text-white flex flex-col justify-center pt-[80px] pb-8"
+>
+  <div class="flex flex-col items-center justify-center gap-y-8 app-max-width">
+    <div class="text-center flex flex-col gap-y-4">
+      <h3 id="hero-subtitle" class="text-primary-red text-2xl font-semibold">
+        Introducing Nixxon Publishers, The Book Service in The place!
+      </h3>
+      <h1 id="hero-title" class="text-5xl max-w-[1087px]">
+        Seek Out <span class="font-semibold">Yourself in Literature!</span> With
+        Us, the Best Service Provider.
+      </h1>
+      <p id="hero-paragraph" class="text-base">
+        Consider using Nixxon Publishers Book Services Provider Hub if you're
+        stuck trying to put your book ideas on paper.
+      </p>
+    </div>
+    <div id="hero-buttons" class="flex items-center gap-x-4 justify-center text-white">
+      <button
+        id="quote-button"
+        class="bg-primary-red px-6 py-2 font-semibold text-base rounded-md"
+      >
+        Get a Quote
+      </button>
+      <button
+        id="chat-button"
+        class="bg-transparent border px-6 py-2 font-semibold text-base rounded-md"
+      >
+        Chat With Us
+      </button>
+    </div>
+    <div id="hero-image-container">
+      <Image src={HeroImage} alt={"Hero Image"} class="" loading={"eager"} />
+    </div>
+  </div>
+  <!-- <div
+    class="absolute top-1/2 -translate-y-1/2 right-0 flex flex-col items-end gap-y-2"
+  >
+    <div class="relative">
+      <button
+        class="quote px-4 py-2 bg-white text-primary-blue font-semibold text-base absolute -right-[calc(100%-38px)] origin-top-right"
+      >
+        Get a Quote
+      </button>
+    </div>
+    <div class="flex flex-col gap-y-2 mr-2">
+      <button class="bg-white p-2 rounded-md">
+        <Image src={ChatIcon} alt={"chat icon"} width={24} height={24} />
+      </button>
+      <button class="bg-white p-2 rounded-md">
+        <Image src={CallIcon} alt={"call icon"} width={24} height={24} />
+      </button>
+    </div>
+  </div> -->
 </section>
+
+<style>
+  .quote {
+    transform: rotate(-90deg);
+    border-radius: 0.375rem 0.375rem 0 0;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Run animation immediately since it's hero section
+  document.addEventListener('DOMContentLoaded', () => {
+    animateHeroSection();
+  });
+
+  function animateHeroSection() {
+    // Split text for more granular animations
+    const heroTitle = new SplitType("#hero-title", { types: "words" });
+    
+    // Create main timeline
+    const tl = gsap.timeline();
+    
+    // Subtitle animation
+    tl.from("#hero-subtitle", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+    
+    // Main title animation - word by word
+    tl.from(heroTitle.words, {
+      opacity: 0,
+      y: 20,
+      stagger: 0.05,
+      duration: 0.7,
+      ease: "back.out(1.4)"
+    }, "-=0.4");
+    
+    // Paragraph animation
+    tl.from("#hero-paragraph", {
+      opacity: 0,
+      y: 20,
+      duration: 0.7,
+      ease: "power2.out"
+    }, "-=0.3");
+    
+    // Button animations
+    tl.from("#hero-buttons > button", {
+      opacity: 0,
+      y: 15,
+      stagger: 0.15,
+      duration: 0.6,
+      ease: "back.out(1.5)"
+    }, "-=0.4");
+    
+    // Hero image animation
+    tl.from("#hero-image-container", {
+      opacity: 0,
+      y: 40,
+      scale: 0.95,
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.5");
+
+    // Add hover animations for buttons
+    gsap.utils.toArray("#hero-buttons > button").forEach(button => {
+      button.addEventListener("mouseenter", () => {
+        gsap.to(button, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power1.out"
+        });
+      });
+      
+      button.addEventListener("mouseleave", () => {
+        gsap.to(button, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power1.out"
+        });
+      });
+    });
+  }
+</script>

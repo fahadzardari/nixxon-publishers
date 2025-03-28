@@ -1,0 +1,157 @@
+---
+import Image from "astro/components/Image.astro";
+import ActionImage from "../../assets/common/categories/action.png";
+import FitnessImage from "../../assets/common/categories/fitness.png";
+import TravelImage from "../../assets/common/categories/travel.png";
+import DramaImage from "../../assets/common/categories/drama.png";
+import HorrorImage from "../../assets/common/categories/horror.png";
+import DictionaryImage from "../../assets/common/categories/dictionary.png";
+import ComicsImage from "../../assets/common/categories/comics.png";
+import RomanceImage from "../../assets/common/categories/romance.png";
+---
+
+<section
+  id="categories-section"
+  class="app-max-width relative flex flex-col items-center justify-center py-16 text-white"
+>
+  <h1 id="categories-heading" class="text-4xl font-bold mb-8">
+    Are You Thinking About a Category? We Cover Everything
+  </h1>
+  <div id="categories-container" class="flex gap-x-4 justify-between w-[85%]">
+    <div
+      id="category-action"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={41} src={ActionImage} alt={"Action"} />
+      </div>
+      <span class="text-center w-full">Action & Adventure</span>
+    </div>
+    <div
+      id="category-fitness"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={41} src={FitnessImage} alt={"Fitness"} />
+      </div>
+      <span class="text-center w-full">Fitness</span>
+    </div>
+    <div
+      id="category-travel"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={67} src={TravelImage} alt={"Travel"} />
+      </div>
+      <span class="text-center w-full">Travel</span>
+    </div>
+    <div
+      id="category-drama"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={67} src={DramaImage} alt={"Drama"} />
+      </div>
+      <span class="text-center w-full">Drama</span>
+    </div>
+    <div
+      id="category-horror"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={67} src={HorrorImage} alt={"Horror"} />
+      </div>
+      <span class="text-center w-full">Horror</span>
+    </div>
+    <div
+      id="category-dictionary"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={51} height={69} src={DictionaryImage} alt={"Dictionary"} />
+      </div>
+      <span class="text-center w-full">Dictionary</span>
+    </div>
+    <div
+      id="category-comics"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={39} height={59} src={ComicsImage} alt={"Comics"} />
+      </div>
+      <span class="text-center w-full">Comics</span>
+    </div>
+    <div
+      id="category-romance"
+      class="w-[120px] flex flex-col items-center gap-y-1"
+    >
+      <div class="flex justify-center items-center h-[70px]">
+        <Image width={59} height={59} src={RomanceImage} alt={"Romance"} />
+      </div>
+      <span class="text-center w-full">Romance</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-image: url("../../assets/common/why-nixxon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Register the ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Get elements by ID to avoid conflicts
+    const categoriesSection = document.querySelector("#categories-section");
+    const categoriesHeading = document.querySelector("#categories-heading");
+    const categoryItems = document.querySelectorAll("[id^='category-']");
+    
+    if (!categoriesSection || !categoriesHeading || !categoryItems.length) return;
+    
+    // Split the heading text for character animation
+    const headingText = new SplitType("#categories-heading", { types: "chars" });
+    
+    // Set initial states for category items
+    gsap.set(categoryItems, { opacity: 0, y: 30 });
+    gsap.set(headingText.chars, { opacity: 0, y: 20 });
+    
+    // Create a timeline for the animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#categories-section",
+        start: "top 75%", // Starts when the top of the section hits 75% down the viewport
+        end: "top 25%",
+        toggleActions: "play none none none",
+        // markers: true, // Uncomment for debugging
+      },
+      defaults: { ease: "power3.out" }
+    });
+    
+    // Animate the heading characters
+    tl.to(headingText.chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.02
+    });
+    
+    // Animate the category items with stagger
+    tl.to(categoryItems, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.08
+    }, "-=0.4"); // Slight overlap with heading animation
+  });
+</script>

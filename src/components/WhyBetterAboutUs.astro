@@ -1,0 +1,110 @@
+---
+import Image from "astro/components/Image.astro";
+import Award1 from "../assets/about-us/award1.png";
+import Award2 from "../assets/about-us/award2.png";
+import Award3 from "../assets/about-us/award3.png";
+---
+
+<section id="why-better-section" class="app-max-width flex py-16 items-center">
+  <div class="w-[50%] py-4">
+    <h1 id="why-better-heading" class="common-heading mb-4">
+      Why Do We Outperform Our Competition?
+    </h1>
+    <p id="why-better-paragraph" class="text-sm xl:text-base">
+      There are many writing services available, but none that can match Nixxon
+      Publisher publishing and ghostwriting services. Our commitment to giving
+      our customers excellent service is what sets us apart from our
+      competitors.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-3 justify-center items-center mx-auto w-[50%]">
+    <Image id="award-1" src={Award1} alt="Award 1" class="" />
+    <Image id="award-2" src={Award2} alt="Award 2" class="" />
+    <Image id="award-3" src={Award3} alt="Award 3" class="" />
+    <div class="col-span-3 flex justify-center gap-8 px-8 mt-4">
+      <Image id="award-4" src={Award2} alt="Award 4" class="" />
+      <Image id="award-5" src={Award2} alt="Award 5" class="" />
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import SplitType from "split-type";
+
+  // Only run animation when element is in viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateWhyBetterSection();
+          observer.disconnect(); // Run animation only once
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  // Observe the section
+  const section = document.getElementById("why-better-section");
+  if (section) observer.observe(section);
+
+  function animateWhyBetterSection() {
+    // Split the heading text
+    const headingText = new SplitType("#why-better-heading", {
+      types: "chars, words",
+    });
+
+    // Create a timeline for sequenced animations
+    const tl = gsap.timeline();
+
+    // Animate heading characters
+    tl.from(headingText.chars, {
+      opacity: 0,
+      y: 20,
+      rotateX: -90,
+      stagger: 0.02,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    });
+
+    // Animate paragraph
+    tl.from(
+      "#why-better-paragraph",
+      {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    );
+
+    // Animate awards with staggered reveal
+    tl.from(
+      ["#award-1", "#award-2", "#award-3"],
+      {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "back.out(1.5)",
+      },
+      "-=0.4"
+    );
+
+    // Animate bottom awards
+    tl.from(
+      ["#award-4", "#award-5"],
+      {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "back.out(1.5)",
+      },
+      "-=0.2"
+    );
+  }
+</script>
