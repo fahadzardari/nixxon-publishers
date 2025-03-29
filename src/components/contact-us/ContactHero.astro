@@ -1,33 +1,38 @@
 ---
-import Image from "astro/components/Image.astro";
-const { pageName = "", title, description, image, imageAlt } = Astro.props;
+
 ---
 
 <section
-  class="service-hero-section app-max-width h-[725px] pt-[88px] pb-8 bg-primary-blue text-white flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8"
+  class="contact-hero app-max-width h-[725px] pt-[88px] pb-8 bg-primary-blue text-white flex justify-center items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8"
   aria-labelledby="service-title"
 >
-  <article class="service-hero-content w-[60%] flex flex-col gap-y-8">
-    <div>
-      <h4 class="service-hero-pagename text-2xl font-semibold ml-1 mb-2">
-        {pageName}
+  <article
+    class="contact-hero-content text-center flex flex-col items-center gap-y-8"
+  >
+    <div class="max-w-[775px]">
+      <h4 class="contact-hero-pagename text-2xl font-semibold ml-1 mb-2">
+        Contact Now
       </h4>
       <h1
         id="service-title"
         class="font-semibold text-4xl xl:text-[46px] 2xl:text-6xl"
       >
-        {title}
+        Connect With Us, Let's Work Together!
       </h1>
     </div>
     <p
-      class="service-hero-description text-sm xl:text-base leading-[150%] w-[80%]"
+      class="contact-hero-description text-sm xl:text-base leading-[150%] w-[80%] max-w-[825px]"
     >
-      {description}
+      We offer customized publishing services that value your vision.Nixxon
+      Publisher delivers captivating book writing, beautiful cover design, smart
+      marketing, and smooth publishing. Make your story shine in literature with
+      our collaborative and fast workflow. Create literary legacies with Nixxon
+      Publisher.
     </p>
-    <div class="service-hero-buttons flex gap-x-4">
+    <div class="contact-hero-buttons flex gap-x-4 mt-6">
       <a
         href="/quote"
-        class="service-hero-button bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg"
+        class="contact-hero-button bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg"
         role="button"
         aria-label="Get a quote for our services"
       >
@@ -35,7 +40,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </a>
       <a
         href="/contact"
-        class="service-hero-button border border-white text-white font-semibold text-base px-6 py-2 rounded-lg"
+        class="contact-hero-button border border-white text-white font-semibold text-base px-6 py-2 rounded-lg"
         role="button"
         aria-label="Chat with our customer service team"
       >
@@ -43,14 +48,13 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </a>
     </div>
   </article>
-  <figure class="service-hero-image w-[40%]">
-    <Image
-      src={image}
-      alt={imageAlt || `${title} service illustration`}
-      loading="eager"
-    />
-  </figure>
 </section>
+
+<style>
+  .contact-hero {
+    background-image: url("../../assets/common/contact-us-hero.png");
+  }
+</style>
 
 <script>
   import gsap from "gsap";
@@ -68,7 +72,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
     // Create timeline for sequenced animations
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".service-hero-section",
+        trigger: ".contact-hero",
         start: "top 80%",
         toggleActions: "play none none none",
       },
@@ -86,7 +90,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 
     // Description paragraph animation
     tl.from(
-      ".service-hero-description",
+      ".contact-hero-description",
       {
         opacity: 0,
         y: 30,
@@ -98,7 +102,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 
     // Buttons animation
     tl.from(
-      ".service-hero-button",
+      ".contact-hero-button",
       {
         opacity: 0,
         y: 20,
@@ -112,7 +116,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 
     // Image animation
     tl.from(
-      ".service-hero-image",
+      ".contact-hero-image",
       {
         opacity: 0,
         x: 40,
@@ -123,7 +127,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
     );
 
     // Optional: Add a subtle floating animation to the image for continued visual interest
-    gsap.to(".service-hero-image", {
+    gsap.to(".contact-hero-image", {
       y: "10px",
       duration: 2,
       repeat: -1,

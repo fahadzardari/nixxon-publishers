@@ -1,68 +1,55 @@
 ---
 import CommonHeaderSection from "./CommonHeaderSection.astro";
 import PackageCard from "./PackageCard.astro";
+const {
+  title = "",
+  subtitle = "",
+  description = "",
+  showTab = false,
+} = Astro.props;
 ---
 
 <section class="app-max-width py-16" id="packages-section">
   <CommonHeaderSection
-    title="From The Blank SheeT To The Best-Selling Book"
-    subtitle="With Our Reasonably Priced Packages, Become a Successful Writer"
-    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    title={title}
+    subtitle={subtitle}
+    description={description}
   />
 
-  <div class="flex gap-x-6 items-center justify-center" id="packages-tabs">
-    <button class="tab-button active-tab-button" data-tab="ebook"> eBook Writing </button>
-    <button class="tab-button" data-tab="design">
-      Cover Design and Layout
-    </button>
-    <button class="tab-button" data-tab="publishing"> Book Publishing </button>
-    <button class="tab-button" data-tab="trailer"> Book Video Trailer </button>
-    <button class="tab-button" data-tab="marketing"> Book Marketing </button>
-  </div>
+  {
+    showTab && (
+      <div class="flex gap-x-6 items-center justify-center" id="packages-tabs">
+        <button class="tab-button active-tab-button" data-tab="ebook">
+          eBook Writing
+        </button>
+        <button class="tab-button" data-tab="design">
+          Cover Design and Layout
+        </button>
+        <button class="tab-button" data-tab="publishing">
+          {" "}
+          Book Publishing{" "}
+        </button>
+        <button class="tab-button" data-tab="trailer">
+          {" "}
+          Book Video Trailer{" "}
+        </button>
+        <button class="tab-button" data-tab="marketing">
+          {" "}
+          Book Marketing{" "}
+        </button>
+      </div>
+    )
+  }
 
-  <div class="flex flex-row justify-center gap-x-6 mt-16" id="package-cards-container">
-    <PackageCard
-      topHeading="50 Pages"
-      points={[
-        "Producing updating the outline",
-        "Finishing a complete book of 50-100 Pages as per the requests plan",
-        "Adjusting the layout and presentation for the publishing standards",
-        "Unlimited Free revisions",
-        "A devoted team of professional writers",
-        "Free Editing, Proofreading, formatting & Structuring",
-        "Get Free Unique Cover design",
-      ]}
-    />
-    <PackageCard
-      topHeading="100 Pages"
-      points={[
-        "Producing updating the outline",
-        "Finishing a complete book of 50-100 Pages as per the requests plan",
-        "Adjusting the layout and presentation for the publishing standards",
-        "Unlimited Free revisions",
-        "A devoted team of professional writers",
-        "Free Editing, Proofreading, formatting & Structuring",
-        "Get Free Unique Cover design",
-      ]}
-    />
-    <PackageCard
-      topHeading="150 Pages"
-      points={[
-        "Producing updating the outline",
-        "Finishing a complete book of 50-100 Pages as per the requests plan",
-        "Adjusting the layout and presentation for the publishing standards",
-        "Unlimited Free revisions",
-        "A devoted team of professional writers",
-        "Free Editing, Proofreading, formatting & Structuring",
-        "Get Free Unique Cover design",
-      ]}
-    />
+  <div
+    class="flex flex-row justify-center gap-x-6 mt-16"
+    id="package-cards-container"
+  >
+    <slot />
   </div>
 </section>
 
 <style>
-
-
   .tab-button:hover {
     transform: translateY(-2px);
   }
@@ -85,15 +72,17 @@ import PackageCard from "./PackageCard.astro";
   document.addEventListener("DOMContentLoaded", () => {
     // Initialize tab functionality
     initTabSystem();
-    
+
     // Initialize animations
     initPackagesAnimations();
   });
 
   function initTabSystem() {
     const tabButtons = document.querySelectorAll("#packages-tabs .tab-button");
-    const packageCardsContainer = document.getElementById("package-cards-container");
-    
+    const packageCardsContainer = document.getElementById(
+      "package-cards-container"
+    );
+
     // Function to set active tab
     function setActiveTab(clickedTab) {
       // Remove active class from all buttons
@@ -103,7 +92,7 @@ import PackageCard from "./PackageCard.astro";
 
       // Add active class to clicked button with animation
       clickedTab.classList.add("active-tab-button");
-      
+
       // Create a flash effect on tab click
       const flashOverlay = document.createElement("div");
       flashOverlay.className = "flash-overlay";
@@ -115,7 +104,7 @@ import PackageCard from "./PackageCard.astro";
       flashOverlay.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
       flashOverlay.style.opacity = "0";
       clickedTab.appendChild(flashOverlay);
-      
+
       gsap.to(flashOverlay, {
         opacity: 0.8,
         duration: 0.2,
@@ -125,14 +114,14 @@ import PackageCard from "./PackageCard.astro";
             duration: 0.3,
             onComplete: () => {
               flashOverlay.remove();
-            }
+            },
           });
-        }
+        },
       });
-      
+
       // Get the data-tab attribute
       const tabName = clickedTab.getAttribute("data-tab");
-      
+
       // Animate cards out and in
       gsap.to(packageCardsContainer, {
         y: 20,
@@ -145,9 +134,9 @@ import PackageCard from "./PackageCard.astro";
             y: 0,
             opacity: 1,
             duration: 0.5,
-            ease: "power1.out"
+            ease: "power1.out",
           });
-        }
+        },
       });
     }
 
@@ -175,9 +164,9 @@ import PackageCard from "./PackageCard.astro";
         start: "top 70%",
         end: "bottom bottom",
         toggleActions: "play none none none",
-      }
+      },
     });
-    
+
     // Animate tab buttons with staggered entrance
     mainTimeline.from("#packages-tabs .tab-button", {
       y: 30,
@@ -186,45 +175,57 @@ import PackageCard from "./PackageCard.astro";
       duration: 0.6,
       ease: "back.out(1.4)",
     });
-    
+
     // Animate package cards with staggered entrance
-    mainTimeline.from("#package-cards-container > article", {
-      y: 50,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: "power2.out",
-    }, "-=0.3");
-    
+    mainTimeline.from(
+      "#package-cards-container > article",
+      {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.3"
+    );
+
     // Animate individual card elements
-    const cards = document.querySelectorAll("#package-cards-container > article");
-    cards.forEach(card => {
+    const cards = document.querySelectorAll(
+      "#package-cards-container > article"
+    );
+    cards.forEach((card) => {
       // Add hover animation
       card.addEventListener("mouseenter", () => {
         gsap.to(card, {
           y: -10,
           // boxShadow: "0 22px 45px rgba(0, 0, 0, 0.1)",
-          duration: 0.3
+          duration: 0.8,
         });
       });
-      
+
       card.addEventListener("mouseleave", () => {
         gsap.to(card, {
           y: 0,
           // boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
-          duration: 0.3
+          duration: 0.8,
         });
       });
     });
-    
+
     // Add bounce effect to the active tab
-    const activeTabButton = document.querySelector("#packages-tabs .active-tab-button");
+    const activeTabButton = document.querySelector(
+      "#packages-tabs .active-tab-button"
+    );
     if (activeTabButton) {
-      mainTimeline.from(activeTabButton, {
-        scale: 1.2,
-        duration: 0.5,
-        ease: "elastic.out(1, 0.3)",
-      }, "-=0.5");
+      mainTimeline.from(
+        activeTabButton,
+        {
+          scale: 1.2,
+          duration: 0.5,
+          ease: "elastic.out(1, 0.3)",
+        },
+        "-=0.5"
+      );
     }
   }
 </script>

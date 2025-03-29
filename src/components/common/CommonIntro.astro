@@ -9,15 +9,14 @@ const { title, description, image, getStartedButton = false } = Astro.props;
   id="common-intro-section"
 >
   <Image class="w-1/2" src={image} alt={title} id="intro-image" />
-  <div class="w-1/2 flex flex-col gap-y-4">
+  <div class="w-1/2 flex flex-col gap-y-4 xl:gap-y-6 ml-4">
     <h1
       class="font-semibold text-2xl xl:text-4xl 2xl:text-5xl"
       id="intro-title"
     >
       {title}
     </h1>
-    <p class="text-sm" id="intro-description">
-      {description}
+    <p class="text-xs xl:text-sm" id="intro-description" set:html={description}>
     </p>
 
     {
@@ -69,10 +68,19 @@ const { title, description, image, getStartedButton = false } = Astro.props;
       },
     });
 
-    // Image animation - slide and fade in from left
-    tl.from("#intro-image", {
-      x: -100,
-      opacity: 0,
+    // Ensure the parent section has overflow hidden
+    document.querySelector("#common-intro-section").style.overflow = "hidden";
+
+    // Set initial state for image animation with clip-path
+    gsap.set("#intro-image", {
+      clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
+      scale: 1.05,
+    });
+
+    // Image animation with clip-path approach - as first animation
+    tl.to("#intro-image", {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      scale: 1,
       duration: 1.2,
       ease: "power3.out",
     });
@@ -88,7 +96,7 @@ const { title, description, image, getStartedButton = false } = Astro.props;
         duration: 0.6,
         ease: "back.out(1.7)",
       },
-      "-=0.7"
+      "-=0.5"
     );
 
     // Description paragraph fade in

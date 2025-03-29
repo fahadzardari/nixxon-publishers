@@ -5,31 +5,32 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title =
-  "Creating Captivating Stories With Nixxon publisher eBook Ghostwriting Service!";
+const title = "Writing Service for Websites Increase Your Profile on the Web";
 const description =
   "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
-import GhostwritingImage from "../../assets/services/ghost-writing/hero.png";
-import Categories from "../../components/common/Categories.astro";
+import GhostwritingImage from "../../assets/common/hero-pics/website-content.png";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
-import IntroImage from "../../assets/common/intro-pics/article-publication.png";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title: "Providing You Outstanding Book Services",
+  title: "Improve Your Online Visibility with Our Customised Content Service",
   description:
-    "Our dedication to quality at Nixxon Publishers exceeds expectations in the business, and it shows in the time and attention we give to each and every story. Our experienced service will see to it that every step of the process, from conception to publishing, enhances the overall quality of your creative work. To ensure that your book reflects our steadfast dedication to literary brilliance, we work tirelessly not only to fulfill but also exceed your expectations.",
+    "You can improve the visual appeal of your literary work with Nixxon Publishing. Our attentive service will ensure that the illustrations complement the text to improve the book's visual appeal. From captivating cover designs to captivating interior graphics, we understand the critical role that visuals play in drawing readers in.<br/><br/>We pledge to unleash the creative potential in your book and create a jaw-dropping masterpiece that will enthral readers and leave a lasting impact. Nixxon Publishing is the way to go if you want your writing to be seen in a crowd. It's a tool for improving artistic work where every little detail counts.",
   getStartedButton: true,
 };
+import IntroImage from "../../assets/common/intro-pics/website-content.png";
+import Quote from "../../components/common/Quote.astro";
+import ServicesRow from "../../components/common/ServicesRow.astro";
 ---
 
-<Layout title="Home | Nixxon Publishers">
+<Layout title="Website Content Writing Service | Nixxon Publishers">
   <Navbar />
   <ServiceHero
+    pageName="Website Content Writing Service"
     title={title}
     description={description}
     image={GhostwritingImage}
-    imageAlt="Ghost Writing Service Image"
+    imageAlt="Website Content Writing Service Image"
   />
   <CommonIntro
     title={intro.title}
@@ -37,10 +38,14 @@ const intro = {
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ArtWork />
-  <Categories />
+  <ServicesRow />
+  <ArtWork
+    title="Our Outstanding Portfolio"
+    subtitle=""
+    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+  />
   <Packages
-    title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
+    title="With Nixxon Publishing Surprise Your Audience Like Never Before"
     description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
   >
     <PackageCard
@@ -80,6 +85,7 @@ const intro = {
       ]}
     />
   </Packages>
+  <Quote />
   <Testimonials />
   <Footer />
 </Layout>

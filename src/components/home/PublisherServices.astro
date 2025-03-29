@@ -53,15 +53,35 @@ import ServiceCard from "../common/ServiceCard.astro";
 
 <style>
   .swiper-slide {
-    height: auto; /* Allow slides to size based on content */
+    height: auto;
     display: flex;
     justify-content: center;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
   }
 
-  /* .services-swiper {
+  .services-swiper {
     width: 100%;
     padding: 20px 0;
-  } */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .swiper-pagination {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+  }
+
+  /* Fix for slides alignment */
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Change active pagination bullet color */
+  :global(.swiper-pagination-bullet-active) {
+    background-color: #ff002d !important;
+  }
 </style>
 
 <script>
@@ -73,35 +93,47 @@ import ServiceCard from "../common/ServiceCard.astro";
       modules: [Pagination, Autoplay],
       slidesPerView: 1,
       spaceBetween: 20,
-      centeredSlides: false,
+      slidesPerGroup: 1,
       loop: false,
-      // autoplay: {
-      //   delay: 3000,
-      //   disableOnInteraction: false,
-      // },
+      centeredSlides: false,
+      loopFillGroupWithBlank: false,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
+        dynamicBullets: true,
       },
       breakpoints: {
-        // When screen width is >= 640px
         640: {
           slidesPerView: 2,
           spaceBetween: 20,
+          slidesPerGroup: 2,
         },
-        // When screen width is >= 768px
         768: {
           slidesPerView: 3,
           spaceBetween: 20,
+          slidesPerGroup: 3,
         },
-        // When screen width is >= 1024px
         1024: {
           slidesPerView: 3,
           spaceBetween: 30,
+          slidesPerGroup: 3,
         },
         1440: {
           slidesPerView: 4,
-          spaceBetween: 10,
+          spaceBetween: 30,
+          slidesPerGroup: 4,
+        },
+      },
+      on: {
+        // Force update on initial load to fix alignment issues
+        init: function () {
+          this.update();
+          setTimeout(() => {
+            this.update();
+          }, 100);
+        },
+        resize: function () {
+          this.update();
         },
       },
     });

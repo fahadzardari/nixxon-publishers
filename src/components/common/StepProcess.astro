@@ -1,0 +1,148 @@
+---
+const {
+  title = "OUR SHORT AND SIMPLE PROCEDURE",
+  description = "We can promote your book on a global scale because we have an organized system.",
+} = Astro.props;
+import StepCard from "./StepCard.astro";
+---
+
+<section
+  id="step-process-section"
+  class="bg-image bg-cover app-max-width flex gap-y-8 flex-col justify-center items-center py-16"
+>
+  <div class="text-center text-white">
+    <h2 class="text-4xl 2xl:text-5xl font-semibold mb-2 step-title">{title}</h2>
+    <p class="text-base text-center step-description">{description}</p>
+  </div>
+
+  <div class="py-4 flex items-center gap-x-8 justify-center step-cards-container">
+    <StepCard
+      step="01"
+      title="Evaluation of Research and Strategy"
+      description="For your assessment and approval, we identify the most crucial marketing strategy."
+      class="step-card"
+    />
+    <StepCard
+      step="02"
+      title="Book Marketing Plan"
+      description="We create a thorough book marketing plan that is tailored to your needs."
+      class="step-card"
+    />
+    <StepCard
+      step="03"
+      title="Book Marketing Execution"
+      description="We put the plan into action and keep you updated on our progress."
+      class="step-card"
+    />
+    <StepCard
+      step="03"
+      title="Book Marketing Execution"
+      description="We put the plan into action and keep you updated on our progress."
+      class="step-card"
+    />
+  </div>
+
+  <div class="mx-auto flex gap-x-4 justify-center step-cta-container">
+    <a
+      href="/quote"
+      class="bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg step-cta"
+      role="button"
+      aria-label="Get a quote for our services"
+    >
+      Get a Quote
+    </a>
+    <a
+      href="/contact"
+      class="border border-white text-white font-semibold text-base px-6 py-2 rounded-lg step-cta"
+      role="button"
+      aria-label="Chat with our customer service team"
+    >
+      Chat With Us
+    </a>
+  </div>
+</section>
+
+<style>
+  .bg-image {
+    background-image: url("../../assets/common/step-process.png");
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Get section element by ID to ensure we only target this section
+  const stepSection = document.getElementById("step-process-section");
+  
+  if (stepSection) {
+    // Title animation with SplitType for letter-by-letter reveal
+    const stepTitle = stepSection.querySelector(".step-title");
+    if (stepTitle) {
+      const splitTitle = new SplitType(stepTitle, { types: "chars" });
+      gsap.from(splitTitle.chars, {
+        opacity: 0,
+        y: 20,
+        stagger: 0.03,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: stepTitle,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
+
+    // Description animation
+    const stepDescription = stepSection.querySelector(".step-description");
+    if (stepDescription) {
+      gsap.from(stepDescription, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: stepDescription,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
+
+    // Step cards staggered animation
+    const stepCards = stepSection.querySelectorAll(".step-card");
+    if (stepCards.length) {
+      gsap.from(stepCards, {
+        opacity: 0,
+        y: 40,
+        stagger: 0.2,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: stepSection.querySelector(".step-cards-container"),
+          start: "top 70%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
+
+    // CTA buttons animation
+    const ctaButtons = stepSection.querySelectorAll(".step-cta");
+    if (ctaButtons.length) {
+      gsap.from(ctaButtons, {
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.2,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: stepSection.querySelector(".step-cta-container"),
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
+  }
+</script>

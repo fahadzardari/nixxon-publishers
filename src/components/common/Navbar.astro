@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../../assets/logo.png";
+import NavImage from "../../assets/common/nav-image.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -11,9 +12,25 @@ const navItems = [
     hasDropdown: true,
     dropdownItems: [
       { label: "Ghost Writing", href: "/services/ghost-writing" },
-      { label: "Book Services", href: "/book-services" },
-      { label: "Publishing Services", href: "/publishing-services" },
-      { label: "Editing Services", href: "/editing-services" },
+      { label: "Article Publication", href: "/services/article-publication" },
+      { label: "Cover Design", href: "/services/cover-design" },
+      { label: "Audiobooks", href: "/services/audiobooks" },
+      { label: "Book Printing", href: "/services/book-printing" },
+      { label: "Book Video Trailer", href: "/services/book-video-trailer" },
+      { label: "Web Design", href: "/services/web-design" },
+      { label: "Blog Writing", href: "/services/blog-writing" },
+      { label: "Book Marketing", href: "/services/book-marketing" },
+      {
+        label: "Book Illustration",
+        href: "/services/book-illustration",
+      },
+      {
+        label: "Website Content Writing",
+        href: "/services/website-content-writing",
+      },
+      { label: "Book Publishing", href: "/services/book-publishing" },
+      { label: "Proofreading", href: "/services/proofreading" },
+      { label: "Book Editing", href: "/services/book-editing" },
     ],
   },
   { label: "Contact", href: "/contact-us" },
@@ -25,11 +42,11 @@ const currentPath = Astro.url.pathname;
 
 <header
   id="navbar"
-  class="bg-primary-blue fixed w-screen h-[80px] z-50 transition-all duration-300 border-b border-white/30 py-2"
+  class="bg-transparent fixed w-screen h-[80px] z-50 transition-all duration-300 border-b border-white/30 py-2"
 >
   <div class="app-max-width">
     <nav
-      class="flex justify-between items-center h-16"
+      class="flex justify-between items-center h-16 relative"
       aria-label="Main navigation"
     >
       <!-- Logo -->
@@ -53,7 +70,7 @@ const currentPath = Astro.url.pathname;
               );
 
               return (
-                <li class="relative group">
+                <li class="group">
                   <span
                     class:list={[
                       "transition duration-300 flex items-center text-sm  cursor-pointer py-1",
@@ -78,26 +95,44 @@ const currentPath = Astro.url.pathname;
                       />
                     </svg>
                   </span>
-                  <div class="dropdown-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div class="py-1">
-                      {item.dropdownItems?.map((dropdownItem) => {
-                        const isDropdownItemActive = currentPath.startsWith(
-                          dropdownItem.href
+                  <div class="flex flex-row justify-between py-8 pr-6 gap-x-6 dropdown-menu absolute left-0 top-full mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div class="flex flex-col w-[40%]">
+                      <h4 class="text-xl font-semibold pl-6 mb-2">
+                        Made To <span class="text-primary-red">Scale</span>
+                      </h4>
+                      <p class="pl-6 text-xs text-[#303030] w-[80%]">
+                        Our nixxon publishing services are built to evolve your
+                        business idea int a successful growth story
+                      </p>
+                      <Image
+                        src={NavImage}
+                        alt="Nav Image"
+                        class="object-cover max-w-[296px] w-auto mt-6"
+                        loading={"lazy"}
+                      />
+                    </div>
+                    <div class="grid grid-cols-3 2xl:grid-cols-4 gap-y-3 gap-x-12  ">
+                      {item.dropdownItems.map((child) => {
+                        const isChildActive = currentPath.startsWith(
+                          child.href
                         );
                         return (
-                          <a
-                            href={dropdownItem.href}
-                            class:list={[
-                              "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100",
-                              {
-                                "bg-gray-50 text-[#ff002d]":
-                                  isDropdownItemActive,
-                              },
-                            ]}
-                            aria-label="Dropdown item"
-                          >
-                            {dropdownItem.label}
-                          </a>
+                          <div class="border-b border-b-[#A6ABBB] w-fit pt-2 ">
+                            <a
+                              href={child.href}
+                              class:list={[
+                                "transition duration-300 text-sm mb-2 block",
+                                "text-[#303030]",
+                                { "text-[#ff002d]": isChildActive },
+                              ]}
+                              aria-current={isChildActive ? "page" : undefined}
+                            >
+                              {child.label}
+                            </a>
+                            <span class="text-[8px] whitespace-nowrap text-[#303030] block">
+                              Turning your creativity into timeless stories
+                            </span>
+                          </div>
                         );
                       })}
                     </div>
@@ -135,9 +170,27 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // No need for complex GSAP animations for simple hover effects
-  // The navbar scroll behavior can remain if needed
+  // Get the navbar element
   const navbar = document.getElementById("navbar");
+
+  // Function to handle scroll behavior
+  function handleScroll() {
+    if (window.scrollY > 10) {
+      // Add background when scrolled
+      navbar.classList.add("bg-primary-blue");
+      navbar.classList.remove("bg-transparent");
+    } else {
+      // Remove background when at top
+      navbar.classList.remove("bg-primary-blue");
+      navbar.classList.add("bg-transparent");
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Call once on page load to set initial state
+  handleScroll();
 </script>
 
 <style>

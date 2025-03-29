@@ -1,0 +1,102 @@
+---
+const {
+  services = [
+    {
+      title: "Book Writing",
+      description:
+        " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+    },
+    {
+      title: "Book Editing",
+      description:
+        "Our book editing service is designed to help authors refine their manuscripts and enhance their storytelling. Our experienced editors provide comprehensive feedback on structure, pacing, character development, and more.",
+    },
+    {
+      title: "Book Marketing",
+      description:
+        "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
+    },
+    {
+      title: "Book Marketing",
+      description:
+        "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
+    },
+  ],
+} = Astro.props;
+import ServiceCard from "./ServiceCard.astro";
+---
+
+<section
+  id="services-row-section"
+  class="app-max-width py-24"
+>
+  <div class="flex flex-wrap justify-center gap-6">
+    {
+      services.map((service, index) => (
+        <div id={`service-card-${index}`} class="service-card">
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- <script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#services-row-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Get all service cards using the correct selector
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    console.log("Found service cards:", serviceCards.length); // Debug logging
+    
+    if (serviceCards.length > 0) {
+      // Animate cards with staggered effect when scrolled into view
+      tl.from(serviceCards, {
+        opacity: 0,
+        y: 50,
+        scale: 0.95,
+        stagger: 0.2,
+        duration: 0.7,
+        ease: "back.out(1.2)"
+      });
+      
+      // Add hover animations for each card
+      serviceCards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            y: -10,
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+        
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+      });
+    }
+  });
+</script> -->

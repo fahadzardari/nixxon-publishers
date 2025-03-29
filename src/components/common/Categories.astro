@@ -14,7 +14,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
   id="categories-section"
   class="app-max-width relative flex flex-col items-center justify-center py-16 text-white"
 >
-  <h1 id="categories-heading" class="text-4xl font-bold mb-8">
+  <h1 id="categories-heading" class="text-3xl xl:text-4xl font-bold mb-8">
     Are You Thinking About a Category? We Cover Everything
   </h1>
   <div id="categories-container" class="flex gap-x-4 justify-between w-[85%]">
@@ -120,7 +120,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
     if (!categoriesSection || !categoriesHeading || !categoryItems.length) return;
     
     // Split the heading text for character animation
-    const headingText = new SplitType("#categories-heading", { types: "chars" });
+    const headingText = new SplitType("#categories-heading", { types: "words" });
     
     // Set initial states for category items
     gsap.set(categoryItems, { opacity: 0, y: 30 });

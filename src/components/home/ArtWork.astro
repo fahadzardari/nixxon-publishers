@@ -2,16 +2,22 @@
 import Image from "astro/components/Image.astro";
 import ArtImage from "../../assets/home/books.png";
 import CommonHeaderSection from "../common/CommonHeaderSection.astro";
+const {
+  title = "Wonderful Creations of Artwork",
+  subtitle = "Check Out a Few of Our Best-Selling Books",
+  description = "We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story.",
+  image = ArtImage,
+} = Astro.props;
 ---
 
 <section id="artwork-section" class="app-max-width">
   <CommonHeaderSection
-    title="Wonderful Creations of Artwork"
-    subtitle="Check Out a Few of Our Best-Selling Books"
-    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+    title={title}
+    subtitle={subtitle}
+    description={description}
   />
-  <div class="w-full mt-6 artwork-image-container overflow-hidden">
-    <Image src={ArtImage} alt="Artwork" class="w-full artwork-image" />
+  <div class="w-full mt-3 artwork-image-container overflow-hidden">
+    <Image src={image} alt="Artwork" class="w-full artwork-image" />
   </div>
 </section>
 

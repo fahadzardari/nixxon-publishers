@@ -1,0 +1,46 @@
+---
+import Navbar from "../../components/common/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/common/Footer.astro";
+import ArtWork from "../../components/home/ArtWork.astro";
+import Testimonials from "../../components/home/Testimonials.astro";
+import ServiceHero from "../../components/common/ServiceHero.astro";
+const title = "Web Design Service";
+const description =
+  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+import GhostwritingImage from "../../assets/common/hero-pics/web-design.png";
+import Packages from "../../components/common/Packages.astro";
+import PackageCard from "../../components/common/PackageCard.astro";
+import CommonIntro from "../../components/common/CommonIntro.astro";
+const intro = {
+  title:
+    "Get Excellent Search Engine Optimization and Website Design Experience",
+  description:
+    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+  getStartedButton: true,
+};
+import IntroImage from "../../assets/common/intro-pics/web-design.png";
+import Quote from "../../components/common/Quote.astro";
+import ServicesRow from "../../components/common/ServicesRow.astro";
+---
+
+<Layout title="Web Design Service | Nixxon Publishers">
+  <Navbar />
+  <ServiceHero
+    pageName=""
+    title={title}
+    description={description}
+    image={GhostwritingImage}
+    imageAlt="Web Design Service Image"
+  />
+  <CommonIntro
+    title={intro.title}
+    description={intro.description}
+    image={IntroImage}
+    getStartedButton={intro.getStartedButton}
+  />
+  <ServicesRow />
+  <Quote />
+  <Testimonials />
+  <Footer />
+</Layout>

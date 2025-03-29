@@ -1,0 +1,89 @@
+---
+import AddressIcon from "../../assets/contact-us/address.png";
+import CallIcon from "../../assets/contact-us/call.png";
+import EmailIcon from "../../assets/contact-us/mail.png";
+import Image from "astro/components/Image.astro";
+---
+
+<section class="app-max-width flex flex-col gap-y-8 py-16">
+  <div class="flex justify-between gap-x-8">
+    <div class="flex flex-col w-1/2">
+      <div>
+        <h4 class="text-3xl xl:text-4xl mb-2 font-semibold">Contact Us</h4>
+        <p class="text-sm xl:text-base max-w-[460px]">
+          The services provided by EBook Writing Hub become clients' property
+          once delivered.
+        </p>
+      </div>
+      <div class="gap-y-6 flex flex-col mt-8">
+        <div class="flex gap-x-2 items-center text-lg font-semibold">
+          <Image
+            src={AddressIcon}
+            alt="Address"
+            class=""
+            width={42}
+            height={42}
+          />
+          <p>Troy St. Ste B, Dothan, AL 36303</p>
+        </div>
+        <div class="flex gap-x-2 items-center text-lg font-semibold">
+          <Image src={CallIcon} alt="Phone" class="" width={42} height={42} />
+          <p>(205) 202-9559</p>
+        </div>
+        <div class="flex gap-x-2 items-center text-lg font-semibold">
+          <Image src={EmailIcon} alt="Email" class="" width={42} height={42} />
+          <p>info@nixxonpublishers.com</p>
+        </div>
+      </div>
+    </div>
+    <form
+      class="flex flex-1 flex-col gap-y-2 text-white bg-primary-red px-6 py-8 rounded-md"
+    >
+      <div class="flex flex-col">
+        <label class="font-semibold">Name</label>
+        <input
+          type="text"
+          class="text-lg py-2 px-1 font-semibold bg-white rounded-lg mb-4"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label class="font-semibold">Email</label>
+        <input
+          type="text"
+          class="text-lg py-2 px-1 font-semibold bg-white rounded-lg mb-4"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label class="font-semibold">Phone</label>
+        <input
+          type="text"
+          class="text-lg py-2 px-1 font-semibold bg-white rounded-lg mb-4"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label class="font-semibold">Message</label>
+        <textarea
+          rows="3"
+          class="text-lg py-2 px-1 font-semibold bg-white rounded-lg mb-4"
+        ></textarea>
+      </div>
+
+      <button
+        class="border border-white w-fit mx-auto rounded-md px-4 py-2 font-semibold"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+
+  <div class="w-full mt-8">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3411.827207918463!2d-85.39785112385375!3d31.225516261649407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1743198123032!5m2!1sen!2s"
+      width="100%"
+      height="500px"
+      class="border-none rounded-lg"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>

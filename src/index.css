@@ -68,6 +68,10 @@ body {
   padding-inline: 1rem;
 }
 
+.app-margin {
+  padding-inline: 1rem;
+}
+
 .app-left-padding {
   padding-left: 1rem;
 }
@@ -89,6 +93,9 @@ body {
   .app-right-padding {
     padding-right: 1.5rem;
   }
+  .app-margin {
+    padding-inline: 1.5rem;
+  }
 }
 
 /* Small Laptop */
@@ -103,6 +110,9 @@ body {
 
   .app-right-padding {
     padding-right: 2.5rem;
+  }
+  .app-margin {
+    padding-inline: 2.5rem;
   }
 }
 
@@ -119,6 +129,9 @@ body {
   .app-right-padding {
     padding-right: 4rem;
   }
+  .app-margin {
+    padding-inline: 4rem;
+  }
 }
 
 /* Extra Large Screens */
@@ -134,5 +147,8 @@ body {
 
   .app-right-padding {
     padding-right: 8rem;
+  }
+  .app-margin {
+    padding-inline: 8rem;
   }
 }

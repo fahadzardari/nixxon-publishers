@@ -6,26 +6,51 @@ import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
 const title =
-  "Creating Captivating Stories With Nixxon publisher eBook Ghostwriting Service!";
+  "Boost Your Literary Profile with Our Article Publication Service";
 const description =
   "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
-import GhostwritingImage from "../../assets/services/ghost-writing/hero.png";
-import Categories from "../../components/common/Categories.astro";
+import GhostwritingImage from "../../assets/common/hero-pics/cover-design.png";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
-import IntroImage from "../../assets/common/intro-pics/article-publication.png";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title: "Providing You Outstanding Book Services",
+  title:
+    "Discover Customised Book Cover Designs Be Specifically, Beautiful and Affordable",
   description:
-    "Our dedication to quality at Nixxon Publishers exceeds expectations in the business, and it shows in the time and attention we give to each and every story. Our experienced service will see to it that every step of the process, from conception to publishing, enhances the overall quality of your creative work. To ensure that your book reflects our steadfast dedication to literary brilliance, we work tirelessly not only to fulfill but also exceed your expectations.",
+    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
   getStartedButton: true,
 };
+import IntroImage from "../../assets/common/intro-pics/cover-design.png";
+import Quote from "../../components/common/Quote.astro";
+import ServicesRow from "../../components/common/ServicesRow.astro";
+const services = [
+  {
+    title: "Book Writing",
+    description:
+      " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+  },
+  {
+    title: "Book Editing",
+    description:
+      "Our book editing service is designed to help authors refine their manuscripts and enhance their storytelling. Our experienced editors provide comprehensive feedback on structure, pacing, character development, and more.",
+  },
+  {
+    title: "Book Marketing",
+    description:
+      "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
+  },
+  {
+    title: "Book Marketing",
+    description:
+      "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
+  },
+];
 ---
 
-<Layout title="Home | Nixxon Publishers">
+<Layout title="Cover Design | Nixxon Publishers">
   <Navbar />
   <ServiceHero
+    pageName="Cover Design Subtitle"
     title={title}
     description={description}
     image={GhostwritingImage}
@@ -37,8 +62,8 @@ const intro = {
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
+  <ServicesRow services={services} />
   <ArtWork />
-  <Categories />
   <Packages
     title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
     description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
@@ -80,6 +105,7 @@ const intro = {
       ]}
     />
   </Packages>
+  <Quote />
   <Testimonials />
   <Footer />
 </Layout>

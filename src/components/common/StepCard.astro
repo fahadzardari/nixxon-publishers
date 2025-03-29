@@ -1,0 +1,24 @@
+---
+const {
+  step = "01",
+  title = "Evaluation of Research and Strategy",
+  description = "For your assessment and approval, we identify the most crucial marketing strategy.",
+  className = "step-card",
+} = Astro.props;
+---
+
+<article
+  class={`flex flex-col py-4 h-[280px] bg-white rounded-lg px-4 max-w-[300px] ${className}`}
+  role="article"
+  aria-label="Step Card"
+  aria-labelledby="step-card-title"
+  aria-describedby="step-card-description"
+>
+  <h1 class="text-[56px] font-extrabold text-[#4E010F] text-right">
+    {step}
+  </h1>
+  <div class="flex flex-col gap-y-4">
+    <h2 class="text-xl font-semibold">{title}</h2>
+    <p class="text-sm">{description}</p>
+  </div>
+</article>

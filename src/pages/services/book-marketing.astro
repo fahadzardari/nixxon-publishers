@@ -5,31 +5,35 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title =
-  "Creating Captivating Stories With Nixxon publisher eBook Ghostwriting Service!";
+const title = "Bringing Your Book to the New Heights!";
 const description =
   "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
-import GhostwritingImage from "../../assets/services/ghost-writing/hero.png";
+import GhostwritingImage from "../../assets/common/hero-pics/book-marketing.png";
+import CommonIntro from "../../components/common/CommonIntro.astro";
+const intro = {
+  title:
+    "Get in Touch With Our Proficient Book Marketing Service If You're Looking To Spark Some Inspiration.",
+  description:
+    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+  getStartedButton: true,
+};
+import IntroImage from "../../assets/common/intro-pics/book-marketing.png";
+import Quote from "../../components/common/Quote.astro";
+import ServicesRow from "../../components/common/ServicesRow.astro";
 import Categories from "../../components/common/Categories.astro";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
-import IntroImage from "../../assets/common/intro-pics/article-publication.png";
-import CommonIntro from "../../components/common/CommonIntro.astro";
-const intro = {
-  title: "Providing You Outstanding Book Services",
-  description:
-    "Our dedication to quality at Nixxon Publishers exceeds expectations in the business, and it shows in the time and attention we give to each and every story. Our experienced service will see to it that every step of the process, from conception to publishing, enhances the overall quality of your creative work. To ensure that your book reflects our steadfast dedication to literary brilliance, we work tirelessly not only to fulfill but also exceed your expectations.",
-  getStartedButton: true,
-};
+import StepProcess from "../../components/common/StepProcess.astro";
 ---
 
-<Layout title="Home | Nixxon Publishers">
+<Layout title="Book Marketing Service | Nixxon Publishers">
   <Navbar />
   <ServiceHero
+    pageName="Book Marketing Service"
     title={title}
     description={description}
     image={GhostwritingImage}
-    imageAlt="Ghost Writing Service Image"
+    imageAlt="Book Marketing Service Image"
   />
   <CommonIntro
     title={intro.title}
@@ -37,7 +41,12 @@ const intro = {
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ArtWork />
+  <ServicesRow />
+  <ArtWork
+    title="Our Outstanding Portfolio"
+    subtitle=""
+    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+  />
   <Categories />
   <Packages
     title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
@@ -80,6 +89,7 @@ const intro = {
       ]}
     />
   </Packages>
+  <StepProcess />
   <Testimonials />
   <Footer />
 </Layout>

@@ -1,30 +1,33 @@
 ---
 import Icon from "../../assets/home/publisher-services/book-writing.svg";
 import Image from "astro/components/Image.astro";
+const {
+  title = "Book Writing",
+  description = " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+  IconImage = Icon,
+  id
+} = Astro.props;
 ---
 
 <article
-  class="service-card relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
+  class="service-card h-[360px] relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
 >
   <div
     class="icon-container flex items-center justify-center shadow-xl w-[52px] h-[52px] rounded-md transition-all duration-300"
   >
     <Image
-      src={Icon}
-      alt="Book Writing"
+      src={IconImage}
+      alt={title}
       width={24}
       height={24}
       class="svg-icon"
     />
   </div>
   <h3 class="md:text-base lg:text-xl font-semibold text-heading-black">
-    Book Writing
+    {title}
   </h3>
   <p class="text-sm text-center">
-    Beginning from the instant that you have an idea for a written work, Nixxon
-    Publishers Writing is here to help you bring it to life with our range of
-    specialized services. Whether you need book writing, editing, or marketing,
-    we have you covered.
+    {description}
   </p>
 </article>
 

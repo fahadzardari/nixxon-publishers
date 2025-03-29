@@ -11,6 +11,7 @@ import Testimonials from "../components/home/Testimonials.astro";
 import Achievements from "../components/home/Achievements.astro";
 import WhyNixxon from "../components/home/WhyNixxon.astro";
 import Packages from "../components/common/Packages.astro";
+import PackageCard from "../components/common/PackageCard.astro";
 ---
 
 <Layout title="Home | Nixxon Publishers">
@@ -20,7 +21,49 @@ import Packages from "../components/common/Packages.astro";
   <PublisherServices />
   <ArtWork />
   <WhyNixxon />
-  <Packages />
+  <Packages
+    title="From The Blank SheeT To The Best-Selling Book"
+    subtitle="With Our Reasonably Priced Packages, Become a Successful Writer"
+    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    showTab={true}
+  >
+    <PackageCard
+      topHeading="50 Pages"
+      points={[
+        "Producing updating the outline",
+        "Finishing a complete book of 50-100 Pages as per the requests plan",
+        "Adjusting the layout and presentation for the publishing standards",
+        "Unlimited Free revisions",
+        "A devoted team of professional writers",
+        "Free Editing, Proofreading, formatting & Structuring",
+        "Get Free Unique Cover design",
+      ]}
+    />
+    <PackageCard
+      topHeading="100 Pages"
+      points={[
+        "Producing updating the outline",
+        "Finishing a complete book of 50-100 Pages as per the requests plan",
+        "Adjusting the layout and presentation for the publishing standards",
+        "Unlimited Free revisions",
+        "A devoted team of professional writers",
+        "Free Editing, Proofreading, formatting & Structuring",
+        "Get Free Unique Cover design",
+      ]}
+    />
+    <PackageCard
+      topHeading="150 Pages"
+      points={[
+        "Producing updating the outline",
+        "Finishing a complete book of 50-100 Pages as per the requests plan",
+        "Adjusting the layout and presentation for the publishing standards",
+        "Unlimited Free revisions",
+        "A devoted team of professional writers",
+        "Free Editing, Proofreading, formatting & Structuring",
+        "Get Free Unique Cover design",
+      ]}
+    />
+  </Packages>
   <Achievements />
   <Testimonials />
   <Quote />

@@ -1,0 +1,50 @@
+---
+import Navbar from "../../components/common/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/common/Footer.astro";
+import ArtWork from "../../components/home/ArtWork.astro";
+import Testimonials from "../../components/home/Testimonials.astro";
+import ServiceHero from "../../components/common/ServiceHero.astro";
+const title = "Creating Lasting Works from Books";
+const description =
+  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+import GhostwritingImage from "../../assets/common/hero-pics/book-publishing.png";
+import CommonIntro from "../../components/common/CommonIntro.astro";
+const intro = {
+  title: "Work With Us On Your Next Book Publishing Project To Help You Become a Published Author!",
+  description:
+    "You can improve the visual appeal of your literary work with Nixxon Publishing. Our attentive service will ensure that the illustrations complement the text to improve the book's visual appeal. From captivating cover designs to captivating interior graphics, we understand the critical role that visuals play in drawing readers in.<br/><br/>We pledge to unleash the creative potential in your book and create a jaw-dropping masterpiece that will enthral readers and leave a lasting impact. Nixxon Publishing is the way to go if you want your writing to be seen in a crowd. It's a tool for improving artistic work where every little detail counts.",
+  getStartedButton: true,
+};
+import IntroImage from "../../assets/common/intro-pics/book-publishing.png";
+import Quote from "../../components/common/Quote.astro";
+import ServicesRow from "../../components/common/ServicesRow.astro";
+import Categories from "../../components/common/Categories.astro";
+---
+
+<Layout title="Book Publishing Service | Nixxon Publishers">
+  <Navbar />
+  <ServiceHero
+    pageName="Book Publishing Service"
+    title={title}
+    description={description}
+    image={GhostwritingImage}
+    imageAlt="Book Publishing Service Image"
+  />
+  <CommonIntro
+    title={intro.title}
+    description={intro.description}
+    image={IntroImage}
+    getStartedButton={intro.getStartedButton}
+  />
+  <ServicesRow />
+  <Categories />
+  <ArtWork
+    title="Our Outstanding Portfolio"
+    subtitle=""
+    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+  />
+  <Quote />
+  <Testimonials />
+  <Footer />
+</Layout>
