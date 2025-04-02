@@ -10,7 +10,7 @@ const {
 ---
 
 <article
-  class="service-card h-[360px] relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
+  class="service-card h-[320px] xl:h-[360px] relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
 >
   <div
     class="icon-container flex items-center justify-center shadow-xl w-[52px] h-[52px] rounded-md transition-all duration-300"
@@ -23,10 +23,10 @@ const {
       class="svg-icon"
     />
   </div>
-  <h3 class="md:text-base lg:text-xl font-semibold text-heading-black">
+  <h3 class="md:text-base lg:text-xl 2xl:text-2xl font-semibold text-heading-black">
     {title}
   </h3>
-  <p class="text-sm text-center">
+  <p class="text-sm text-center overflow-y-auto">
     {description}
   </p>
 </article>

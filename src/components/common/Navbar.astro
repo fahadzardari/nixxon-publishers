@@ -48,7 +48,7 @@ const currentPath = Astro.url.pathname;
 >
   <div class="app-max-width">
     <nav
-      class="flex justify-between items-center py-4 xl:py-8 relative"
+      class="flex justify-between items-center py-4 xl:py-6 2xl:py-8 relative"
       aria-label="Main navigation"
     >
       <!-- Logo -->
@@ -64,9 +64,11 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- Desktop Menu -->
-      <ul class="hidden md:flex md:items-center space-x-8 list-none text-xs xl:text-base">
+      <ul
+        class="hidden md:flex md:items-center space-x-8 list-none text-xs xl:text-base"
+      >
         {
-          navItems.map((item) => {
+          navItems.map((item, index) => {
             const isActive =
               (item.href === "/" && currentPath === "/") ||
               (item.href !== "/" && currentPath.startsWith(item.href));
@@ -77,10 +79,10 @@ const currentPath = Astro.url.pathname;
               );
 
               return (
-                <li class="group">
+                <li class="group dropdown-wrapper" data-dropdown-index={index}>
                   <span
                     class:list={[
-                      "transition duration-300 flex items-center  cursor-pointer py-1",
+                      "dropdown-toggle transition duration-300 flex items-center cursor-pointer py-1",
                       "text-white",
                       {
                         "text-[#ff002d] font-semibold":
@@ -88,48 +90,53 @@ const currentPath = Astro.url.pathname;
                       },
                     ]}
                     aria-current={isActive ? "page" : undefined}
+                    aria-expanded="false"
+                    aria-controls={`dropdown-${index}`}
                   >
                     {item.label}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-[14px] w-[14px] ml-1"
+                      class="h-[14px] w-[14px] ml-1 dropdown-arrow"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <path
                         fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
                         clip-rule="evenodd"
                       />
                     </svg>
                   </span>
-                  <div class="flex flex-row justify-between py-8 pr-6 gap-x-6 dropdown-menu absolute left-0 top-full mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div class="flex flex-col w-[40%]">
-                      <h4 class="text-xl font-semibold pl-6 mb-2">
+                  <div
+                    id={`dropdown-${index}`}
+                    class="dropdown-menu flex flex-row justify-between pr-6 gap-x-6 absolute left-0 top-full w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-300 transform translate-y-2"
+                  >
+                    <div class="flex flex-col w-[40%] xl:w-[50%] py-8">
+                      <h4 class="text-xl 2xl:text-2xl font-semibold pl-6 mb-2">
                         Made To <span class="text-primary-red">Scale</span>
                       </h4>
-                      <p class="pl-6 text-xs text-[#303030] w-[80%]">
+                      <p class="pl-6 text-xs 2xl:text-sm text-[#303030] w-[80%]">
                         Our nixxon publishing services are built to evolve your
                         business idea int a successful growth story
                       </p>
                       <Image
                         src={NavImage}
                         alt="Nav Image"
-                        class="object-cover max-w-[296px] w-auto mt-6"
+                        class="object-cover max-w-[296px] 2xl:max-w-[400px] w-auto mt-6"
                         loading={"lazy"}
                       />
                     </div>
-                    <div class="grid grid-cols-3 2xl:grid-cols-4 gap-y-3 gap-x-12  ">
+                    <div class="grid grid-cols-3 gap-y-2 gap-x-12 pt-6 w-full">
                       {item.dropdownItems.map((child) => {
                         const isChildActive = currentPath.startsWith(
                           child.href
                         );
                         return (
-                          <div class="border-b border-b-[#A6ABBB] w-fit pt-2 ">
+                          <div class="border-b border-b-[#A6ABBB] w-fit pt-2">
                             <a
                               href={child.href}
                               class:list={[
-                                "transition duration-300 text-sm mb-2 block",
+                                "transition duration-300 text-nowrap lg:text-xs xl:text-sm 2xl:text-base mb-1 block font-semibold",
                                 "text-[#303030]",
                                 { "text-[#ff002d]": isChildActive },
                               ]}
@@ -137,9 +144,10 @@ const currentPath = Astro.url.pathname;
                             >
                               {child.label}
                             </a>
-                            <span class="text-[8px] whitespace-nowrap text-[#303030] block">
+                            <span class="text-[9px] 2xl:text-xs whitespace-nowrap mt-2 text-[#303030] block">
                               Turning your creativity into timeless stories
                             </span>
+                            <div />
                           </div>
                         );
                       })}
@@ -154,9 +162,9 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={item.href}
                   class:list={[
-                    "transition duration-300  py-1",
+                    "transition duration-300 py-1",
                     "text-white",
-                    { "text-[#ff002d] font-semibold  nav-active": isActive },
+                    { "text-[#ff002d] font-semibold nav-active": isActive },
                   ]}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -181,40 +189,101 @@ const currentPath = Astro.url.pathname;
   class="fixed flex flex-col gap-y-4 top-2/3 transform -translate-y-1/2 z-40 right-0"
 >
   <button
-    class="rotate-button bg-white py-2 px-6 text-base 2xl:text-lg font-semibold text-primary-blue rounded-t-lg"
+    class="rotate-button border border-b-none border-primary-blue bg-white py-2 px-6 text-base 2xl:text-lg font-semibold text-primary-blue rounded-t-lg"
   >
     Get a Quote
   </button>
-  <button class="bg-white rounded-l-lg p-2">
+  <button
+    class="bg-white rounded-l-lg p-2 border border-r-0 border-primary-blue"
+  >
     <Image src={ChatIcon} alt={"chat icon"} width={24} height={24} />
   </button>
-  <button class="bg-white rounded-l-lg p-2">
+  <button
+    class="bg-white rounded-l-lg p-2 border border-r-0 border-primary-blue"
+  >
     <Image src={CallIcon} alt={"call icon"} width={24} height={24} />
   </button>
 </div>
 
 <script>
-  // Get the navbar element
+  // Navbar background on scroll
   const navbar = document.getElementById("navbar");
 
-  // Function to handle scroll behavior
   function handleScroll() {
     if (window.scrollY > 10) {
-      // Add background when scrolled
       navbar.classList.add("bg-primary-blue");
       navbar.classList.remove("bg-transparent");
     } else {
-      // Remove background when at top
       navbar.classList.remove("bg-primary-blue");
       navbar.classList.add("bg-transparent");
     }
   }
 
-  // Add scroll event listener
   window.addEventListener("scroll", handleScroll);
-
-  // Call once on page load to set initial state
   handleScroll();
+
+  // Dropdown click functionality
+  let activeDropdown = null;
+
+  // Get all dropdown toggles
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+  // Add click event to each toggle
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Get the parent dropdown wrapper
+      const wrapper = toggle.closest(".dropdown-wrapper");
+      const dropdownMenu = wrapper.querySelector(".dropdown-menu");
+
+      // Toggle aria-expanded
+      const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", !isExpanded);
+
+      // If already open, close it
+      if (dropdownMenu.classList.contains("dropdown-active")) {
+        closeDropdown(dropdownMenu);
+        activeDropdown = null;
+      } else {
+        // If another dropdown is open, close it first
+        if (activeDropdown) {
+          closeDropdown(activeDropdown);
+          activeDropdown.previousElementSibling.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+        }
+
+        // Open current dropdown
+        openDropdown(dropdownMenu);
+        activeDropdown = dropdownMenu;
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (activeDropdown && !e.target.closest(".dropdown-wrapper")) {
+      closeDropdown(activeDropdown);
+      const toggle = activeDropdown.previousElementSibling;
+      toggle.setAttribute("aria-expanded", "false");
+      activeDropdown = null;
+    }
+  });
+
+  // Helper functions
+  function openDropdown(dropdown) {
+    dropdown.classList.add("dropdown-active");
+    dropdown.classList.add("opacity-100", "visible");
+    dropdown.classList.remove("opacity-0", "invisible", "translate-y-2");
+  }
+
+  function closeDropdown(dropdown) {
+    dropdown.classList.remove("dropdown-active");
+    dropdown.classList.remove("opacity-100", "visible");
+    dropdown.classList.add("opacity-0", "invisible", "translate-y-2");
+  }
 </script>
 
 <style>
@@ -223,20 +292,18 @@ const currentPath = Astro.url.pathname;
     border-bottom: #ff002d 1px solid;
   }
 
-  /* Simple hover effects for nav items */
+  /* Hover effects for nav items */
   #navbar ul > li > a,
   #navbar ul > li > span {
     position: relative;
     transition: color 0.3s ease;
   }
 
-  /* Hover color change */
   #navbar ul > li > a:hover,
   #navbar ul > li > span:hover {
     color: #ff002d;
   }
 
-  /* Optional: subtle underline effect on hover */
   #navbar ul > li > a:after,
   #navbar ul > li > span:after {
     content: "";
@@ -254,13 +321,26 @@ const currentPath = Astro.url.pathname;
     width: 100%;
   }
 
+  /* Hover effects for dropdown */
+  .group:hover .dropdown-menu:not(.dropdown-active) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
   .rotate-button {
     position: absolute;
     transform: rotate(-90deg);
     transform-origin: top right;
     right: 40px;
-    top: -170px; /* Adjust as needed for proper positioning */
-    border-radius: 0.5rem 0.5rem 0 0; /* Only rounded on top after rotation */
+    top: -170px;
+    border-radius: 0.5rem 0.5rem 0 0;
     white-space: nowrap;
   }
 
