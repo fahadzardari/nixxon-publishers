@@ -5,25 +5,28 @@ const { title, description, image, getStartedButton = false } = Astro.props;
 ---
 
 <section
-  class="app-max-width flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8 py-16"
+  class="app-max-width flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8 pb-16 pt-40"
   id="common-intro-section"
 >
   <Image class="w-1/2" src={image} alt={title} id="intro-image" />
   <div class="w-1/2 flex flex-col gap-y-4 xl:gap-y-6 ml-4">
     <h1
-      class="font-semibold text-2xl xl:text-4xl 2xl:text-5xl"
+      class="font-semibold text-3xl xl:text-4xl 2xl:text-6xl"
       id="intro-title"
     >
       {title}
     </h1>
-    <p class="text-xs xl:text-sm" id="intro-description" set:html={description}>
-    </p>
+    <p
+      class="text-sm xl:text-base 2xl:text-lg"
+      id="intro-description"
+      set:html={description}
+    />
 
     {
       getStartedButton && (
         <a
           href="/quote"
-          class="bg-primary-red w-fit text-white flex items-center gap-x-2 font-semibold text-base px-6 py-2 rounded-lg"
+          class="bg-primary-red w-fit text-white flex items-center gap-x-2 font-semibold text-base 2xl:text-lg px-6 py-2 rounded-lg"
           role="button"
           aria-label="Get a quote for our services"
           id="intro-button"

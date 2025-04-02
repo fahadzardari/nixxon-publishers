@@ -15,7 +15,9 @@ import StepCard from "./StepCard.astro";
     <p class="text-base text-center step-description">{description}</p>
   </div>
 
-  <div class="py-4 flex items-center gap-x-8 justify-center step-cards-container">
+  <div
+    class="py-4 flex items-center gap-x-8 justify-center step-cards-container"
+  >
     <StepCard
       step="01"
       title="Evaluation of Research and Strategy"
@@ -45,7 +47,7 @@ import StepCard from "./StepCard.astro";
   <div class="mx-auto flex gap-x-4 justify-center step-cta-container">
     <a
       href="/quote"
-      class="bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg step-cta"
+      class="bg-[#E7062E] text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
       role="button"
       aria-label="Get a quote for our services"
     >
@@ -53,7 +55,7 @@ import StepCard from "./StepCard.astro";
     </a>
     <a
       href="/contact"
-      class="border border-white text-white font-semibold text-base px-6 py-2 rounded-lg step-cta"
+      class="border border-white text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
       role="button"
       aria-label="Chat with our customer service team"
     >
@@ -78,7 +80,7 @@ import StepCard from "./StepCard.astro";
 
   // Get section element by ID to ensure we only target this section
   const stepSection = document.getElementById("step-process-section");
-  
+
   if (stepSection) {
     // Title animation with SplitType for letter-by-letter reveal
     const stepTitle = stepSection.querySelector(".step-title");
@@ -92,8 +94,8 @@ import StepCard from "./StepCard.astro";
         scrollTrigger: {
           trigger: stepTitle,
           start: "top 80%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
     }
 
@@ -108,8 +110,8 @@ import StepCard from "./StepCard.astro";
         scrollTrigger: {
           trigger: stepDescription,
           start: "top 80%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
     }
 
@@ -124,8 +126,8 @@ import StepCard from "./StepCard.astro";
         scrollTrigger: {
           trigger: stepSection.querySelector(".step-cards-container"),
           start: "top 70%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
     }
 
@@ -140,8 +142,8 @@ import StepCard from "./StepCard.astro";
         scrollTrigger: {
           trigger: stepSection.querySelector(".step-cta-container"),
           start: "top 85%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
     }
   }

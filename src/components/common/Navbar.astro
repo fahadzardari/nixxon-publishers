@@ -2,10 +2,12 @@
 import { Image } from "astro:assets";
 import Logo from "../../assets/logo.png";
 import NavImage from "../../assets/common/nav-image.png";
+import ChatIcon from "../../assets/home/chat.png";
+import CallIcon from "../../assets/home/call.png";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about-us" },
+  { label: "About Us", href: "/about-us" },
   {
     label: "Services",
     href: "/services",
@@ -33,7 +35,7 @@ const navItems = [
       { label: "Book Editing", href: "/services/book-editing" },
     ],
   },
-  { label: "Contact", href: "/contact-us" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 // Get current path for active link highlighting
@@ -42,22 +44,27 @@ const currentPath = Astro.url.pathname;
 
 <header
   id="navbar"
-  class="bg-transparent fixed w-screen h-[80px] z-50 transition-all duration-300 border-b border-white/30 py-2"
+  class="bg-transparent fixed w-screen z-50 transition-all duration-300 border-b border-white/30"
 >
   <div class="app-max-width">
     <nav
-      class="flex justify-between items-center h-16 relative"
+      class="flex justify-between items-center py-4 xl:py-8 relative"
       aria-label="Main navigation"
     >
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/">
-          <Image src={Logo} alt="Logo" class="h-10 w-auto" loading={"eager"} />
+          <Image
+            src={Logo}
+            alt="Logo"
+            class="max-h-[55px] h-[39px] xl:h-auto w-auto"
+            loading={"eager"}
+          />
         </a>
       </div>
 
       <!-- Desktop Menu -->
-      <ul class="hidden md:flex md:items-center space-x-8 list-none">
+      <ul class="hidden md:flex md:items-center space-x-8 list-none text-xs xl:text-base">
         {
           navItems.map((item) => {
             const isActive =
@@ -73,10 +80,11 @@ const currentPath = Astro.url.pathname;
                 <li class="group">
                   <span
                     class:list={[
-                      "transition duration-300 flex items-center text-sm  cursor-pointer py-1",
+                      "transition duration-300 flex items-center  cursor-pointer py-1",
                       "text-white",
                       {
-                        "text-[#ff002d] ": isActive || hasActiveChild,
+                        "text-[#ff002d] font-semibold":
+                          isActive || hasActiveChild,
                       },
                     ]}
                     aria-current={isActive ? "page" : undefined}
@@ -146,9 +154,9 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={item.href}
                   class:list={[
-                    "transition duration-300 text-sm py-1",
+                    "transition duration-300  py-1",
                     "text-white",
-                    { "text-[#ff002d]  nav-active": isActive },
+                    { "text-[#ff002d] font-semibold  nav-active": isActive },
                   ]}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -161,13 +169,29 @@ const currentPath = Astro.url.pathname;
       </ul>
 
       <button
-        class="bg-primary-red text-white text-base capitalize px-6 py-2 rounded-md"
+        class="bg-primary-red text-white text-xs xl:text-base capitalize px-6 py-2 rounded-md"
       >
         let's discuss
       </button>
     </nav>
   </div>
 </header>
+
+<div
+  class="fixed flex flex-col gap-y-4 top-2/3 transform -translate-y-1/2 z-40 right-0"
+>
+  <button
+    class="rotate-button bg-white py-2 px-6 text-base 2xl:text-lg font-semibold text-primary-blue rounded-t-lg"
+  >
+    Get a Quote
+  </button>
+  <button class="bg-white rounded-l-lg p-2">
+    <Image src={ChatIcon} alt={"chat icon"} width={24} height={24} />
+  </button>
+  <button class="bg-white rounded-l-lg p-2">
+    <Image src={CallIcon} alt={"call icon"} width={24} height={24} />
+  </button>
+</div>
 
 <script>
   // Get the navbar element
@@ -228,5 +252,19 @@ const currentPath = Astro.url.pathname;
   #navbar ul > li > a:hover:after,
   #navbar ul > li > span:hover:after {
     width: 100%;
+  }
+
+  .rotate-button {
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: top right;
+    right: 40px;
+    top: -170px; /* Adjust as needed for proper positioning */
+    border-radius: 0.5rem 0.5rem 0 0; /* Only rounded on top after rotation */
+    white-space: nowrap;
+  }
+
+  button {
+    cursor: pointer;
   }
 </style>

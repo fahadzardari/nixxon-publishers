@@ -1,29 +1,38 @@
 ---
 import Image from "astro/components/Image.astro";
 import HeroImage from "../../assets/home/hero.png";
-import ChatIcon from "../../assets/home/chat.png";
-import CallIcon from "../../assets/home/call.png";
 ---
 
 <section
   id="hero-section"
-  class="min-h-screen h-[1041px] relative bg-primary-blue text-white flex flex-col justify-center pt-[80px] pb-8"
+  class="min-h-screen relative bg-primary-blue text-white flex flex-col pt-[120px] xl:pt-[160px] justify-center"
 >
-  <div class="flex flex-col items-center justify-center gap-y-8 app-max-width">
-    <div class="text-center flex flex-col gap-y-4">
-      <h3 id="hero-subtitle" class="text-primary-red text-2xl font-semibold">
+  <div
+    class="flex flex-col items-center justify-center gap-y-8 app-max-width py-8"
+  >
+    <div class="text-center flex flex-col gap-y-3">
+      <h3
+        id="hero-subtitle"
+        class="text-primary-red text-xl xl:text-2xl 2xl:text-3xl font-semibold"
+      >
         Introducing Nixxon Publishers, The Book Service in The place!
       </h3>
-      <h1 id="hero-title" class="text-5xl max-w-[1087px]">
+      <h1
+        id="hero-title"
+        class="text-4xl xl:text-[46px] 2xl:text-7xl leading-tight px-8"
+      >
         Seek Out <span class="font-semibold">Yourself in Literature!</span> With
         Us, the Best Service Provider.
       </h1>
-      <p id="hero-paragraph" class="text-base">
+      <p id="hero-paragraph" class="text-sm xl:text-base 2xl:text-xl">
         Consider using Nixxon Publishers Book Services Provider Hub if you're
         stuck trying to put your book ideas on paper.
       </p>
     </div>
-    <div id="hero-buttons" class="flex items-center gap-x-4 justify-center text-white">
+    <div
+      id="hero-buttons"
+      class="flex items-center gap-x-4 justify-center text-white"
+    >
       <button
         id="quote-button"
         class="bg-primary-red px-6 py-2 font-semibold text-base rounded-md"
@@ -37,8 +46,13 @@ import CallIcon from "../../assets/home/call.png";
         Chat With Us
       </button>
     </div>
-    <div id="hero-image-container">
-      <Image src={HeroImage} alt={"Hero Image"} class="" loading={"eager"} />
+    <div id="hero-image-container" class="w-full">
+      <Image
+        src={HeroImage}
+        alt={"Hero Image"}
+        class="w-2/3 mx-auto"
+        loading={"eager"}
+      />
     </div>
   </div>
   <!-- <div
@@ -78,75 +92,91 @@ import CallIcon from "../../assets/home/call.png";
   gsap.registerPlugin(ScrollTrigger);
 
   // Run animation immediately since it's hero section
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     animateHeroSection();
   });
 
   function animateHeroSection() {
     // Split text for more granular animations
     const heroTitle = new SplitType("#hero-title", { types: "words" });
-    
+
     // Create main timeline
     const tl = gsap.timeline();
-    
+
     // Subtitle animation
     tl.from("#hero-subtitle", {
       y: 30,
       opacity: 0,
       duration: 0.8,
-      ease: "power2.out"
+      ease: "power2.out",
     });
-    
+
     // Main title animation - word by word
-    tl.from(heroTitle.words, {
-      opacity: 0,
-      y: 20,
-      stagger: 0.05,
-      duration: 0.7,
-      ease: "back.out(1.4)"
-    }, "-=0.4");
-    
+    tl.from(
+      heroTitle.words,
+      {
+        opacity: 0,
+        y: 20,
+        stagger: 0.05,
+        duration: 0.7,
+        ease: "back.out(1.4)",
+      },
+      "-=0.4"
+    );
+
     // Paragraph animation
-    tl.from("#hero-paragraph", {
-      opacity: 0,
-      y: 20,
-      duration: 0.7,
-      ease: "power2.out"
-    }, "-=0.3");
-    
+    tl.from(
+      "#hero-paragraph",
+      {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+      "-=0.3"
+    );
+
     // Button animations
-    tl.from("#hero-buttons > button", {
-      opacity: 0,
-      y: 15,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: "back.out(1.5)"
-    }, "-=0.4");
-    
+    tl.from(
+      "#hero-buttons > button",
+      {
+        opacity: 0,
+        y: 15,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "back.out(1.5)",
+      },
+      "-=0.4"
+    );
+
     // Hero image animation
-    tl.from("#hero-image-container", {
-      opacity: 0,
-      y: 40,
-      scale: 0.95,
-      duration: 1,
-      ease: "power2.out"
-    }, "-=0.5");
+    tl.from(
+      "#hero-image-container",
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+        duration: 1,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
 
     // Add hover animations for buttons
-    gsap.utils.toArray("#hero-buttons > button").forEach(button => {
+    gsap.utils.toArray("#hero-buttons > button").forEach((button) => {
       button.addEventListener("mouseenter", () => {
         gsap.to(button, {
           scale: 1.05,
           duration: 0.3,
-          ease: "power1.out"
+          ease: "power1.out",
         });
       });
-      
+
       button.addEventListener("mouseleave", () => {
         gsap.to(button, {
           scale: 1,
           duration: 0.3,
-          ease: "power1.out"
+          ease: "power1.out",
         });
       });
     });

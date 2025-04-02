@@ -4,19 +4,19 @@ import IntroImage from "../../assets/home/intro.png";
 ---
 
 <section
-  class="app-max-width flex items-center gap-x-3 xl:gap-x-4 2xl:gap-x-8 py-16 overflow-hidden"
+  class="app-max-width flex items-center gap-x-6  2xl:gap-x-8 py-16 overflow-hidden"
   id="home-intro-section"
 >
-  <div class="w-[55%] flex flex-col gap-y-4 h-full" id="home-intro-content">
+  <div class="w-[50%] flex flex-col gap-y-4 h-full" id="home-intro-content">
     <h3
-      class="text-heading-black md:text-xl lg:text-2xl xl:text-4xl font-semibold"
+      class="text-heading-black md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl font-semibold"
       id="home-intro-heading"
     >
       Turn your book ideas into reality with Nixxon Publishers—your trusted
       writing partner.
     </h3>
     <div
-      class="gap-y-2 flex flex-col text-xs xl:text-base flex-1 w-[90%]"
+      class="gap-y-1 flex flex-col text-xs xl:text-base 2xl:text-lg 2xl flex-1 leading-tight"
       id="home-intro-paragraphs"
     >
       <p id="intro-p1">
@@ -57,7 +57,7 @@ import IntroImage from "../../assets/home/intro.png";
       </p>
     </div>
   </div>
-  <div class="h-full w-[45%] overflow-hidden" id="home-intro-image-container">
+  <div class="h-full w-[50%] overflow-hidden" id="home-intro-image-container">
     <Image
       src={IntroImage}
       alt="Intro Image"
@@ -119,11 +119,11 @@ import IntroImage from "../../assets/home/intro.png";
     );
 
     // Image animation - clip approach instead of transform
-    gsap.set("#home-intro-image", { 
+    gsap.set("#home-intro-image", {
       clipPath: "inset(0 100% 0 0)",
-      scale: 1.05
+      scale: 1.05,
     });
-    
+
     tl.to(
       "#home-intro-image",
       {

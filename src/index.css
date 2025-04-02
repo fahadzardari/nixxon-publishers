@@ -57,7 +57,7 @@ body {
 }
 
 .tab-button {
-  @apply text-base font-medium text-[#303030] border border-[#303030] cursor-pointer rounded-md px-6 py-2;
+  @apply text-sm xl:text-base font-medium text-[#303030] border border-[#303030] cursor-pointer rounded-md px-4 xl:px-6 py-2;
 }
 
 .active-tab-button {
@@ -101,18 +101,18 @@ body {
 /* Small Laptop */
 @media screen and (min-width: 1024px) {
   .app-max-width {
-    padding-inline: 2.5rem;
+    padding-inline: 3rem;
   }
 
   .app-left-padding {
-    padding-left: 2.5rem;
+    padding-left: 3rem;
   }
 
   .app-right-padding {
-    padding-right: 2.5rem;
+    padding-right: 3rem;
   }
   .app-margin {
-    padding-inline: 2.5rem;
+    padding-inline: 3rem;
   }
 }
 

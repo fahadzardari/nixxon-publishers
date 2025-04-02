@@ -96,7 +96,6 @@ import ServiceCard from "../common/ServiceCard.astro";
       slidesPerGroup: 1,
       loop: false,
       centeredSlides: false,
-      loopFillGroupWithBlank: false,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -115,13 +114,18 @@ import ServiceCard from "../common/ServiceCard.astro";
         },
         1024: {
           slidesPerView: 3,
-          spaceBetween: 30,
+          spaceBetween: 20,
           slidesPerGroup: 3,
         },
         1440: {
           slidesPerView: 4,
-          spaceBetween: 30,
+          spaceBetween: 10,
           slidesPerGroup: 4,
+        },
+        1920: {
+          slidesPerView: 5,
+          spaceBetween: 10,
+          slidesPerGroup: 5,
         },
       },
       on: {

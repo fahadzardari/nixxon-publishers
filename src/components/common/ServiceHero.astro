@@ -4,30 +4,34 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 ---
 
 <section
-  class="service-hero-section app-max-width h-[725px] pt-[88px] pb-8 bg-primary-blue text-white flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8"
+  class="service-hero-section app-max-width pt-[70px] xl:pt-[120px] pb-6 xl:pb-8 bg-primary-blue text-white flex items-center justify-between gap-x-4 xl:gap-x-6 2xl:gap-x-8"
   aria-labelledby="service-title"
 >
-  <article class="service-hero-content w-[60%] flex flex-col gap-y-8">
+  <article
+    class="service-hero-content py-12 w-[60%] flex flex-col gap-y-3 xl:gap-y-4"
+  >
     <div>
-      <h4 class="service-hero-pagename text-2xl font-semibold ml-1 mb-2">
+      <h4
+        class="service-hero-pagename text-xl xl:text-2xl font-semibold ml-1 mb-2"
+      >
         {pageName}
       </h4>
       <h1
         id="service-title"
-        class="font-semibold text-4xl xl:text-[46px] 2xl:text-6xl"
+        class="font-semibold text-4xl xl:text-[46px] 2xl:text-6xl leading-tight"
       >
         {title}
       </h1>
     </div>
     <p
-      class="service-hero-description text-sm xl:text-base leading-[150%] w-[80%]"
+      class="service-hero-description text-sm xl:text-base 2xl:text-lg leading-[150%] w-[95%]"
     >
       {description}
     </p>
     <div class="service-hero-buttons flex gap-x-4">
       <a
         href="/quote"
-        class="service-hero-button bg-[#E7062E] text-white font-semibold text-base px-6 py-2 rounded-lg"
+        class="service-hero-button bg-[#E7062E] text-white font-semibold text-sm xl:text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg"
         role="button"
         aria-label="Get a quote for our services"
       >
@@ -35,7 +39,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </a>
       <a
         href="/contact"
-        class="service-hero-button border border-white text-white font-semibold text-base px-6 py-2 rounded-lg"
+        class="service-hero-button border border-white text-white font-semibold text-sm xl:text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg"
         role="button"
         aria-label="Chat with our customer service team"
       >
@@ -48,6 +52,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       src={image}
       alt={imageAlt || `${title} service illustration`}
       loading="eager"
+      class={"w-full h-full object-cover object-center"}
     />
   </figure>
 </section>

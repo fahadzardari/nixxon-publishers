@@ -10,7 +10,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
     description="Thinking of getting your ideas published while not having to lift a finger? Our team of expert ghostwriters can help! We listen to your ideas, structure them, and provide excellent end-results that you’re looking for."
   />
 
-  <div class="swiper services-swiper flex justify-center items-center">
+  <div class="swiper testimonial-swiper flex justify-center items-center">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <TestimonialCard
@@ -68,23 +68,23 @@ import TestimonialCard from "../common/TestimonialCard.astro";
     .swiper-slide {
       width: fit-content;
     }
-    .services-swiper {
+    .testimonial-swiper {
       width: 100%;
       padding: 20px 0;
     }
 
     /* Custom pagination colors - making this more specific and !important */
-    .services-swiper .swiper-pagination-bullet-active {
+    .testimonial-swiper .swiper-pagination-bullet-active {
       background-color: #ff002d !important;
     }
 
     /* Enhance the look of all pagination bullets */
-    .services-swiper .swiper-pagination-bullet {
+    .testimonial-swiper .swiper-pagination-bullet {
       opacity: 0.7;
       transition: all 0.3s ease;
     }
 
-    .services-swiper .swiper-pagination-bullet:hover {
+    .testimonial-swiper .swiper-pagination-bullet:hover {
       opacity: 1;
       background-color: rgba(255, 0, 45, 0.5);
     }
@@ -125,7 +125,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
       gsap.registerPlugin(ScrollTrigger);
 
       // Initialize the swiper with your existing configuration
-      const swiper = new Swiper(".services-swiper", {
+      const swiper = new Swiper(".testimonial-swiper", {
         modules: [Pagination],
         slidesPerView: 1,
         spaceBetween: 20,
@@ -151,7 +151,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
       // Create animation timeline for the testimonials section
       const testimonialTimeline = gsap.timeline({
         scrollTrigger: {
-          trigger: ".services-swiper",
+          trigger: ".testimonial-swiper",
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "play none none none",
@@ -160,14 +160,14 @@ import TestimonialCard from "../common/TestimonialCard.astro";
 
       // Add subtle animations to the swiper container
       testimonialTimeline
-        .from(".services-swiper", {
+        .from(".testimonial-swiper", {
           opacity: 0,
           y: 50,
           duration: 0.8,
           ease: "power2.out",
         })
         .to(
-          ".services-swiper",
+          ".testimonial-swiper",
           {
             duration: 1.2,
             ease: "power1.inOut",
@@ -177,7 +177,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
 
       // Add a subtle pulse animation to highlight the swiper
       testimonialTimeline.add(() => {
-        gsap.to(".services-swiper", {
+        gsap.to(".testimonial-swiper", {
           scale: 1.01,
           duration: 2,
           repeat: 1,
@@ -185,7 +185,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
           ease: "sine.inOut",
           onComplete: () => {
             // Reset to original state after animation
-            gsap.to(".services-swiper", {
+            gsap.to(".testimonial-swiper", {
               scale: 1,
               duration: 0.5,
             });
@@ -196,7 +196,7 @@ import TestimonialCard from "../common/TestimonialCard.astro";
       // Add event listener for swiper transitions to create subtle effects
       swiper.on("slideChangeTransitionStart", function () {
         // Subtle flash effect when slides change
-        gsap.to(".services-swiper", {
+        gsap.to(".testimonial-swiper", {
           brightness: 1.03,
           duration: 0.3,
           yoyo: true,

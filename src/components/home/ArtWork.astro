@@ -10,13 +10,13 @@ const {
 } = Astro.props;
 ---
 
-<section id="artwork-section" class="app-max-width">
+<section id="artwork-section" class="app-max-width py-12  ">
   <CommonHeaderSection
     title={title}
     subtitle={subtitle}
     description={description}
   />
-  <div class="w-full mt-3 artwork-image-container overflow-hidden">
+  <div class="w-full artwork-image-container overflow-hidden">
     <Image src={image} alt="Artwork" class="w-full artwork-image" />
   </div>
 </section>
