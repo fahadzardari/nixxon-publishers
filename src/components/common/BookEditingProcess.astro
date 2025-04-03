@@ -91,20 +91,20 @@ import StepCard from "./StepCard.astro";
   .bg-image {
     background-image: url("../../assets/common/step-process.png");
   }
-  
+
   /* This wrapper will control the overall width */
   .step-cards-container {
     margin: 0 auto;
     position: relative;
     overflow: hidden; /* Important: hide overflow at container level */
   }
-  
+
   /* Swiper can show the peek effect within the container */
   .steps-swiper {
     position: relative;
     overflow: hidden; /* Change to hidden for better control */
   }
-  
+
   .step-swiper-slide {
     height: auto;
     display: flex;
@@ -112,12 +112,12 @@ import StepCard from "./StepCard.astro";
     box-sizing: border-box;
     width: 280px; /* Set a fixed width for each slide */
   }
-  
+
   /* Make cards maintain height */
   :global(.step-card) {
     height: 100%;
   }
-  
+
   @media (max-width: 640px) {
     .step-swiper-slide {
       width: 85vw; /* Larger width on mobile */
