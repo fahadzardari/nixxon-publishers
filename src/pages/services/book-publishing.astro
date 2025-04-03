@@ -11,7 +11,8 @@ const description =
 import GhostwritingImage from "../../assets/common/hero-pics/book-publishing.png";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title: "Work With Us On Your Next Book Publishing Project To Help You Become a Published Author!",
+  title:
+    "Work With Us On Your Next Book Publishing Project To Help You Become a Published Author!",
   description:
     "You can improve the visual appeal of your literary work with Nixxon Publishing. Our attentive service will ensure that the illustrations complement the text to improve the book's visual appeal. From captivating cover designs to captivating interior graphics, we understand the critical role that visuals play in drawing readers in.<br/><br/>We pledge to unleash the creative potential in your book and create a jaw-dropping masterpiece that will enthral readers and leave a lasting impact. Nixxon Publishing is the way to go if you want your writing to be seen in a crowd. It's a tool for improving artistic work where every little detail counts.",
   getStartedButton: true,
@@ -20,6 +21,38 @@ import IntroImage from "../../assets/common/intro-pics/book-publishing.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
 import Categories from "../../components/common/Categories.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Service for Submitting and Evaluating Papers",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
+  },
+  {
+    title: "Marketing and Promotion Service",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly creates effective marketing strategies for your published work.",
+    icon: Planning,
+  },
+  {
+    title: "Formatting & Typesetting Service",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
+  },
+  {
+    title: "Distribution and Printing Service",
+    description:
+      "Our expert distribution team ensures your book reaches its intended audience. We meticulously manage the printing and distribution process, making sure your publication meets industry standards and is available through the most effective channels.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Book Publishing Service | Nixxon Publishers">
@@ -37,7 +70,7 @@ import Categories from "../../components/common/Categories.astro";
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <Categories />
   <ArtWork
     title="Our Outstanding Portfolio"

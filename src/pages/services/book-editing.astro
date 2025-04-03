@@ -17,11 +17,9 @@ const intro = {
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/book-editing.png";
-import ServicesRow from "../../components/common/ServicesRow.astro";
 import Categories from "../../components/common/Categories.astro";
-import Packages from "../../components/common/Packages.astro";
-import PackageCard from "../../components/common/PackageCard.astro";
 import StepProcess from "../../components/common/StepProcess.astro";
+import BookEditingProcess from "../../components/common/BookEditingProcess.astro";
 ---
 
 <Layout title="Book Editing Service | Nixxon Publishers">
@@ -46,7 +44,7 @@ import StepProcess from "../../components/common/StepProcess.astro";
     subtitle=""
     description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
   />
-  <StepProcess />
+  <BookEditingProcess />
   <Testimonials />
   <Footer />
 </Layout>

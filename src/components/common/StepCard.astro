@@ -8,17 +8,17 @@ const {
 ---
 
 <article
-  class={`flex flex-col py-4 h-[280px] bg-white rounded-lg px-4 max-w-[300px] ${className}`}
+  class={`flex flex-col py-4 h-[230px] xl:h-[280px] canvas:h-[280px] 2xl:h-[280px] bg-white rounded-lg px-4 max-w-[300px] canvas:max-w-[350px] ${className}`}
   role="article"
   aria-label="Step Card"
   aria-labelledby="step-card-title"
   aria-describedby="step-card-description"
 >
-  <h1 class="text-[56px] font-extrabold text-[#4E010F] text-right">
+  <h1 class="text-4xl xl:text-5xl xl:text-[56px] font-extrabold text-[#4E010F] text-right ">
     {step}
   </h1>
-  <div class="flex flex-col gap-y-4">
-    <h2 class="text-xl font-semibold">{title}</h2>
-    <p class="text-sm">{description}</p>
+  <div class="flex flex-col gap-y-4 w-[90%] xl:w-[80%]">
+    <h2 class=" text-base xl:text-lg canvas:text-xl font-semibold">{title}</h2>
+    <p class="text-xs xl:text-sm">{description}</p>
   </div>
 </article>

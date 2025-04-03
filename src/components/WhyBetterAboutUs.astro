@@ -5,7 +5,10 @@ import Award2 from "../assets/about-us/award2.png";
 import Award3 from "../assets/about-us/award3.png";
 ---
 
-<section id="why-better-section" class="app-max-width flex py-16 items-center">
+<section
+  id="why-better-section"
+  class="app-max-width flex py-[8dvw] items-center"
+>
   <div class="w-[50%] py-4">
     <h1 id="why-better-heading" class="common-heading mb-4">
       Why Do We Outperform Our Competition?
@@ -22,10 +25,8 @@ import Award3 from "../assets/about-us/award3.png";
     <Image id="award-1" src={Award1} alt="Award 1" class="" />
     <Image id="award-2" src={Award2} alt="Award 2" class="" />
     <Image id="award-3" src={Award3} alt="Award 3" class="" />
-    <div>
-
-    </div>
-    <div class="col-span-1 flex justify-center  mt-4">
+    <div></div>
+    <div class="col-span-1 flex justify-center mt-4">
       <Image id="award-4" src={Award2} alt="Award 4" class="" />
       <Image id="award-5" src={Award2} alt="Award 5" class="" />
     </div>
@@ -46,7 +47,7 @@ import Award3 from "../assets/about-us/award3.png";
         }
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.3 },
   );
 
   // Observe the section
@@ -81,7 +82,7 @@ import Award3 from "../assets/about-us/award3.png";
         duration: 0.8,
         ease: "power2.out",
       },
-      "-=0.4"
+      "-=0.4",
     );
 
     // Animate awards with staggered reveal
@@ -94,7 +95,7 @@ import Award3 from "../assets/about-us/award3.png";
         stagger: 0.2,
         ease: "back.out(1.5)",
       },
-      "-=0.4"
+      "-=0.4",
     );
 
     // Animate bottom awards
@@ -107,7 +108,7 @@ import Award3 from "../assets/about-us/award3.png";
         stagger: 0.2,
         ease: "back.out(1.5)",
       },
-      "-=0.2"
+      "-=0.2",
     );
   }
 </script>

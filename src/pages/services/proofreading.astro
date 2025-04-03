@@ -22,6 +22,38 @@ import IntroImage from "../../assets/common/intro-pics/proofreading.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
 import Categories from "../../components/common/Categories.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Manuscript Evaluation and Consultation",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
+  },
+  {
+    title: "Review and Editing",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly examines your manuscript for grammar, spelling, and consistency.",
+    icon: Planning,
+  },
+  {
+    title: "Author Feedback",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
+  },
+  {
+    title: "Delivery and Final Review",
+    description:
+      "Our expert proofreaders ensure your final manuscript is polished to perfection. We meticulously review every element one last time, making sure your work is ready for publication and meets the highest professional standards.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Proofreading Service | Nixxon Publishers">
@@ -39,7 +71,7 @@ import Categories from "../../components/common/Categories.astro";
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <Categories />
   <ArtWork
     title="Our Outstanding Portfolio"

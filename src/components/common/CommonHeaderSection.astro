@@ -7,17 +7,17 @@ const { title = "", subtitle = "", description = "" } = Astro.props;
   class="common-header-section flex flex-col gap-y-1 items-center justify-center py-10 text-center xl:w-[90%] 2xl:w-[85%] mx-auto"
 >
   <h3
-    class="font-semibold text-heading-black text-3xl xl:text-4xl 2xl:text-5xl artwork-heading overflow-hidden"
+    class="font-semibold text-heading-black text-2xl xl:text-3xl canvas:text-4xl 3xl:text-5xl artwork-heading overflow-hidden"
   >
     {title}
   </h3>
   <p
-    class="font-semibold text-primary-red text-sm lg:text-base xl:text-xl 2xl:text-2xl artwork-subheading opacity-0"
+    class="font-semibold text-primary-red text-xs xl:text-sm canvas:text-base 3xl:text-2xl artwork-subheading opacity-0"
   >
     {subtitle}
   </p>
   <p
-    class="text-xs xl:text-base 2xl:text-lg w-[90%] artwork-description opacity-0"
+    class="text-xs xl:text-sm canvas:text-base 3xl:text-xl artwork-description opacity-0"
   >
     {description}
   </p>
@@ -40,7 +40,7 @@ const { title = "", subtitle = "", description = "" } = Astro.props;
         {
           types: "words",
           tagName: "span",
-        }
+        },
       );
 
       // Create a timeline specific to this section
@@ -74,7 +74,7 @@ const { title = "", subtitle = "", description = "" } = Astro.props;
           duration: 0.8,
           ease: "power2.out",
         },
-        "-=0.4"
+        "-=0.4",
       );
 
       // Animate description paragraph
@@ -86,7 +86,7 @@ const { title = "", subtitle = "", description = "" } = Astro.props;
           duration: 0.8,
           ease: "power2.out",
         },
-        "-=0.6"
+        "-=0.6",
       );
     };
 

@@ -50,18 +50,26 @@ body {
   --color-footer-blue: #0e0019;
   --color-quote-maroon: #4e010f;
   --font-comme-regular: "Comme", sans-serif;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-canvas: 1440px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1920px;
 }
 
 .common-heading {
-  @apply font-semibold text-heading-black text-2xl xl:text-4xl;
+  @apply text-heading-black text-2xl font-semibold xl:text-4xl;
 }
 
 .tab-button {
-  @apply text-sm xl:text-base font-medium text-[#303030] border border-[#303030] cursor-pointer rounded-md px-4 xl:px-6 py-2;
+  @apply cursor-pointer rounded-md border border-[#303030] px-4 py-2 text-sm font-medium text-[#303030] xl:px-6 xl:text-base;
 }
 
 .active-tab-button {
-  @apply border-none bg-primary-red text-white;
+  @apply bg-primary-red border-none text-white;
 }
 
 .app-max-width {

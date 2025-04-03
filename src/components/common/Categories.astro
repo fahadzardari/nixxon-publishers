@@ -12,9 +12,12 @@ import RomanceImage from "../../assets/common/categories/romance.png";
 
 <section
   id="categories-section"
-  class="app-max-width relative flex flex-col items-center justify-center py-16 text-white"
+  class="app-max-width relative flex flex-col items-center justify-center py-8 canvas:py-16 text-white"
 >
-  <h1 id="categories-heading" class="text-3xl xl:text-4xl font-bold mb-8">
+  <h1
+    id="categories-heading"
+    class="text-2xl xl:text-3xl canvas:text-4xl 4xl:text-5xl font-bold mb-8"
+  >
     Are You Thinking About a Category? We Cover Everything
   </h1>
   <div id="categories-container" class="flex gap-x-4 justify-between w-[85%]">
@@ -25,7 +28,9 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={41} src={ActionImage} alt={"Action"} />
       </div>
-      <span class="text-center w-full">Action & Adventure</span>
+      <span class="text-center w-full text-xs xl:text-base"
+        >Action & Adventure</span
+      >
     </div>
     <div
       id="category-fitness"
@@ -34,7 +39,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={41} src={FitnessImage} alt={"Fitness"} />
       </div>
-      <span class="text-center w-full">Fitness</span>
+      <span class="text-center w-full text-xs xl:text-base">Fitness</span>
     </div>
     <div
       id="category-travel"
@@ -43,7 +48,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={67} src={TravelImage} alt={"Travel"} />
       </div>
-      <span class="text-center w-full">Travel</span>
+      <span class="text-center w-full text-xs xl:text-base">Travel</span>
     </div>
     <div
       id="category-drama"
@@ -52,7 +57,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={67} src={DramaImage} alt={"Drama"} />
       </div>
-      <span class="text-center w-full">Drama</span>
+      <span class="text-center w-full text-xs xl:text-base">Drama</span>
     </div>
     <div
       id="category-horror"
@@ -61,16 +66,21 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={67} src={HorrorImage} alt={"Horror"} />
       </div>
-      <span class="text-center w-full">Horror</span>
+      <span class="text-center w-full text-xs xl:text-base">Horror</span>
     </div>
     <div
       id="category-dictionary"
       class="w-[120px] flex flex-col items-center gap-y-1"
     >
       <div class="flex justify-center items-center h-[70px]">
-        <Image width={51} height={69} src={DictionaryImage} alt={"Dictionary"} />
+        <Image
+          width={51}
+          height={69}
+          src={DictionaryImage}
+          alt={"Dictionary"}
+        />
       </div>
-      <span class="text-center w-full">Dictionary</span>
+      <span class="text-center w-full text-xs xl:text-base">Dictionary</span>
     </div>
     <div
       id="category-comics"
@@ -79,7 +89,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={39} height={59} src={ComicsImage} alt={"Comics"} />
       </div>
-      <span class="text-center w-full">Comics</span>
+      <span class="text-center w-full text-xs xl:text-base">Comics</span>
     </div>
     <div
       id="category-romance"
@@ -88,7 +98,7 @@ import RomanceImage from "../../assets/common/categories/romance.png";
       <div class="flex justify-center items-center h-[70px]">
         <Image width={59} height={59} src={RomanceImage} alt={"Romance"} />
       </div>
-      <span class="text-center w-full">Romance</span>
+      <span class="text-center w-full text-xs xl:text-base">Romance</span>
     </div>
   </div>
 </section>
@@ -116,16 +126,19 @@ import RomanceImage from "../../assets/common/categories/romance.png";
     const categoriesSection = document.querySelector("#categories-section");
     const categoriesHeading = document.querySelector("#categories-heading");
     const categoryItems = document.querySelectorAll("[id^='category-']");
-    
-    if (!categoriesSection || !categoriesHeading || !categoryItems.length) return;
-    
+
+    if (!categoriesSection || !categoriesHeading || !categoryItems.length)
+      return;
+
     // Split the heading text for character animation
-    const headingText = new SplitType("#categories-heading", { types: "words" });
-    
+    const headingText = new SplitType("#categories-heading", {
+      types: "words",
+    });
+
     // Set initial states for category items
     gsap.set(categoryItems, { opacity: 0, y: 30 });
     gsap.set(headingText.chars, { opacity: 0, y: 20 });
-    
+
     // Create a timeline for the animations
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -135,23 +148,27 @@ import RomanceImage from "../../assets/common/categories/romance.png";
         toggleActions: "play none none none",
         // markers: true, // Uncomment for debugging
       },
-      defaults: { ease: "power3.out" }
+      defaults: { ease: "power3.out" },
     });
-    
+
     // Animate the heading characters
     tl.to(headingText.chars, {
       opacity: 1,
       y: 0,
       duration: 0.8,
-      stagger: 0.02
+      stagger: 0.02,
     });
-    
+
     // Animate the category items with stagger
-    tl.to(categoryItems, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.08
-    }, "-=0.4"); // Slight overlap with heading animation
+    tl.to(
+      categoryItems,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.08,
+      },
+      "-=0.4",
+    ); // Slight overlap with heading animation
   });
 </script>

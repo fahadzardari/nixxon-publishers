@@ -4,29 +4,33 @@ import Image from "astro/components/Image.astro";
 const {
   title = "Book Writing",
   description = " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
-  IconImage = Icon,
+  iconImage = Icon,
   id,
 } = Astro.props;
 ---
 
 <article
-  class="service-card h-[320px] xl:h-[360px] relative border border-primary-red rounded-lg px-6 py-6 max-w-[260px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
+  class="service-card h-[285px] canvas:h-[372px] 2xl:h-[350px] 3xl:h-[400px] hover:shadow-xl relative border border-primary-red rounded-lg p-4 canvas:p-6 max-w-[270px] 2xl:max-w-[320px] flex flex-col items-center gap-y-3 cursor-pointer transition-all duration-300"
 >
   <div
     class="icon-container flex items-center justify-center shadow-xl w-[52px] h-[52px] rounded-md transition-all duration-300"
   >
     <Image
-      src={IconImage}
+      src={iconImage}
       alt={title}
       width={24}
       height={24}
       class="svg-icon"
     />
   </div>
-  <h3 class="md:text-base lg:text-xl 2xl:text-2xl font-semibold text-heading-black">
+  <h3
+    class="text-sm text-center xl:text-base canvas:text-base 2xl:text-2xl font-semibold text-heading-black"
+  >
     {title}
   </h3>
-  <p class="text-sm text-center overflow-y-auto">
+  <p
+    class="text-[11px] xl:text-xs canvas:text-sm 3xl:text-base text-center overflow-y-auto"
+  >
     {description}
   </p>
 </article>
@@ -51,8 +55,8 @@ const {
     right: 0;
     width: 0;
     height: 0;
-    border-top: 2px solid transparent;
-    border-right: 2px solid transparent;
+    border-top: 3px solid transparent;
+    border-right: 3px solid transparent;
     border-top-right-radius: 0.5rem;
   }
 
@@ -62,8 +66,8 @@ const {
     left: 0;
     width: 0;
     height: 0;
-    border-bottom: 2px solid transparent;
-    border-left: 2px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 3px solid transparent;
     border-bottom-left-radius: 0.5rem;
   }
 

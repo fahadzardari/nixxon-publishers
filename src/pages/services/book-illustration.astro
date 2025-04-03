@@ -19,6 +19,38 @@ const intro = {
 import IntroImage from "../../assets/common/intro-pics/book-illustration.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Expert Illustration Services",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives for your book's illustrations.",
+    icon: Discuss,
+  },
+  {
+    title: "Creating Engaging eBook Cover Art",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of artwork is supported by informed insights and a well-thought-out plan because our team painstakingly crafts cover designs that capture readers' attention.",
+    icon: Planning,
+  },
+  {
+    title: "Artwork and Layout for a Whole Book",
+    description:
+      "Making engaging illustrations is the first step in captivating your audience. If you want your message to be visually impactful, you need the artists at Nixxon Publishers to inject their imagination and skill into every illustration.",
+    icon: Making,
+  },
+  {
+    title: "Formatting for Print Books",
+    description:
+      "Our expert designers ensure your illustrations are perfectly formatted for print. We meticulously prepare your artwork to meet publishing standards, making sure every visual element enhances your story and resonates with your readers.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Book Illustration Service | Nixxon Publishers">
@@ -36,7 +68,7 @@ import ServicesRow from "../../components/common/ServicesRow.astro";
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <ArtWork
     title="Wonderful Creations of Artwork"
     subtitle=""

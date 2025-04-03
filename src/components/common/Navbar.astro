@@ -75,7 +75,7 @@ const currentPath = Astro.url.pathname;
 
             if (item.hasDropdown) {
               const hasActiveChild = item.dropdownItems?.some((child) =>
-                currentPath.startsWith(child.href)
+                currentPath.startsWith(child.href),
               );
 
               return (
@@ -129,7 +129,7 @@ const currentPath = Astro.url.pathname;
                     <div class="grid grid-cols-3 gap-y-2 gap-x-12 pt-6 w-full">
                       {item.dropdownItems.map((child) => {
                         const isChildActive = currentPath.startsWith(
-                          child.href
+                          child.href,
                         );
                         return (
                           <div class="border-b border-b-[#A6ABBB] w-fit pt-2">
@@ -251,7 +251,7 @@ const currentPath = Astro.url.pathname;
           closeDropdown(activeDropdown);
           activeDropdown.previousElementSibling.setAttribute(
             "aria-expanded",
-            "false"
+            "false",
           );
         }
 

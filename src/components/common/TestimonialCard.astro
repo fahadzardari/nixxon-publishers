@@ -5,7 +5,7 @@ const { avatar, name, description, stars = 4 } = Astro.props;
 ---
 
 <article
-  class="testimonial-card w-fit flex flex-col gap-y-4 m-2 drop-shadow-lg p-6 bg-white rounded-lg h-[300px]"
+  class="testimonial-card w-fit flex flex-col gap-y-4 m-2 drop-shadow-lg p-6 bg-white rounded-lg h-[280px] xl:h-[300px] 2xl:h-[350px]"
 >
   <div class="avatar-container relative flex items-center gap-x-4">
     <Image src={Avatar} alt="Avatar" width={42} height={42} class="avatar" />

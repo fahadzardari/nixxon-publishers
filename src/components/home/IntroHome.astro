@@ -4,19 +4,19 @@ import IntroImage from "../../assets/home/intro.png";
 ---
 
 <section
-  class="app-max-width flex items-center gap-x-6  2xl:gap-x-8 py-16 overflow-hidden"
+  class="app-max-width flex items-center gap-x-6 2xl:gap-x-8 py-[8dvw] overflow-hidden"
   id="home-intro-section"
 >
   <div class="w-[50%] flex flex-col gap-y-4 h-full" id="home-intro-content">
     <h3
-      class="text-heading-black md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl font-semibold"
+      class="text-heading-black md:text-xl lg:text-2xl xl:text-3xl canvas:text-4xl 2xl:text-5xl font-semibold"
       id="home-intro-heading"
     >
       Turn your book ideas into reality with Nixxon Publishers—your trusted
       writing partner.
     </h3>
     <div
-      class="gap-y-1 flex flex-col text-xs xl:text-base 2xl:text-lg 2xl flex-1 leading-tight"
+      class="gap-y-1 flex flex-col text-xs xl:text-sm canvas:text-base 2xl:text-lg 2xl flex-1 leading-tight"
       id="home-intro-paragraphs"
     >
       <p id="intro-p1">
@@ -115,7 +115,7 @@ import IntroImage from "../../assets/home/intro.png";
         duration: 0.8,
         ease: "power2.out",
       },
-      "-=0.4"
+      "-=0.4",
     );
 
     // Image animation - clip approach instead of transform
@@ -132,7 +132,7 @@ import IntroImage from "../../assets/home/intro.png";
         duration: 1.2,
         ease: "power3.out",
       },
-      "-=1.5"
+      "-=1.5",
     );
   });
 </script>

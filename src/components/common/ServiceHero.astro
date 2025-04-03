@@ -18,13 +18,13 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </h4>
       <h1
         id="service-title"
-        class="font-semibold text-4xl xl:text-[46px] 2xl:text-6xl leading-tight"
+        class="font-semibold text-3xl xl:text-4xl canvas:text-[46px] 3xl:text-5xl 4xl:text-6xl leading-tight"
       >
         {title}
       </h1>
     </div>
     <p
-      class="service-hero-description text-sm xl:text-base 2xl:text-lg xl:leading-[150%] w-[95%]"
+      class="service-hero-description text-sm canvas:text-base 2xl:text-lg xl:leading-[150%] w-[95%]"
     >
       {description}
     </p>
@@ -98,7 +98,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
         duration: 0.8,
         ease: "power3.out",
       },
-      "-=0.4"
+      "-=0.4",
     );
 
     // Buttons animation
@@ -112,7 +112,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
         duration: 0.6,
         ease: "power1.out",
       },
-      "-=0.6"
+      "-=0.6",
     );
 
     // Image animation
@@ -124,7 +124,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
         duration: 1,
         ease: "power2.out",
       },
-      "-=0.8"
+      "-=0.8",
     );
 
     // Optional: Add a subtle floating animation to the image for continued visual interest

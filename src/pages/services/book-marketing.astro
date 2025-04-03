@@ -16,6 +16,14 @@ const intro = {
   description:
     "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
   getStartedButton: true,
+  headings: [
+    "Targeted Expertise",
+    "Customised Campaigns",
+    "Customised Strategies",
+    "Cost-Effective Solutions",
+    "Proven Results",
+    "100% Customer Satisfaction",
+  ],
 };
 import IntroImage from "../../assets/common/intro-pics/book-marketing.png";
 import Quote from "../../components/common/Quote.astro";
@@ -24,6 +32,38 @@ import Categories from "../../components/common/Categories.astro";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
 import StepProcess from "../../components/common/StepProcess.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Social Media Marketing Service",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
+  },
+  {
+    title: "Author Website Service",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly creates websites that showcase your author brand effectively.",
+    icon: Planning,
+  },
+  {
+    title: "SEO & Content Marketing Service",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
+  },
+  {
+    title: "Amazon Marketing Service",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Book Marketing Service | Nixxon Publishers">
@@ -40,8 +80,9 @@ import StepProcess from "../../components/common/StepProcess.astro";
     description={intro.description}
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
+    headings={intro.headings}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <ArtWork
     title="Our Outstanding Portfolio"
     subtitle=""

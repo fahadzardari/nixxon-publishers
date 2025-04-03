@@ -23,26 +23,29 @@ const intro = {
 import IntroImage from "../../assets/common/intro-pics/cover-design.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+
 const services = [
   {
-    title: "Book Writing",
+    title: "Developing Creative Talent",
     description:
-      " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
   },
   {
-    title: "Book Editing",
+    title: "Designed with Exceptional Care",
     description:
-      "Our book editing service is designed to help authors refine their manuscripts and enhance their storytelling. Our experienced editors provide comprehensive feedback on structure, pacing, character development, and more.",
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly prepares the groundwork for your perfect cover design.",
+    icon: Planning,
   },
   {
-    title: "Book Marketing",
+    title: "Consistent Excellence and Honesty",
     description:
-      "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
-  },
-  {
-    title: "Book Marketing",
-    description:
-      "Our book marketing service is designed to help authors effectively promote their books and reach their target audience. We offer a range of strategies and tactics to maximize visibility and sales.",
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
   },
 ];
 ---

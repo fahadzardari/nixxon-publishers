@@ -21,6 +21,37 @@ const intro = {
 import IntroImage from "../../assets/common/intro-pics/website-content.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Consultation and Needs Assessment",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
+  },
+  {
+    title: "Crafting Approaches to Content",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly develops strategic approaches tailored to your website's goals.",
+    icon: Planning,
+  },
+  {
+    title: "Producing Written and Visual Media",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
+  },
+  {
+    title: "Examine And Enhance",
+    description:
+      "Our expert editors thoroughly review and refine your website content. We meticulously examine every element for clarity, engagement, and conversion potential, ensuring your online presence effectively communicates your brand's value to visitors.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Website Content Writing Service | Nixxon Publishers">
@@ -38,7 +69,7 @@ import ServicesRow from "../../components/common/ServicesRow.astro";
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <ArtWork
     title="Our Outstanding Portfolio"
     subtitle=""

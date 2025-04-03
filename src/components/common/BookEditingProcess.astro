@@ -1,0 +1,259 @@
+---
+const {
+  title = "Process of Book Editing",
+  description = "We can promote your book on a global scale because we have an organized system.",
+} = Astro.props;
+import StepCard from "./StepCard.astro";
+---
+
+<section
+  id="step-process-section"
+  class="bg-image bg-cover flex gap-y-8 flex-col justify-center items-center py-8 canvas:py-16"
+>
+  <div class="text-center text-white app-max-width">
+    <h2 class="text-4xl 2xl:text-5xl font-semibold mb-2 step-title">{title}</h2>
+    <p class="text-base text-center step-description">{description}</p>
+  </div>
+
+  <!-- Swiper container for steps -->
+  <div class="swiper steps-swiper w-full step-cards-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="01"
+          title="Order Details"
+          description="Book your spot on our website by providing the relevant draft of your book that you need to get edited. You also need to provide any instructions and guidelines where necessary."
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="02"
+          title="Research & Outline Draft"
+          description="Our professional book editors will carry out further research on the topic of your book and add more points wherever required. Afterward, they will draft an outline describing the editing that would be made to your book."
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="03"
+          title="First Chapter Approval"
+          description="After completing the editing of the first chapter, we ask our clients for their approval. If approved, we carry out the editing of the next chapters in a similar manner. If unapproved, we incorporate"
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="04"
+          title="Editing & Proofreading"
+          description="We perform further editing and keep our professional proofreaders to ensure the book is free from any grammatical or spelling errors. If there are any errors, they are"
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="05"
+          title="Formatting, Typesetting & Designing"
+          description="Once the writing and editing part is finished, the beauty of the book is enhanced by proper formatting, typesetting, and designing. Since many people judge a book by its"
+          class="step-card"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto flex gap-x-4 justify-center step-cta-container">
+    <a
+      href="/quote"
+      class="bg-[#E7062E] text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
+      role="button"
+      aria-label="Get a quote for our services"
+    >
+      Get a Quote
+    </a>
+    <a
+      href="/contact"
+      class="border border-white text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
+      role="button"
+      aria-label="Chat with our customer service team"
+    >
+      Chat With Us
+    </a>
+  </div>
+</section>
+
+<!-- Import Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<style>
+  .bg-image {
+    background-image: url("../../assets/common/step-process.png");
+  }
+  
+  /* This wrapper will control the overall width */
+  .step-cards-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden; /* Important: hide overflow at container level */
+  }
+  
+  /* Swiper can show the peek effect within the container */
+  .steps-swiper {
+    position: relative;
+    overflow: hidden; /* Change to hidden for better control */
+  }
+  
+  .step-swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 280px; /* Set a fixed width for each slide */
+  }
+  
+  /* Make cards maintain height */
+  :global(.step-card) {
+    height: 100%;
+  }
+  
+  @media (max-width: 640px) {
+    .step-swiper-slide {
+      width: 85vw; /* Larger width on mobile */
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+  import Swiper from "swiper";
+  import { FreeMode } from "swiper/modules";
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Swiper with responsive settings and pagination
+    const swiper = new Swiper(".steps-swiper", {
+      modules: [FreeMode],
+      slidesPerView: "auto", // Allow auto width slides
+      spaceBetween: 10,
+      freeMode: true,
+      initialSlide: 0,
+      slidesOffsetBefore: 40, // Space before first slide
+      slidesOffsetAfter: 20, // Space after last slide
+
+      // Responsive breakpoints
+      breakpoints: {
+        // Mobile
+        320: {
+          slidesPerView: 1.2, // Show 1 full slide + peek of next
+          spaceBetween: 10,
+          slidesOffsetBefore: 20,
+        },
+        // Larger mobile
+        480: {
+          slidesPerView: 1.8, // Show nearly 2 slides
+          spaceBetween: 10,
+          slidesOffsetBefore: 20,
+        },
+        // Tablet
+        768: {
+          slidesPerView: 2.5, // Show 2.5 slides
+          spaceBetween: 10,
+          slidesOffsetBefore: 30,
+        },
+        // Desktop
+        1024: {
+          slidesPerView: 4.4, // Show 4 full slides + peek of 5th
+          spaceBetween: 10,
+          slidesOffsetBefore: 80,
+        },
+      },
+      on: {
+        init: function () {
+          this.update();
+          setTimeout(() => {
+            this.update();
+          }, 100);
+        },
+        resize: function () {
+          this.update();
+        },
+      },
+    });
+
+    // Get section element by ID to ensure we only target this section
+    const stepSection = document.getElementById("step-process-section");
+
+    if (stepSection) {
+      // Title animation with SplitType for letter-by-letter reveal
+      const stepTitle = stepSection.querySelector(".step-title");
+      if (stepTitle) {
+        const splitTitle = new SplitType(stepTitle, { types: "chars" });
+        gsap.from(splitTitle.chars, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.03,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: stepTitle,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Description animation
+      const stepDescription = stepSection.querySelector(".step-description");
+      if (stepDescription) {
+        gsap.from(stepDescription, {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          delay: 0.4,
+          scrollTrigger: {
+            trigger: stepDescription,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Step cards staggered animation - now targeting Swiper slides
+      const stepCards = stepSection.querySelectorAll(".step-swiper-slide");
+      if (stepCards.length) {
+        gsap.from(stepCards, {
+          opacity: 0,
+          y: 40,
+          stagger: 0.2,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: stepSection.querySelector(".step-cards-container"),
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // CTA buttons animation
+      const ctaButtons = stepSection.querySelectorAll(".step-cta");
+      if (ctaButtons.length) {
+        gsap.from(ctaButtons, {
+          opacity: 0,
+          scale: 0.8,
+          stagger: 0.2,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: stepSection.querySelector(".step-cta-container"),
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }
+  });
+</script>

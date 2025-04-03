@@ -1,6 +1,32 @@
 ---
 import CommonHeaderSection from "../common/CommonHeaderSection.astro";
 import ServiceCard from "../common/ServiceCard.astro";
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+const services = [
+  {
+    title: "Book Writing",
+    description:"Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+    icon: Discuss,
+  },
+  {
+    title: "Book Publishing",
+    description:"Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+    icon: Planning,
+  },
+  {
+    title: "Article Publication",
+    description:"Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+    icon: Making,
+  },
+  {
+    title: "Cover Design",
+    description:"Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+    icon: Polishing,
+  },
+];
 ---
 
 <section id="publisher-services" class="app-max-width">
@@ -14,30 +40,18 @@ import ServiceCard from "../common/ServiceCard.astro";
   <div class="swiper services-swiper mx-auto">
     <div class="swiper-wrapper pb-16">
       <!-- Individual slides -->
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
-      <div class="swiper-slide">
-        <ServiceCard />
-      </div>
+     
+      {
+        services.map((service) => (
+          <div class="swiper-slide">
+            <ServiceCard
+              title={service.title}
+              description={service.description}
+              iconImage={service.icon}
+            />
+          </div>
+        ))
+      }
     </div>
 
     <!-- Add pagination -->

@@ -22,16 +22,16 @@ const intro = {
   getStartedButton: true,
   headings: [
     "Professional and Experienced Writers",
-    "Timely Delivery",
     "Professional Editing and Proofreading",
-    "Affordable Packages",
     "An Efficient Ghostwriting Procedure",
     "Complete Customer Satisfaction",
+    "Timely Delivery",
+    "Affordable Packages",
   ],
 };
 ---
 
-<Layout title="Home | Nixxon Publishers">
+<Layout title="Ghost Writing | Nixxon Publishers">
   <Navbar />
   <ServiceHero
     title={title}
@@ -45,6 +45,7 @@ const intro = {
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
     headings={intro.headings}
+    leftColumnElements={4}
   />
   <ArtWork />
   <Categories />

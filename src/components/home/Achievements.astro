@@ -3,7 +3,10 @@ import Image from "astro/components/Image.astro";
 import Books from "../../assets/home/achievements.png";
 ---
 
-<section class="app-right-padding flex gap-x-1 py-16" id="achievements-section">
+<section
+  class="app-right-padding flex gap-x-1 py-[6dvw]"
+  id="achievements-section"
+>
   <div class="w-1/2 image-container">
     <Image src={Books} alt="Books" class="w-full" />
   </div>
@@ -11,11 +14,13 @@ import Books from "../../assets/home/achievements.png";
     class="flex-1 flex flex-col justify-center ml-4 gap-y-4 content-container"
   >
     <h3
-      class="text-xl lg:text-3xl xl:text-4xl font-semibold text-primary-red mb-2 achievement-title"
+      class="text-xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-semibold text-primary-red mb-2 achievement-title"
     >
       Our Achievements
     </h3>
-    <p class="text-xs xl:text-[15px] achievement-text">
+    <p
+      class="text-xs xl:text-sm canvas:text-[15px] 2xl:text-xl achievement-text"
+    >
       Our list of clients includes the bestselling writers, editorial agencies,
       businesses, publication companies, journals, and various first-time
       authors. We stand as the well-reputed firm in the ghostwriting industry
@@ -32,11 +37,13 @@ import Books from "../../assets/home/achievements.png";
           0
         </h4>
         <p
-          class="font-semibold text-xs md:text-sm xl:text-base text-center stat-title my-2"
+          class="font-semibold text-xs md:text-sm xl:text-base 2xl:text-lg text-center stat-title my-2"
         >
           Years of Experience
         </p>
-        <p class="text-[10px] xl:text-xs text-center stat-description">
+        <p
+          class="text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
+        >
           We have over 9 years of experience in Designing, Writing and Marketing
         </p>
       </div>
@@ -49,11 +56,13 @@ import Books from "../../assets/home/achievements.png";
           0
         </h4>
         <p
-          class="font-semibold text-xs md:text-sm xl:text-base text-center stat-title my-2"
+          class="font-semibold text-xs md:text-sm xl:text-base 2xl:text-lg text-center stat-title my-2"
         >
           Books Published
         </p>
-        <p class="text-[10px] xl:text-xs text-center stat-description">
+        <p
+          class="text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
+        >
           The counter is going up day by day. We know how to publish books in a
           fast manner.
         </p>
@@ -67,11 +76,13 @@ import Books from "../../assets/home/achievements.png";
           0
         </h4>
         <p
-          class="font-semibold text-xs md:text-sm xl:text-base text-center stat-title my-2"
+          class="font-semibold text-xs md:text-sm xl:text-base 2xl:text-lg text-center stat-title my-2"
         >
           Clients
         </p>
-        <p class="text-[10px] xl:text-xs stat-description">
+        <p
+          class="text-[10px] xl:text-xs 2xl:text-base stat-description text-center"
+        >
           Ghostwriting Professionals has clients from all around the globe.
         </p>
       </div>
@@ -120,7 +131,7 @@ import Books from "../../assets/home/achievements.png";
         duration: 0.6,
         stagger: 0.02,
       },
-      "-=0.4"
+      "-=0.4",
     )
     .to(
       ".achievement-text",
@@ -129,7 +140,7 @@ import Books from "../../assets/home/achievements.png";
         y: 0,
         duration: 0.8,
       },
-      "-=0.2"
+      "-=0.2",
     )
     .to(
       ".stat-item",
@@ -139,7 +150,7 @@ import Books from "../../assets/home/achievements.png";
         stagger: 0.2,
         duration: 0.8,
       },
-      "-=0.4"
+      "-=0.4",
     );
 
   // Sequential counter animations

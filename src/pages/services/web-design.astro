@@ -22,6 +22,38 @@ const intro = {
 import IntroImage from "../../assets/common/intro-pics/web-design.png";
 import Quote from "../../components/common/Quote.astro";
 import ServicesRow from "../../components/common/ServicesRow.astro";
+
+import Discuss from "../../assets/services-icons/discussion-with-customers.png";
+import Planning from "../../assets/services-icons/our-planning.png";
+import Making from "../../assets/services-icons/compelling-videos.png";
+import Polishing from "../../assets/services-icons/polishing.png";
+
+const services = [
+  {
+    title: "Results-Based Approach",
+    description:
+      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+    icon: Discuss,
+  },
+  {
+    title: "Comparative Evaluation",
+    description:
+      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly analyzes market trends to ensure your book video stands out.",
+    icon: Planning,
+  },
+  {
+    title: "Customised Products",
+    description:
+      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+    icon: Making,
+  },
+  {
+    title: "Content Categorized by Brand",
+    description:
+      "Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or brand-specific marketing, we ensure your content reflects your unique identity.",
+    icon: Polishing,
+  },
+];
 ---
 
 <Layout title="Web Design Service | Nixxon Publishers">
@@ -39,7 +71,7 @@ import ServicesRow from "../../components/common/ServicesRow.astro";
     image={IntroImage}
     getStartedButton={intro.getStartedButton}
   />
-  <ServicesRow />
+  <ServicesRow services={services} />
   <Quote />
   <Testimonials />
   <Footer />

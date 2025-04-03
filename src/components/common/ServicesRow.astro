@@ -5,6 +5,7 @@ const {
       title: "Book Writing",
       description:
         " Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+      icon: Icon,
     },
     {
       title: "Book Editing",
@@ -24,19 +25,18 @@ const {
   ],
 } = Astro.props;
 import ServiceCard from "./ServiceCard.astro";
+import Icon from "../../assets/home/publisher-services/book-writing.svg";
 ---
 
-<section
-  id="services-row-section"
-  class="app-max-width py-24"
->
-  <div class="flex justify-center gap-6">
+<section id="services-row-section" class="app-max-width py-24">
+  <div class="flex justify-center items-stretch gap-6">
     {
       services.map((service, index) => (
         <div id={`service-card-${index}`} class="service-card">
           <ServiceCard
             title={service.title}
             description={service.description}
+            iconImage={service.icon || Icon}
           />
         </div>
       ))

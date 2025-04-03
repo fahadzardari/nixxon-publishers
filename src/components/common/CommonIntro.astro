@@ -7,8 +7,10 @@ const {
   image,
   getStartedButton = false,
   headings = [],
+  leftColumnElements = 3,
 } = Astro.props;
 import FancyTextHeading from "./FancyTextHeading.astro";
+
 ---
 
 <section
@@ -18,20 +20,19 @@ import FancyTextHeading from "./FancyTextHeading.astro";
   <Image class="w-1/2" src={image} alt={title} id="intro-image" />
   <div class="w-1/2 flex flex-col gap-y-4 xl:gap-y-6 ml-4">
     <h1
-      class="font-semibold text-2xl xl:text-4xl 2xl:text-6xl"
+      class="font-semibold text-2xl xl:text-3xl canvas:text-4xl 3xl:text-5xl 4xl:text-6xl"
       id="intro-title"
     >
       {title}
     </h1>
     <p
-      class="text-sm xl:text-base 2xl:text-lg"
+      class="text-xs xl:text-sm canvas:text-base 2xl:text-lg"
       id="intro-description"
       set:html={description}
     />
-
     {
       headings.length > 0 && (
-        <div class="flex flex-wrap gap-x-4 gap-y-4">
+        <div class=" grid w-full gap-1 canvas:gap-4" style={`grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(${leftColumnElements}, auto);`}>
           {headings.map((heading) => (
             <FancyTextHeading heading={heading} />
           ))}
@@ -116,7 +117,7 @@ import FancyTextHeading from "./FancyTextHeading.astro";
         duration: 0.6,
         ease: "back.out(1.7)",
       },
-      "-=0.5"
+      "-=0.5",
     );
 
     // Description paragraph fade in
@@ -128,8 +129,24 @@ import FancyTextHeading from "./FancyTextHeading.astro";
         duration: 0.8,
         ease: "power2.out",
       },
-      "-=0.4"
+      "-=0.4",
     );
+
+    // Animate headings with staggered effect
+    const headingElements = document.querySelectorAll(".fancy-text-heading");
+    if (headingElements.length > 0) {
+      tl.from(
+        headingElements,
+        {
+          opacity: 0,
+          y: 15,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "-=0.6",
+      );
+    }
 
     // Button animation (if present)
     if (document.querySelector("#intro-button")) {
@@ -141,7 +158,7 @@ import FancyTextHeading from "./FancyTextHeading.astro";
           duration: 0.6,
           ease: "elastic.out(1, 0.5)",
         },
-        "-=0.5"
+        "-=0.3",
       );
     }
 

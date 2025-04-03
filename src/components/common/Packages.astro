@@ -9,7 +9,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="app-max-width py-16" id="packages-section">
+<section class="app-max-width py-[8dvw]" id="packages-section">
   <CommonHeaderSection
     title={title}
     subtitle={subtitle}
@@ -80,7 +80,7 @@ const {
   function initTabSystem() {
     const tabButtons = document.querySelectorAll("#packages-tabs .tab-button");
     const packageCardsContainer = document.getElementById(
-      "package-cards-container"
+      "package-cards-container",
     );
 
     // Function to set active tab
@@ -186,12 +186,12 @@ const {
         duration: 0.8,
         ease: "power2.out",
       },
-      "-=0.3"
+      "-=0.3",
     );
 
     // Animate individual card elements
     const cards = document.querySelectorAll(
-      "#package-cards-container > article"
+      "#package-cards-container > article",
     );
     cards.forEach((card) => {
       // Add hover animation
@@ -214,7 +214,7 @@ const {
 
     // Add bounce effect to the active tab
     const activeTabButton = document.querySelector(
-      "#packages-tabs .active-tab-button"
+      "#packages-tabs .active-tab-button",
     );
     if (activeTabButton) {
       mainTimeline.from(
@@ -224,7 +224,7 @@ const {
           duration: 0.5,
           ease: "elastic.out(1, 0.3)",
         },
-        "-=0.5"
+        "-=0.5",
       );
     }
   }
