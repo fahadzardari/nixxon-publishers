@@ -65,7 +65,7 @@ body {
 }
 
 .tab-button {
-  @apply cursor-pointer rounded-md border border-[#303030] px-4 py-2 text-sm font-medium text-[#303030] xl:px-6 xl:text-base;
+  @apply cursor-pointer rounded-md border border-[#303030] px-2 py-2 text-xs font-medium text-[#303030] md:px-4 md:text-sm xl:px-6 xl:text-base;
 }
 
 .active-tab-button {

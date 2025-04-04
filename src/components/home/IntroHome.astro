@@ -4,19 +4,22 @@ import IntroImage from "../../assets/home/intro.png";
 ---
 
 <section
-  class="app-max-width flex items-center gap-x-6 2xl:gap-x-8 py-[8dvw] overflow-hidden"
+  class="app-max-width flex flex-col gap-y-4 md:flex-row items-center gap-x-6 2xl:gap-x-8 py-[8dvw] overflow-hidden"
   id="home-intro-section"
 >
-  <div class="w-[50%] flex flex-col gap-y-4 h-full" id="home-intro-content">
+  <div
+    class="order-2 md:order-1 md:w-[50%] flex flex-col gap-y-4 h-full"
+    id="home-intro-content"
+  >
     <h3
-      class="text-heading-black md:text-xl lg:text-2xl xl:text-3xl canvas:text-4xl 2xl:text-5xl font-semibold"
+      class="text-heading-black text-xl lg:text-2xl xl:text-3xl canvas:text-4xl 2xl:text-5xl font-semibold"
       id="home-intro-heading"
     >
       Turn your book ideas into reality with Nixxon Publishers—your trusted
       writing partner.
     </h3>
     <div
-      class="gap-y-1 flex flex-col text-xs xl:text-sm canvas:text-base 2xl:text-lg 2xl flex-1 leading-tight"
+      class="gap-y-1 flex flex-col text-[10px] sm:text-xs xl:text-sm canvas:text-base 2xl:text-lg 2xl flex-1 leading-tight"
       id="home-intro-paragraphs"
     >
       <p id="intro-p1">
@@ -57,7 +60,10 @@ import IntroImage from "../../assets/home/intro.png";
       </p>
     </div>
   </div>
-  <div class="h-full w-[50%] overflow-hidden" id="home-intro-image-container">
+  <div
+    class="md:order-2 h-full md:w-[50%] overflow-hidden"
+    id="home-intro-image-container"
+  >
     <Image
       src={IntroImage}
       alt="Intro Image"
@@ -85,54 +91,130 @@ import IntroImage from "../../assets/home/intro.png";
     // Get all paragraph elements
     const paragraphs = document.querySelectorAll("#home-intro-paragraphs p");
 
-    // Create animation timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#home-intro-section",
-        start: "top 70%",
-        end: "bottom 70%",
-        toggleActions: "play none none none",
-      },
+    // Set up different triggers based on screen size
+    function createScrollTrigger() {
+      // Clear any existing ScrollTriggers to prevent duplicates on resize
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+
+      if (window.innerWidth < 768) {
+        // MOBILE: Separate timelines for image and text
+
+        // Image timeline
+        const imageTimeline = gsap.timeline({ paused: true });
+
+        // Image animation
+        gsap.set("#home-intro-image", {
+          clipPath: "inset(0 100% 0 0)",
+          scale: 1.05,
+        });
+
+        imageTimeline.to("#home-intro-image", {
+          clipPath: "inset(0 0% 0 0)",
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+        });
+
+        // Create image trigger
+        ScrollTrigger.create({
+          trigger: "#home-intro-image-container",
+          start: "top 80%",
+          onEnter: () => imageTimeline.play(),
+        });
+
+        // Text timeline
+        const textTimeline = gsap.timeline({ paused: true });
+
+        // Heading animation
+        textTimeline.from(heading.chars, {
+          opacity: 0,
+          y: 20,
+          rotateX: -90,
+          stagger: 0.02,
+          duration: 0.7,
+          ease: "back.out(1.5)",
+        });
+
+        // Paragraphs animation
+        textTimeline.from(
+          paragraphs,
+          {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        );
+
+        // Create text trigger
+        ScrollTrigger.create({
+          trigger: "#home-intro-content",
+          start: "top 80%",
+          onEnter: () => textTimeline.play(),
+        });
+      } else {
+        // DESKTOP: Single timeline for everything
+        const desktopTimeline = gsap.timeline({ paused: true });
+
+        // Heading animation
+        desktopTimeline.from(heading.chars, {
+          opacity: 0,
+          y: 20,
+          rotateX: -90,
+          stagger: 0.02,
+          duration: 0.7,
+          ease: "back.out(1.5)",
+        });
+
+        // Paragraphs animation
+        desktopTimeline.from(
+          paragraphs,
+          {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        );
+
+        // Image animation
+        gsap.set("#home-intro-image", {
+          clipPath: "inset(0 100% 0 0)",
+          scale: 1.05,
+        });
+
+        desktopTimeline.to(
+          "#home-intro-image",
+          {
+            clipPath: "inset(0 0% 0 0)",
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          "-=1.5",
+        );
+
+        // Desktop trigger
+        ScrollTrigger.create({
+          trigger: "#home-intro-content",
+          start: "top 70%",
+          onEnter: () => desktopTimeline.play(),
+        });
+      }
+    }
+
+    // Initial setup
+    createScrollTrigger();
+
+    // Update on window resize
+    window.addEventListener("resize", () => {
+      // Debounce resize events
+      clearTimeout(window.resizeTimer);
+      window.resizeTimer = setTimeout(createScrollTrigger, 250);
     });
-
-    // Heading animation with staggered characters
-    tl.from(heading.chars, {
-      opacity: 0,
-      y: 20,
-      rotateX: -90,
-      stagger: 0.02,
-      duration: 0.7,
-      ease: "back.out(1.5)",
-    });
-
-    // Animate paragraphs with staggered entrance
-    tl.from(
-      paragraphs,
-      {
-        opacity: 0,
-        y: 30,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
-      },
-      "-=0.4",
-    );
-
-    // Image animation - clip approach instead of transform
-    gsap.set("#home-intro-image", {
-      clipPath: "inset(0 100% 0 0)",
-      scale: 1.05,
-    });
-
-    tl.to(
-      "#home-intro-image",
-      {
-        clipPath: "inset(0 0% 0 0)",
-        scale: 1,
-        duration: 1.2,
-        ease: "power3.out",
-      },
-      "-=1.5",
-    );
   });
 </script>

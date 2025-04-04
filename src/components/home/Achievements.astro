@@ -4,22 +4,22 @@ import Books from "../../assets/home/achievements.png";
 ---
 
 <section
-  class="app-right-padding flex gap-x-1 py-[6dvw]"
+  class="md:app-right-padding flex flex-col md:flex-row md:gap-x-1 py-[6dvw]"
   id="achievements-section"
 >
-  <div class="w-1/2 image-container">
+  <div class="md:w-1/2 image-container">
     <Image src={Books} alt="Books" class="w-full" />
   </div>
   <div
-    class="flex-1 flex flex-col justify-center ml-4 gap-y-4 content-container"
+    class="flex-1 flex flex-col justify-center gap-y-4 content-container mx-4 md:ml-4"
   >
     <h3
-      class="text-xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-semibold text-primary-red mb-2 achievement-title"
+      class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-semibold text-primary-red mb-2 achievement-title"
     >
       Our Achievements
     </h3>
     <p
-      class="text-xs xl:text-sm canvas:text-[15px] 2xl:text-xl achievement-text"
+      class="text-[10px] sm:text-xs xl:text-sm canvas:text-[15px] 2xl:text-xl achievement-text"
     >
       Our list of clients includes the bestselling writers, editorial agencies,
       businesses, publication companies, journals, and various first-time
@@ -42,7 +42,7 @@ import Books from "../../assets/home/achievements.png";
           Years of Experience
         </p>
         <p
-          class="text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
+          class="text-[8px] sm:text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
         >
           We have over 9 years of experience in Designing, Writing and Marketing
         </p>
@@ -61,7 +61,7 @@ import Books from "../../assets/home/achievements.png";
           Books Published
         </p>
         <p
-          class="text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
+          class="text-[8px] sm:text-[10px] xl:text-xs 2xl:text-base text-center stat-description"
         >
           The counter is going up day by day. We know how to publish books in a
           fast manner.
@@ -81,7 +81,7 @@ import Books from "../../assets/home/achievements.png";
           Clients
         </p>
         <p
-          class="text-[10px] xl:text-xs 2xl:text-base stat-description text-center"
+          class="text-[8px] sm:text-[10px] xl:text-xs 2xl:text-base stat-description text-center"
         >
           Ghostwriting Professionals has clients from all around the globe.
         </p>
@@ -95,45 +95,72 @@ import Books from "../../assets/home/achievements.png";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import SplitType from "split-type";
 
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
 
-  // Split text for animations - only for the title
-  const achievementTitle = new SplitType(".achievement-title", {
-    types: "words, chars",
-  });
-  const statTitles = new SplitType(".stat-title", { types: "words" });
+    // Make sure section is visible for ScrollTrigger
+    gsap.set("#achievements-section", { opacity: 1, visibility: "visible" });
 
-  // Set initial states
-  gsap.set("#achievements-section", { opacity: 0, y: 50 });
-  gsap.set(".image-container", { opacity: 0, x: -50 });
-  gsap.set(achievementTitle.chars, { opacity: 0, y: 20 });
-  gsap.set(".achievement-text", { opacity: 0, y: 10 }); // Set on whole paragraph
-  gsap.set(".stat-item", { opacity: 0, y: 30 });
+    // Ensure all needed elements exist before proceeding
+    const section = document.querySelector("#achievements-section");
+    if (!section) return;
 
-  // Create the animation timeline
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#achievements-section",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
+    // Split text for animations - only for the title
+    let achievementTitle;
+    try {
+      achievementTitle = new SplitType(".achievement-title", {
+        types: "words, chars",
+      });
 
-  // Add animations to timeline
-  tl.to("#achievements-section", { opacity: 1, y: 0, duration: 0.6 })
-    .to(".image-container", { opacity: 1, x: 0, duration: 0.8 }, "-=0.4")
-    .to(
-      achievementTitle.chars,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.02,
+      const statTitles = new SplitType(".stat-title", { types: "words" });
+    } catch (error) {
+      console.error("Error splitting text:", error);
+    }
+
+    // Set initial states (but don't hide the section completely)
+    gsap.set("#achievements-section", { y: 50 });
+    gsap.set(".image-container", { opacity: 0, x: -50 });
+    if (achievementTitle && achievementTitle.chars) {
+      gsap.set(achievementTitle.chars, { opacity: 0, y: 20 });
+    }
+    gsap.set(".achievement-text", { opacity: 0, y: 10 });
+    gsap.set(".stat-item", { opacity: 0, y: 30 });
+
+    // Create the animation timeline with markers for debugging
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#achievements-section",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+        // markers: true, // Add markers to help debug (remove in production)
+        id: "achievements",
       },
+    });
+
+    // Add animations to timeline
+    tl.to("#achievements-section", { y: 0, duration: 0.6 }).to(
+      ".image-container",
+      { opacity: 1, x: 0, duration: 0.8 },
       "-=0.4",
-    )
-    .to(
+    );
+
+    // Only add char animations if they exist
+    if (achievementTitle && achievementTitle.chars) {
+      tl.to(
+        achievementTitle.chars,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.02,
+        },
+        "-=0.4",
+      );
+    }
+
+    tl.to(
       ".achievement-text",
       {
         opacity: 1,
@@ -141,68 +168,64 @@ import Books from "../../assets/home/achievements.png";
         duration: 0.8,
       },
       "-=0.2",
-    )
-    .to(
+    ).to(
       ".stat-item",
       {
         opacity: 1,
         y: 0,
         stagger: 0.2,
         duration: 0.8,
+        onComplete: function () {
+          // Start counters immediately after stat items appear
+          startCounters();
+        },
       },
       "-=0.4",
     );
 
-  // Sequential counter animations
-  const counters = document.querySelectorAll(".counter");
+    // Function to handle all counters in sequence
+    function startCounters() {
+      const counters = document.querySelectorAll(".counter");
+      if (counters.length === 0) return;
 
-  // Wait for the stats container to be visible before starting counters
-  tl.add(() => {
-    // First counter (9 years)
-    const counter1 = counters[0];
-    const target1 = parseInt(counter1.getAttribute("data-target"));
+      // First counter
+      animateCounter(counters[0], 0, function () {
+        // When first counter is done, start second
+        if (counters.length > 1) {
+          animateCounter(counters[1], 1, function () {
+            // When second counter is done, start third
+            if (counters.length > 2) {
+              animateCounter(counters[2], 2);
+            }
+          });
+        }
+      });
+    }
 
-    gsap.to(counter1, {
-      innerHTML: target1,
-      duration: 0.5,
-      ease: "power1.inOut",
-      onUpdate: function () {
-        counter1.innerHTML = Math.ceil(this.targets()[0].innerHTML);
-      },
-      onComplete: startSecondCounter,
-    });
+    function animateCounter(counterElement, index, onComplete) {
+      if (!counterElement) return;
+
+      const target = parseInt(
+        counterElement.getAttribute("data-target") || "0",
+      );
+      const suffix = counterElement.getAttribute("data-suffix") || "";
+
+      // Adjust duration based on counter value
+      const duration = index === 0 ? 0.5 : index === 1 ? 2 : 2.5;
+
+      gsap.to(
+        { value: 0 },
+        {
+          value: target,
+          duration: duration,
+          ease: "power1.inOut",
+          onUpdate: function () {
+            counterElement.textContent =
+              Math.ceil(this.targets()[0].value) + suffix;
+          },
+          onComplete: onComplete,
+        },
+      );
+    }
   });
-
-  function startSecondCounter() {
-    // Second counter (100+ books)
-    const counter2 = counters[1];
-    const target2 = parseInt(counter2.getAttribute("data-target"));
-    const suffix2 = counter2.getAttribute("data-suffix") || "";
-
-    gsap.to(counter2, {
-      innerHTML: target2,
-      duration: 2,
-      ease: "power1.inOut",
-      onUpdate: function () {
-        counter2.innerHTML = Math.ceil(this.targets()[0].innerHTML) + suffix2;
-      },
-      onComplete: startThirdCounter,
-    });
-  }
-
-  function startThirdCounter() {
-    // Third counter (250+ clients)
-    const counter3 = counters[2];
-    const target3 = parseInt(counter3.getAttribute("data-target"));
-    const suffix3 = counter3.getAttribute("data-suffix") || "";
-
-    gsap.to(counter3, {
-      innerHTML: target3,
-      duration: 2.5,
-      ease: "power1.inOut",
-      onUpdate: function () {
-        counter3.innerHTML = Math.ceil(this.targets()[0].innerHTML) + suffix3;
-      },
-    });
-  }
 </script>

@@ -18,7 +18,10 @@ const {
 
   {
     showTab && (
-      <div class="flex gap-x-6 items-center justify-center" id="packages-tabs">
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:flex gap-x-1 gap-y-4 md:gap-y-0 md:gap-x-6 items-center md:justify-center"
+        id="packages-tabs"
+      >
         <button class="tab-button active-tab-button" data-tab="ebook">
           eBook Writing
         </button>
@@ -42,7 +45,7 @@ const {
   }
 
   <div
-    class="flex flex-row justify-center gap-x-6 mt-16"
+    class="flex flex-col md:flex-row justify-center gap-y-8 md:gap-x-6 mt-8 md:mt-16"
     id="package-cards-container"
   >
     <slot />

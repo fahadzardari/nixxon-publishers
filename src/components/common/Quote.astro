@@ -8,14 +8,14 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
   class="bg-quote-maroon text-white app-left-padding flex flex-row items-stretch justify-between overflow-hidden"
   aria-labelledby="quote-heading"
 >
-  <div class="w-1/2 py-6 flex flex-col gap-y-3 xl:gap-y-6 justify-center">
+  <div class="md:w-1/2 py-6 flex flex-col gap-y-3 xl:gap-y-6 justify-center">
     <h2
       id="quote-heading"
-      class="md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl font-semibold split-heading"
+      class="text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl font-semibold split-heading"
     >
       THE PERFECT SOLUTION TO YOUR BOOK WRITING EDITING AND PUBLISHING PROBLEMS!
     </h2>
-    <p class="text-sm xl:text-base quote-paragraph opacity-0">
+    <p class="text-xs md:text-sm xl:text-base quote-paragraph opacity-0 max-w-[90dvw]">
       Do you have an interesting story that you wish to convert in a book? We
       have a team of award-winning book writers who can bring your ideas into
       reality.
@@ -41,7 +41,7 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
       </a>
     </div>
   </div>
-  <div class="h-full quote-image overflow-hidden">
+  <div class="hidden md:block h-full quote-image overflow-hidden">
     <Image
       src={QuoteSideImage}
       alt="Author working with Nixxon Publishers on book writing and publishing"
