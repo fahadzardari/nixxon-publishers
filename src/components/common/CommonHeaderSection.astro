@@ -4,20 +4,20 @@ const { title = "", subtitle = "", description = "" } = Astro.props;
 ---
 
 <div
-  class="common-header-section flex flex-col gap-y-1 md:items-center md:justify-center py-10 text-center xl:w-[90%] 2xl:w-[85%] mx-auto"
+  class="common-header-section mx-auto flex flex-col gap-y-1 py-10 text-center md:items-center md:justify-center xl:w-[90%] 2xl:w-[85%]"
 >
   <h3
-    class="font-semibold text-heading-black text-xl sm:text-xl md:text-2xl xl:text-3xl canvas:text-4xl 3xl:text-5xl artwork-heading overflow-hidden"
+    class="text-heading-black canvas:text-4xl 3xl:text-5xl artwork-heading overflow-hidden text-xl font-semibold sm:text-xl md:text-2xl xl:text-3xl"
   >
     {title}
   </h3>
   <p
-    class="font-semibold text-primary-red text-[10px] md:text-xs xl:text-sm canvas:text-base 3xl:text-2xl artwork-subheading opacity-0"
+    class="text-primary-red canvas:text-base 3xl:text-2xl artwork-subheading text-[10px] font-semibold opacity-0 md:text-xs xl:text-sm"
   >
     {subtitle}
   </p>
   <p
-    class="text-[10px] md:text-xs xl:text-sm canvas:text-base 3xl:text-xl artwork-description opacity-0"
+    class="canvas:text-base 3xl:text-xl artwork-description text-[10px] opacity-0 md:text-xs xl:text-sm"
   >
     {description}
   </p>

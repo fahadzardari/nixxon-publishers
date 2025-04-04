@@ -8,15 +8,15 @@ import StepCard from "./StepCard.astro";
 
 <section
   id="step-process-section"
-  class="bg-image bg-cover flex gap-y-8 flex-col justify-center items-center py-8 canvas:py-16"
+  class="bg-image canvas:py-16 flex flex-col items-center justify-center gap-y-8 bg-cover py-8"
 >
-  <div class="text-center text-white app-max-width">
-    <h2 class="text-4xl 2xl:text-5xl font-semibold mb-2 step-title">{title}</h2>
-    <p class="text-base text-center step-description">{description}</p>
+  <div class="app-max-width text-center text-white">
+    <h2 class="step-title mb-2 text-4xl font-semibold 2xl:text-5xl">{title}</h2>
+    <p class="step-description text-center text-base">{description}</p>
   </div>
 
   <!-- Swiper container for steps -->
-  <div class="swiper steps-swiper w-full step-cards-container">
+  <div class="swiper steps-swiper step-cards-container w-full">
     <div class="swiper-wrapper">
       <div class="swiper-slide step-swiper-slide">
         <StepCard
@@ -61,10 +61,10 @@ import StepCard from "./StepCard.astro";
     </div>
   </div>
 
-  <div class="mx-auto flex gap-x-4 justify-center step-cta-container">
+  <div class="step-cta-container mx-auto flex justify-center gap-x-4">
     <a
       href="/quote"
-      class="bg-[#E7062E] text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
+      class="step-cta rounded-lg bg-[#E7062E] px-6 py-2 text-base font-semibold text-white 2xl:px-8 2xl:py-3 2xl:text-lg"
       role="button"
       aria-label="Get a quote for our services"
     >
@@ -72,7 +72,7 @@ import StepCard from "./StepCard.astro";
     </a>
     <a
       href="/contact"
-      class="border border-white text-white font-semibold text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg step-cta"
+      class="step-cta rounded-lg border border-white px-6 py-2 text-base font-semibold text-white 2xl:px-8 2xl:py-3 2xl:text-lg"
       role="button"
       aria-label="Chat with our customer service team"
     >

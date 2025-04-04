@@ -4,34 +4,34 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 ---
 
 <section
-  class="service-hero-section app-max-width pt-[70px] xl:pt-[120px] pb-6 xl:pb-8 bg-primary-blue text-white flex items-center justify-between gap-x-4 xl:gap-x-6 2xl:gap-x-8"
+  class="service-hero-section app-max-width bg-primary-blue flex items-center justify-between gap-x-4 pt-[70px] pb-6 text-white xl:gap-x-6 xl:pt-[120px] xl:pb-8 2xl:gap-x-8"
   aria-labelledby="service-title"
 >
   <article
-    class="service-hero-content py-12 w-[55%] flex flex-col gap-y-3 xl:gap-y-4"
+    class="service-hero-content flex w-[55%] flex-col gap-y-3 py-12 xl:gap-y-4"
   >
     <div>
       <h4
-        class="service-hero-pagename text-xl xl:text-2xl font-semibold ml-1 mb-2"
+        class="service-hero-pagename mb-2 ml-1 text-xl font-semibold xl:text-2xl"
       >
         {pageName}
       </h4>
       <h1
         id="service-title"
-        class="font-semibold text-3xl xl:text-4xl canvas:text-[46px] 3xl:text-5xl 4xl:text-6xl leading-tight"
+        class="canvas:text-[46px] 3xl:text-5xl 4xl:text-6xl text-3xl leading-tight font-semibold xl:text-4xl"
       >
         {title}
       </h1>
     </div>
     <p
-      class="service-hero-description text-sm canvas:text-base 2xl:text-lg xl:leading-[150%] w-[95%]"
+      class="service-hero-description canvas:text-base w-[95%] text-sm xl:leading-[150%] 2xl:text-lg"
     >
       {description}
     </p>
     <div class="service-hero-buttons flex gap-x-4">
       <a
         href="/quote"
-        class="service-hero-button bg-[#E7062E] text-white font-semibold text-sm xl:text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg"
+        class="service-hero-button rounded-lg bg-[#E7062E] px-6 py-2 text-sm font-semibold text-white xl:text-base 2xl:px-8 2xl:py-3 2xl:text-lg"
         role="button"
         aria-label="Get a quote for our services"
       >
@@ -39,7 +39,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </a>
       <a
         href="/contact"
-        class="service-hero-button border border-white text-white font-semibold text-sm xl:text-base 2xl:text-lg px-6 2xl:px-8 py-2 2xl:py-3 rounded-lg"
+        class="service-hero-button rounded-lg border border-white px-6 py-2 text-sm font-semibold text-white xl:text-base 2xl:px-8 2xl:py-3 2xl:text-lg"
         role="button"
         aria-label="Chat with our customer service team"
       >

@@ -5,27 +5,29 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
 
 <section
   id="quote-section"
-  class="bg-quote-maroon text-white app-left-padding flex flex-row items-stretch justify-between overflow-hidden"
+  class="bg-quote-maroon app-left-padding flex flex-row items-stretch justify-between overflow-hidden text-white"
   aria-labelledby="quote-heading"
 >
-  <div class="md:w-1/2 py-6 flex flex-col gap-y-3 xl:gap-y-6 justify-center">
+  <div class="flex flex-col justify-center gap-y-3 py-6 md:w-1/2 xl:gap-y-6">
     <h2
       id="quote-heading"
-      class="text-lg md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl font-semibold split-heading"
+      class="split-heading text-lg font-semibold md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl"
     >
       THE PERFECT SOLUTION TO YOUR BOOK WRITING EDITING AND PUBLISHING PROBLEMS!
     </h2>
-    <p class="text-xs md:text-sm xl:text-base quote-paragraph opacity-0 max-w-[90dvw]">
+    <p
+      class="quote-paragraph max-w-[90dvw] text-xs opacity-0 md:text-sm xl:text-base"
+    >
       Do you have an interesting story that you wish to convert in a book? We
       have a team of award-winning book writers who can bring your ideas into
       reality.
     </p>
     <div
-      class="flex gap-x-4 font-semibold text-sm xl:text-base quote-buttons opacity-0"
+      class="quote-buttons flex gap-x-4 text-sm font-semibold opacity-0 xl:text-base"
     >
       <a
         href="/get-quote"
-        class="bg-primary-red py-2 px-6 rounded-md text-center quote-button-primary"
+        class="bg-primary-red quote-button-primary rounded-md px-6 py-2 text-center"
         role="button"
         aria-label="Request a free quote for book writing services"
       >
@@ -33,7 +35,7 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
       </a>
       <a
         href="/contact"
-        class="border border-white rounded-md py-2 px-6 text-center quote-button-secondary"
+        class="quote-button-secondary rounded-md border border-white px-6 py-2 text-center"
         role="button"
         aria-label="Start a conversation with our team"
       >
@@ -41,11 +43,11 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
       </a>
     </div>
   </div>
-  <div class="hidden md:block h-full quote-image overflow-hidden">
+  <div class="quote-image hidden h-full overflow-hidden md:block">
     <Image
       src={QuoteSideImage}
       alt="Author working with Nixxon Publishers on book writing and publishing"
-      class="object-cover h-full w-full"
+      class="h-full w-full object-cover"
       loading={"lazy"}
     />
   </div>

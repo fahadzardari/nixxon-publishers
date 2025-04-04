@@ -13,26 +13,26 @@ import FancyTextHeading from "./FancyTextHeading.astro";
 ---
 
 <section
-  class="app-max-width flex items-center gap-x-4 xl:gap-x-6 2xl:gap-x-8 pb-16 pt-40"
+  class="app-max-width flex items-center gap-x-4 pt-40 pb-16 xl:gap-x-6 2xl:gap-x-8"
   id="common-intro-section"
 >
   <Image class="w-1/2" src={image} alt={title} id="intro-image" />
-  <div class="w-1/2 flex flex-col gap-y-4 xl:gap-y-6 ml-4">
+  <div class="ml-4 flex w-1/2 flex-col gap-y-4 xl:gap-y-6">
     <h1
-      class="font-semibold text-2xl xl:text-3xl canvas:text-4xl 3xl:text-5xl 4xl:text-6xl"
+      class="canvas:text-4xl 3xl:text-5xl 4xl:text-6xl text-2xl font-semibold xl:text-3xl"
       id="intro-title"
     >
       {title}
     </h1>
     <p
-      class="text-xs xl:text-sm canvas:text-base 2xl:text-lg"
+      class="canvas:text-base text-xs xl:text-sm 2xl:text-lg"
       id="intro-description"
       set:html={description}
     />
     {
       headings.length > 0 && (
         <div
-          class=" grid w-full gap-1 canvas:gap-4"
+          class="canvas:gap-4 grid w-full gap-1"
           style={`grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(${leftColumnElements}, auto);`}
         >
           {headings.map((heading) => (
@@ -46,7 +46,7 @@ import FancyTextHeading from "./FancyTextHeading.astro";
       getStartedButton && (
         <a
           href="/quote"
-          class="bg-primary-red w-fit text-white flex items-center gap-x-2 font-semibold text-base 2xl:text-lg px-6 py-2 rounded-lg"
+          class="bg-primary-red flex w-fit items-center gap-x-2 rounded-lg px-6 py-2 text-base font-semibold text-white 2xl:text-lg"
           role="button"
           aria-label="Get a quote for our services"
           id="intro-button"

@@ -4,22 +4,22 @@ import IntroImage from "../../assets/home/intro.png";
 ---
 
 <section
-  class="app-max-width flex flex-col gap-y-4 md:flex-row items-center gap-x-6 2xl:gap-x-8 py-[8dvw] overflow-hidden"
+  class="app-max-width flex flex-col items-center gap-x-6 gap-y-4 overflow-hidden py-[8dvw] md:flex-row 2xl:gap-x-8"
   id="home-intro-section"
 >
   <div
-    class="order-2 md:order-1 md:w-[50%] flex flex-col gap-y-4 h-full"
+    class="order-2 flex h-full flex-col gap-y-4 md:order-1 md:w-[50%]"
     id="home-intro-content"
   >
     <h3
-      class="text-heading-black text-xl lg:text-2xl xl:text-3xl canvas:text-4xl 2xl:text-5xl font-semibold"
+      class="text-heading-black canvas:text-4xl text-xl font-semibold lg:text-2xl xl:text-3xl 2xl:text-5xl"
       id="home-intro-heading"
     >
       Turn your book ideas into reality with Nixxon Publishers—your trusted
       writing partner.
     </h3>
     <div
-      class="gap-y-1 flex flex-col text-[10px] sm:text-xs xl:text-sm canvas:text-base 2xl:text-lg 2xl flex-1 leading-tight"
+      class="canvas:text-base 2xl flex flex-1 flex-col gap-y-1 text-[10px] leading-tight sm:text-xs xl:text-sm 2xl:text-lg"
       id="home-intro-paragraphs"
     >
       <p id="intro-p1">
@@ -61,13 +61,13 @@ import IntroImage from "../../assets/home/intro.png";
     </div>
   </div>
   <div
-    class="md:order-2 h-full md:w-[50%] overflow-hidden"
+    class="h-full overflow-hidden md:order-2 md:w-[50%]"
     id="home-intro-image-container"
   >
     <Image
       src={IntroImage}
       alt="Intro Image"
-      class="w-full h-full object-cover"
+      class="h-full w-full object-cover"
       loading={"eager"}
       id="home-intro-image"
     />

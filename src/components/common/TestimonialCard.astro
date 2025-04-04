@@ -5,18 +5,18 @@ const { avatar, name, description, stars = 4 } = Astro.props;
 ---
 
 <article
-  class="testimonial-card w-fit flex flex-col gap-y-4 m-2 drop-shadow-lg p-6 bg-white rounded-lg h-[280px] xl:h-[300px] 2xl:h-[350px]"
+  class="testimonial-card m-2 flex h-[280px] w-fit flex-col gap-y-4 rounded-lg bg-white p-6 drop-shadow-lg xl:h-[300px] 2xl:h-[350px]"
 >
   <div class="avatar-container relative flex items-center gap-x-4">
     <Image src={Avatar} alt="Avatar" width={42} height={42} class="avatar" />
-    <h3 class="text-lg font-semibold text-heading-black">{name}</h3>
+    <h3 class="text-heading-black text-lg font-semibold">{name}</h3>
   </div>
 
-  <p class="text-xs xl:text-sm 2xl:text-base flex-1 overflow-y-auto">
+  <p class="flex-1 overflow-y-auto text-xs xl:text-sm 2xl:text-base">
     {description}
   </p>
 
-  <div class="flex gap-x-1 mt-auto">
+  <div class="mt-auto flex gap-x-1">
     {
       Array.from({ length: 5 }).map((_, index) => (
         <svg
