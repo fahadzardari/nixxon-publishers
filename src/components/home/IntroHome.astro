@@ -19,7 +19,7 @@ import IntroImage from "../../assets/home/intro.png";
       writing partner.
     </h3>
     <div
-      class="canvas:text-base 2xl flex flex-1 flex-col gap-y-1 text-[10px] leading-tight sm:text-xs xl:text-sm 2xl:text-lg"
+      class="canvas:text-base flex flex-1 flex-col gap-y-1 text-[10px] leading-tight sm:text-xs xl:text-sm 2xl:text-lg"
       id="home-intro-paragraphs"
     >
       <p id="intro-p1">
@@ -67,7 +67,7 @@ import IntroImage from "../../assets/home/intro.png";
     <Image
       src={IntroImage}
       alt="Intro Image"
-      class="h-full w-full object-cover"
+      class="h-full w-full object-cover opacity-0"
       loading={"eager"}
       id="home-intro-image"
     />
@@ -77,144 +77,120 @@ import IntroImage from "../../assets/home/intro.png";
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import SplitType from "split-type";
 
   // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Split heading text for character animation
-    const heading = new SplitType("#home-intro-heading", {
-      types: "chars, words",
-    });
+    // Simple, reliable mobile animation without SplitType
+    const isMobile = window.innerWidth < 768;
 
-    // Get all paragraph elements
+    // Get elements for animation
+    const heading = document.querySelector("#home-intro-heading");
     const paragraphs = document.querySelectorAll("#home-intro-paragraphs p");
+    const image = document.querySelector("#home-intro-image");
 
-    // Set up different triggers based on screen size
-    function createScrollTrigger() {
-      // Clear any existing ScrollTriggers to prevent duplicates on resize
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+    // Reset initial state
+    gsap.set(heading, { opacity: 0, y: 20 });
+    gsap.set(paragraphs, { opacity: 0, y: 20 });
+    gsap.set(image, { opacity: 0 });
 
-      if (window.innerWidth < 768) {
-        // MOBILE: Separate timelines for image and text
+    if (isMobile) {
+      // MOBILE ANIMATION - Simple fade-in sequence
 
-        // Image timeline
-        const imageTimeline = gsap.timeline({ paused: true });
-
-        // Image animation
-        gsap.set("#home-intro-image", {
-          clipPath: "inset(0 100% 0 0)",
-          scale: 1.05,
-        });
-
-        imageTimeline.to("#home-intro-image", {
-          clipPath: "inset(0 0% 0 0)",
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-        });
-
-        // Create image trigger
-        ScrollTrigger.create({
-          trigger: "#home-intro-image-container",
-          start: "top 80%",
-          onEnter: () => imageTimeline.play(),
-        });
-
-        // Text timeline
-        const textTimeline = gsap.timeline({ paused: true });
-
-        // Heading animation
-        textTimeline.from(heading.chars, {
-          opacity: 0,
-          y: 20,
-          rotateX: -90,
-          stagger: 0.02,
-          duration: 0.7,
-          ease: "back.out(1.5)",
-        });
-
-        // Paragraphs animation
-        textTimeline.from(
-          paragraphs,
-          {
-            opacity: 0,
-            y: 30,
-            stagger: 0.15,
+      // Animate heading when it enters viewport
+      ScrollTrigger.create({
+        trigger: heading,
+        start: "top 90%",
+        onEnter: () => {
+          gsap.to(heading, {
+            opacity: 1,
+            y: 0,
             duration: 0.8,
             ease: "power2.out",
-          },
-          "-=0.4",
-        );
+          });
+        },
+      });
 
-        // Create text trigger
-        ScrollTrigger.create({
-          trigger: "#home-intro-content",
-          start: "top 80%",
-          onEnter: () => textTimeline.play(),
-        });
-      } else {
-        // DESKTOP: Single timeline for everything
-        const desktopTimeline = gsap.timeline({ paused: true });
+      // Animate paragraphs as a group
+      ScrollTrigger.create({
+        trigger: "#home-intro-paragraphs",
+        start: "top 85%",
+        onEnter: () => {
+          gsap.to(paragraphs, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+          });
+        },
+      });
 
-        // Heading animation
-        desktopTimeline.from(heading.chars, {
-          opacity: 0,
-          y: 20,
-          rotateX: -90,
-          stagger: 0.02,
-          duration: 0.7,
-          ease: "back.out(1.5)",
-        });
-
-        // Paragraphs animation
-        desktopTimeline.from(
-          paragraphs,
-          {
-            opacity: 0,
-            y: 30,
-            stagger: 0.15,
+      // Image animation - simple fade-in
+      ScrollTrigger.create({
+        trigger: "#home-intro-image-container",
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(image, {
+            opacity: 1,
             duration: 0.8,
             ease: "power2.out",
-          },
-          "-=0.4",
-        );
-
-        // Image animation
-        gsap.set("#home-intro-image", {
-          clipPath: "inset(0 100% 0 0)",
-          scale: 1.05,
-        });
-
-        desktopTimeline.to(
-          "#home-intro-image",
-          {
-            clipPath: "inset(0 0% 0 0)",
-            scale: 1,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          "-=1.5",
-        );
-
-        // Desktop trigger
-        ScrollTrigger.create({
-          trigger: "#home-intro-content",
+          });
+        },
+      });
+    } else {
+      // DESKTOP ANIMATION - More coordinated sequence
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#home-intro-section",
           start: "top 70%",
-          onEnter: () => desktopTimeline.play(),
-        });
-      }
+        },
+      });
+
+      // Animate heading
+      tl.to(heading, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+
+      // Animate paragraphs with stagger
+      tl.to(
+        paragraphs,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        "-=0.4",
+      );
+
+      // Animate image with reveal effect
+      tl.to(
+        image,
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=1",
+      );
     }
 
-    // Initial setup
-    createScrollTrigger();
-
-    // Update on window resize
+    // Update animations on resize
     window.addEventListener("resize", () => {
-      // Debounce resize events
-      clearTimeout(window.resizeTimer);
-      window.resizeTimer = setTimeout(createScrollTrigger, 250);
+      // Only completely refresh if crossing the mobile breakpoint
+      if (
+        (window.innerWidth < 768 && !isMobile) ||
+        (window.innerWidth >= 768 && isMobile)
+      ) {
+        // Refresh the page to reload animations
+        window.location.reload();
+      }
     });
   });
 </script>

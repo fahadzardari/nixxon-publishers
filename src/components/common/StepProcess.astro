@@ -15,33 +15,42 @@ import StepCard from "./StepCard.astro";
     <p class="step-description text-center text-base">{description}</p>
   </div>
 
-  <div
-    class="step-cards-container flex items-center justify-center gap-x-8 py-4"
-  >
-    <StepCard
-      step="01"
-      title="Evaluation of Research and Strategy"
-      description="For your assessment and approval, we identify the most crucial marketing strategy."
-      class="step-card"
-    />
-    <StepCard
-      step="02"
-      title="Before the launch, marketing"
-      description="Containers, social media, promotional marketing, and more help us get people excited."
-      class="step-card"
-    />
-    <StepCard
-      step="03"
-      title="Embark On"
-      description="Our service provides launch parties, virtual book tours, and paid advertising to help you promote your book."
-      class="step-card"
-    />
-    <StepCard
-      step="04"
-      title="After-launch Promotion"
-      description="Through content production, author interviews, and reviews, we interact with your readers."
-      class="step-card"
-    />
+  <!-- Swiper container for steps -->
+  <div class="swiper steps-swiper step-cards-container w-full">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="01"
+          title="Evaluation of Research and Strategy"
+          description="For your assessment and approval, we identify the most crucial marketing strategy."
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="02"
+          title="Before the launch, marketing"
+          description="Containers, social media, promotional marketing, and more help us get people excited."
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="03"
+          title="Embark On"
+          description="Our service provides launch parties, virtual book tours, and paid advertising to help you promote your book."
+          class="step-card"
+        />
+      </div>
+      <div class="swiper-slide step-swiper-slide">
+        <StepCard
+          step="04"
+          title="After-launch Promotion"
+          description="Through content production, author interviews, and reviews, we interact with your readers."
+          class="step-card"
+        />
+      </div>
+    </div>
   </div>
 
   <div class="step-cta-container mx-auto flex justify-center gap-x-4">
@@ -64,9 +73,47 @@ import StepCard from "./StepCard.astro";
   </div>
 </section>
 
+<!-- Import Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
 <style>
   .bg-image {
     background-image: url("../../assets/common/step-process.png");
+  }
+
+  /* This wrapper will control the overall width */
+  .step-cards-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden; /* Important: hide overflow at container level */
+  }
+
+  /* Swiper can show the peek effect within the container */
+  .steps-swiper {
+    position: relative;
+    overflow: hidden; /* Change to hidden for better control */
+  }
+
+  .step-swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 280px; /* Set a fixed width for each slide */
+  }
+
+  /* Make cards maintain height */
+  :global(.step-card) {
+    height: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .step-swiper-slide {
+      width: 85vw; /* Larger width on mobile */
+    }
   }
 </style>
 
@@ -74,77 +121,133 @@ import StepCard from "./StepCard.astro";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import SplitType from "split-type";
+  import Swiper from "swiper";
+  import { FreeMode } from "swiper/modules";
 
   // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  // Get section element by ID to ensure we only target this section
-  const stepSection = document.getElementById("step-process-section");
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Swiper with responsive settings and pagination
+    const swiper = new Swiper(".steps-swiper", {
+      modules: [FreeMode],
+      slidesPerView: "auto", // Allow auto width slides
+      spaceBetween: 10,
+      freeMode: true,
+      initialSlide: 0,
+      slidesOffsetBefore: 40, // Space before first slide
+      slidesOffsetAfter: 20, // Space after last slide
 
-  if (stepSection) {
-    // Title animation with SplitType for letter-by-letter reveal
-    const stepTitle = stepSection.querySelector(".step-title");
-    if (stepTitle) {
-      const splitTitle = new SplitType(stepTitle, { types: "chars" });
-      gsap.from(splitTitle.chars, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.03,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: stepTitle,
-          start: "top 80%",
-          toggleActions: "play none none none",
+      // Responsive breakpoints
+      breakpoints: {
+        // Mobile
+        320: {
+          slidesPerView: 1.2, // Show 1 full slide + peek of next
+          spaceBetween: 10,
+          slidesOffsetBefore: 20,
         },
-      });
-    }
+        // Larger mobile
+        480: {
+          slidesPerView: 1.8, // Show nearly 2 slides
+          spaceBetween: 10,
+          slidesOffsetBefore: 20,
+        },
+        // Tablet
+        768: {
+          slidesPerView: 2.5, // Show 2.5 slides
+          spaceBetween: 10,
+          slidesOffsetBefore: 30,
+        },
+        // Desktop
+        1024: {
+          slidesPerView: 4, // Show all 4 slides
+          spaceBetween: 10,
+          slidesOffsetBefore: 0,
+          freeMode: false,
+          centeredSlides: false,
+        },
+      },
+      on: {
+        init: function () {
+          this.update();
+          setTimeout(() => {
+            this.update();
+          }, 100);
+        },
+        resize: function () {
+          this.update();
+        },
+      },
+    });
 
-    // Description animation
-    const stepDescription = stepSection.querySelector(".step-description");
-    if (stepDescription) {
-      gsap.from(stepDescription, {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        delay: 0.4,
-        scrollTrigger: {
-          trigger: stepDescription,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
+    // Get section element by ID to ensure we only target this section
+    const stepSection = document.getElementById("step-process-section");
 
-    // Step cards staggered animation
-    const stepCards = stepSection.querySelectorAll(".step-card");
-    if (stepCards.length) {
-      gsap.from(stepCards, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.2,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: stepSection.querySelector(".step-cards-container"),
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
+    if (stepSection) {
+      // Title animation with SplitType for letter-by-letter reveal
+      const stepTitle = stepSection.querySelector(".step-title");
+      if (stepTitle) {
+        const splitTitle = new SplitType(stepTitle, { types: "chars" });
+        gsap.from(splitTitle.chars, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.03,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: stepTitle,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
 
-    // CTA buttons animation
-    const ctaButtons = stepSection.querySelectorAll(".step-cta");
-    if (ctaButtons.length) {
-      gsap.from(ctaButtons, {
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.2,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: stepSection.querySelector(".step-cta-container"),
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
+      // Description animation
+      const stepDescription = stepSection.querySelector(".step-description");
+      if (stepDescription) {
+        gsap.from(stepDescription, {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          delay: 0.4,
+          scrollTrigger: {
+            trigger: stepDescription,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Step cards staggered animation - now targeting Swiper slides
+      const stepCards = stepSection.querySelectorAll(".step-swiper-slide");
+      if (stepCards.length) {
+        gsap.from(stepCards, {
+          opacity: 0,
+          y: 40,
+          stagger: 0.2,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: stepSection.querySelector(".step-cards-container"),
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // CTA buttons animation
+      const ctaButtons = stepSection.querySelectorAll(".step-cta");
+      if (ctaButtons.length) {
+        gsap.from(ctaButtons, {
+          opacity: 0,
+          scale: 0.8,
+          stagger: 0.2,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: stepSection.querySelector(".step-cta-container"),
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
     }
-  }
+  });
 </script>

@@ -4,11 +4,11 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
 ---
 
 <section
-  class="service-hero-section app-max-width bg-primary-blue flex items-center justify-between gap-x-4 pt-[70px] pb-6 text-white xl:gap-x-6 xl:pt-[120px] xl:pb-8 2xl:gap-x-8"
+  class="service-hero-section app-max-width bg-primary-blue flex flex-col items-center justify-between gap-x-4 pt-[70px] pb-6 text-white md:flex-row xl:gap-x-6 xl:pt-[120px] xl:pb-8 2xl:gap-x-8"
   aria-labelledby="service-title"
 >
   <article
-    class="service-hero-content flex w-[55%] flex-col gap-y-3 py-12 xl:gap-y-4"
+    class="service-hero-content flex flex-col gap-y-3 py-12 md:w-[55%] xl:gap-y-4"
   >
     <div>
       <h4
@@ -18,7 +18,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </h4>
       <h1
         id="service-title"
-        class="canvas:text-[46px] 3xl:text-5xl 4xl:text-6xl text-3xl leading-tight font-semibold xl:text-4xl"
+        class="canvas:text-[46px] 3xl:text-5xl 4xl:text-6xl text-3xl leading-tight font-semibold lg:text-[40px] xl:text-4xl"
       >
         {title}
       </h1>
@@ -47,7 +47,7 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       </a>
     </div>
   </article>
-  <figure class="service-hero-image w-[40%]">
+  <figure class="service-hero-image w-full overflow-hidden md:w-[40%]">
     <Image
       src={image}
       alt={imageAlt || `${title} service illustration`}
@@ -56,6 +56,16 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
     />
   </figure>
 </section>
+
+<style>
+  .service-hero-section {
+    overflow-x: hidden; /* Prevent horizontal scrolling during animations */
+  }
+
+  .service-hero-image {
+    opacity: 0; /* Hide image initially */
+  }
+</style>
 
 <script>
   import gsap from "gsap";
@@ -69,6 +79,9 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
   document.addEventListener("DOMContentLoaded", () => {
     // Split title text for character animation
     const title = new SplitType("#service-title", { types: "chars, words" });
+
+    // Check if we're on mobile
+    const isMobile = window.innerWidth < 768;
 
     // Create timeline for sequenced animations
     const tl = gsap.timeline({
@@ -115,25 +128,52 @@ const { pageName = "", title, description, image, imageAlt } = Astro.props;
       "-=0.6",
     );
 
-    // Image animation
-    tl.from(
-      ".service-hero-image",
-      {
-        opacity: 0,
-        x: 40,
-        duration: 1,
-        ease: "power2.out",
-      },
-      "-=0.8",
-    );
+    // Image animation - different for mobile and desktop
+    if (isMobile) {
+      // For mobile, fade in from bottom
+      tl.to(
+        ".service-hero-image",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.4",
+      );
+    } else {
+      // For desktop, use TO not FROM since we're already setting opacity: 0 in CSS
+      tl.to(
+        ".service-hero-image",
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.8",
+      );
+    }
 
     // Optional: Add a subtle floating animation to the image for continued visual interest
+    // But make it more subtle on mobile
     gsap.to(".service-hero-image", {
-      y: "10px",
+      y: isMobile ? "5px" : "10px",
       duration: 2,
+      delay: 1, // Add a small delay to ensure main animation completes first
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
+    });
+
+    // Add resize handler to adjust animations if window size changes
+    window.addEventListener("resize", () => {
+      const currentIsMobile = window.innerWidth < 768;
+      if (currentIsMobile !== isMobile) {
+        // Refresh the page to reload animations with correct settings
+        // This is a simple approach; a more complex solution would dynamically adjust animations
+        location.reload();
+      }
     });
   });
 </script>

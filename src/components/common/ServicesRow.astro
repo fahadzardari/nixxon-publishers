@@ -29,10 +29,14 @@ import Icon from "../../assets/home/publisher-services/book-writing.svg";
 ---
 
 <section id="services-row-section" class="app-max-width py-[2dvw]">
-  <div class="flex items-stretch justify-center gap-6">
+  <div class="flex flex-wrap items-stretch justify-center gap-6">
     {
       services.map((service, index) => (
-        <div id={`service-card-${index}`} class="service-card">
+        <div
+          id={`service-card-${index}`}
+          class="service-card opacity-0"
+          data-index={index}
+        >
           <ServiceCard
             title={service.title}
             description={service.description}
@@ -44,59 +48,56 @@ import Icon from "../../assets/home/publisher-services/book-writing.svg";
   </div>
 </section>
 
-<!-- <script>
+<style>
+  .service-card {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
-
   document.addEventListener("DOMContentLoaded", () => {
-    // Initialize animation timeline
-    const tl = gsap.timeline({
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Get all service cards
+    const serviceCards = document.querySelectorAll(".service-card");
+
+    // Create a timeline for the services section
+    const servicesTl = gsap.timeline({
       scrollTrigger: {
         trigger: "#services-row-section",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
+        start: "top 75%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      },
     });
 
-    // Get all service cards using the correct selector
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    console.log("Found service cards:", serviceCards.length); // Debug logging
-    
-    if (serviceCards.length > 0) {
-      // Animate cards with staggered effect when scrolled into view
-      tl.from(serviceCards, {
+    // Add staggered entrance animation for service cards
+    servicesTl.fromTo(
+      serviceCards,
+      {
         opacity: 0,
         y: 50,
         scale: 0.95,
-        stagger: 0.2,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
         duration: 0.7,
-        ease: "back.out(1.2)"
-      });
-      
-      // Add hover animations for each card
-      serviceCards.forEach(card => {
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, {
-            y: -10,
-            scale: 1.02,
-            duration: 0.3,
-            ease: "power2.out"
-          });
-        });
-        
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, {
-            y: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.out"
-          });
-        });
-      });
-    }
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+      },
+    );
   });
-</script> -->
+</script>
