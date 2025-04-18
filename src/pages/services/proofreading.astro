@@ -5,17 +5,15 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title =
-  "Editing, Revising, and Enhancing - Take Proofreading Assistance Now!";
+const title = "Refine, Perfect, and Elevate Your Manuscript";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Make your manuscript publication-ready with our expert proofreading services. Our highly planned approach will show you the desired results soon.";
 import GhostwritingImage from "../../assets/common/hero-pics/proofreading.png";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title:
-    "Use Our Skilled Book Proofreading Services To Bring Your Book to Its Greatest",
+  title: "Perfect Your Book with Professional Proofreading",
   description:
-    "You can improve the visual appeal of your literary work with Nixxon Publishing. Our attentive service will ensure that the illustrations complement the text to improve the book's visual appeal. From captivating cover designs to captivating interior graphics, we understand the critical role that visuals play in drawing readers in.<br/><br/>We pledge to unleash the creative potential in your book and create a jaw-dropping masterpiece that will enthral readers and leave a lasting impact. Nixxon Publishing is the way to go if you want your writing to be seen in a crowd. It's a tool for improving artistic work where every little detail counts.",
+    "Your book must be free from all kinds of errors to make an impact. Our proofreaders are here to help you achieve quality. From grammar to sentence formation and all the dos and don’ts of writing, we are ready to assist you.",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/proofreading.png";
@@ -28,32 +26,34 @@ import Planning from "../../assets/services-icons/our-planning.png";
 import Making from "../../assets/services-icons/compelling-videos.png";
 import Polishing from "../../assets/services-icons/polishing.png";
 
+// ...existing code...
 const services = [
   {
-    title: "Manuscript Evaluation and Consultation",
+    title: "Detailed Manuscript Review",
     description:
-      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+      "It helps us find the areas that need improvement without changing the core essence of your story. We begin with a detailed overview of your manuscript.",
     icon: Discuss,
   },
   {
-    title: "Review and Editing",
+    title: "Comprehensive Editing Services",
     description:
-      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly examines your manuscript for grammar, spelling, and consistency.",
+      "You just need to trust us to help your work achieve perfection. From enhancing the readability score to ensuring your content is free from all eros, we provide a complete package of editing.",
     icon: Planning,
   },
   {
-    title: "Author Feedback",
+    title: "Collaborative Author Feedback",
     description:
-      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+      "As we lead you to excellence, your vision stays front and center. Get our analysis from a critical point of view to help you make corrections.",
     icon: Making,
   },
   {
-    title: "Delivery and Final Review",
+    title: "Final Polishing and Delivery",
     description:
-      "Our expert proofreaders ensure your final manuscript is polished to perfection. We meticulously review every element one last time, making sure your work is ready for publication and meets the highest professional standards.",
+      "We make sure your manuscript meets the professional standards before going for printing. Get your work polished by us to give a good final touch.",
     icon: Polishing,
   },
 ];
+// ...existing code...
 ---
 
 <Layout title="Proofreading Service | Nixxon Publishers">
@@ -74,11 +74,16 @@ const services = [
   <ServicesRow services={services} />
   <Categories />
   <ArtWork
-    title="Our Outstanding Portfolio"
+    title="Our Portfolio of Excellence"
     subtitle=""
-    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+    description="Each of the projects reflects our commitment to quality and attention to detail. You can trust us with all your work without any doubts."
   />
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="Affordable and Reliable Solutions"
+    description="Let us handle the technicalities while you focus on your creativity. Our affordable packages are designed with the purpose to lessen your burden."
+  />
+  <Testimonials
+    description="Contact us if you are looking for reliable proofreading support. Our team of experts is here to help refine your manuscript to prepare your work for the next big step."
+  />
   <Footer />
 </Layout>

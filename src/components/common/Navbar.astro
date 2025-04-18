@@ -177,11 +177,12 @@ const currentPath = Astro.url.pathname;
       </ul>
 
       <!-- Change this button to be hidden on mobile -->
-      <button
+      <a
+        href="/contact-us"
         class="bg-primary-red hidden rounded-md px-6 py-2 text-xs text-white capitalize md:block xl:text-base"
       >
         let's discuss
-      </button>
+      </a>
 
       <!-- Add hamburger button for mobile -->
       <button
@@ -305,11 +306,12 @@ const currentPath = Astro.url.pathname;
     </ul>
 
     <div class="mt-8">
-      <button
-        class="bg-primary-red w-full rounded-md py-3 text-center text-white"
+      <a
+        href="/contact-us"
+        class="bg-primary-red rounded-md px-6 py-2 text-xs text-white capitalize xl:text-base"
       >
         let's discuss
-      </button>
+      </a>
     </div>
   </div>
 </div>
@@ -324,21 +326,23 @@ const currentPath = Astro.url.pathname;
 <div
   class="top-2/3 right-0 z-40 hidden -translate-y-1/2 transform flex-col gap-y-4 md:fixed md:flex"
 >
-  <button
+  <a
+    href="/contact-us"
     class="rotate-button border-b-none border-primary-blue text-primary-blue rounded-t-lg border bg-white px-6 py-2 text-base font-semibold 2xl:text-lg"
   >
     Get a Quote
-  </button>
+  </a>
   <button
     class="border-primary-blue rounded-l-lg border border-r-0 bg-white p-2"
   >
     <Image src={ChatIcon} alt={"chat icon"} width={24} height={24} />
   </button>
-  <button
+  <a
+    href="tel:+166265271652"
     class="border-primary-blue rounded-l-lg border border-r-0 bg-white p-2"
   >
     <Image src={CallIcon} alt={"call icon"} width={24} height={24} />
-  </button>
+  </a>
 </div>
 
 <script>

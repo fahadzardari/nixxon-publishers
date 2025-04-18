@@ -2,21 +2,17 @@
 import Navbar from "../../components/common/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/common/Footer.astro";
-import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
 const title = "Web Design Service";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Maximize your book publishing potential or any other idea with our professional web design services. Let your imagination go wild with a visually appealing and engaging web platform that captivates readers and tells your narrative. Join us to give your design concepts a magical reality suitable for your target audience. ";
 import GhostwritingImage from "../../assets/common/hero-pics/web-design.png";
-import Packages from "../../components/common/Packages.astro";
-import PackageCard from "../../components/common/PackageCard.astro";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title:
-    "Get Excellent Search Engine Optimization and Website Design Experience",
+  title: "Transform Your Online Presence",
   description:
-    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+    "Try our professional web design services for the ideal fusion of style and utility. Creating websites that not only look amazing but also provide outstanding user experiences is our specialty. We will build a platform that effectively engages visitors and showcases your book publishing endeavors or other ideas.",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/web-design.png";
@@ -30,27 +26,27 @@ import Polishing from "../../assets/services-icons/polishing.png";
 
 const services = [
   {
-    title: "Results-Based Approach",
+    title: "Customer-Centric Approach",
     description:
-      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+      "A thorough examination of your preferences and goals is the first step in any employment. We guarantee that every component of the design is in line with your vision through cooperative discussions, producing a website that perfectly captures your identity or brand.",
     icon: Discuss,
   },
   {
-    title: "Comparative Evaluation",
+    title: "Strategic Planning and Innovation",
     description:
-      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly analyzes market trends to ensure your book video stands out.",
+      "To create an online presence that complements the appeal of your story, we make sure your website remains up to date, responsive, and search engine friendly. Our creative team does research on market insights and creates a design that stands out as per trend.",
     icon: Planning,
   },
   {
-    title: "Customised Products",
+    title: "Personalized Solutions",
     description:
-      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+      "Whether you are an author, publisher, or business owner, we tailor our services to meet your specific needs. We design custom solutions that look great and work flawlessly, from distinctive layouts to integrated functionality.",
     icon: Making,
   },
   {
-    title: "Content Categorized by Brand",
+    title: "Brand-Specific Content",
     description:
-      "Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or brand-specific marketing, we ensure your content reflects your unique identity.",
+      "Like your stories, your website should be one-of-a-kind. Our staff works directly with you to create a website that is memorable and represents your personal brand. Allow your passion and creativity to be digitally expressed through your website.",
     icon: Polishing,
   },
 ];
@@ -72,7 +68,12 @@ const services = [
     getStartedButton={intro.getStartedButton}
   />
   <ServicesRow services={services} />
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="The Ultimate Web Design Solution for Authors and Publishers"
+    description="Are you trying to build a solid internet reputation for your publishing house? Our skilled group of web designers is available to help you realize your idea. Enhancing your engagement with the desired audience is our aim that will eventually help your brand thrive in a digital landscape."
+  />
+  <Testimonials
+    description="We have the solution to all your problems for designing an effective website. Communicate all your needs with us to allow the experts to make it easy for you."
+  />
   <Footer />
 </Layout>

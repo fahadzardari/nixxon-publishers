@@ -5,17 +5,17 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title = "Welcome to Nixxon Publisher, A Book Video Service Platform";
+const title = "Welcome to NixxonTech, Your Go-To Book Video Trailer Platform ";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Learn how reading can be turned into a movie with NixxonTech. Collaborate with our team to produce customized videos that capture the spirit of your book and captivate audiences.  To start your creative adventure, get in touch with us right now.";
 import GhostwritingImage from "../../assets/common/hero-pics/book-video-trailer.png";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title: "An Engaging Teaser Video That Brings Your Audience Closer",
+  title: "A Cinematic Teaser Video That Captivates Your Audience",
   description:
-    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+    "With the expert video trailer services from NixxonTech, explore amazing creative possibilities. We produce highly effective trailers that present your idea at a large scale. Your branding will be something big and influential. ",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/book-video-trailer.png";
@@ -29,27 +29,27 @@ import Polishing from "../../assets/services-icons/polishing.png";
 
 const services = [
   {
-    title: "Transitions for High-Quality Videos",
+    title: "Begin the Journey",
     description:
-      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives.",
+      "At NixxonTech, we ensure every frame reflects your vision. Our comprehensive consultation process allows us to fully understand your goals before bringing your story to life through high-quality videos.",
     icon: Discuss,
   },
   {
-    title: "Animators with Expert Service",
+    title: "Expert Animators at Your Service",
     description:
-      "Strategic planning and research are powerful tools, and we trust them. Each piece of content is supported by informed insights and a well-thought-out plan because our team painstakingly prepares the groundwork for exceptional animations.",
+      "Our team believes in the power of meticulous planning and research. Each video is supported by a well-structured strategy to ensure every element aligns with your vision. Our experienced animators are dedicated to delivering exceptional results.",
     icon: Planning,
   },
   {
-    title: "Exciting Creativity",
+    title: "Unmatched Creativity",
     description:
-      "Making engaging content is the first step in captivating your audience. If you want your message to be heard and understood, you need the authors at Nixxon Publishers to inject their imagination and knowledge into every piece.",
+      "Creating compelling content is key to captivating your audience. At NixxonTech, our team infuses your trailers with imaginative and innovative ideas to ensure they leave a lasting impression.",
     icon: Making,
   },
   {
-    title: "No Limits on Edits",
+    title: "Flexible Editing",
     description:
-      "Beginning from the instant that you have an idea for a written work, Nixxon Publishers Writing is here to help you bring it to life with our range of specialized services. Whether you need book writing, editing, or marketing, we have you covered.",
+      "From the inception of your idea to the final edit, we are here to bring your story to life through our specialized services. Whether you require video creation, editing, or promotional assistance, we have you covered.",
     icon: Polishing,
   },
 ];
@@ -72,13 +72,13 @@ const services = [
   />
   <ServicesRow services={services} />
   <ArtWork
-    title="Our Outstanding Portfolio"
+    title="Our Impressive Portfolio"
     subtitle=""
-    description="Our results are easy to understand. Make sure you read a few of our bestsellers."
+    description="Take a glance at our most compelling video trailers crafted for various genres.  "
   />
   <Packages
-    title="Videos That Are Both Affordable and Excellent in All Creative Categories"
-    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    title="Affordable and High-Caliber Video Trailer Services"
+    description="Let us handle the hard work for you. At NixxonTech, we ensure your ideas come to life seamlessly through exceptional video trailers. With affordable packages tailored to your needs, you can sit back and watch your story unfold in stunning detail."
   >
     <PackageCard
       topHeading="50 Pages"
@@ -117,7 +117,12 @@ const services = [
       ]}
     />
   </Packages>
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="THE ULTIMATE ANSWER TO YOUR BOOK PROMOTION NEEDS"
+    description="Have a book that deserves an audience? Let our skilled team create a video trailer that highlights the unique charm of your story."
+  />
+  <Testimonials
+    description="Need captivating book trailer content without the hassle? Our professional team listens closely to your vision, crafts the perfect teaser, and delivers outstanding results tailored to your expectations."
+  />
   <Footer />
 </Layout>

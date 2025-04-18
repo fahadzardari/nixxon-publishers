@@ -5,19 +5,17 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title =
-  "Boost Your Literary Profile with Our Article Publication Service";
+const title = "Design Your Vision with Our Professional Cover Design Services";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Enhance your book’s appeal with NixxonTech’s bespoke cover design services. To make sure the finished product accurately conveys your ideas and grabs readers' attention, our talented design team works in tandem with you. Partner with NixxonTech today for standout cover designs.";
 import GhostwritingImage from "../../assets/common/hero-pics/cover-design.png";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title:
-    "Discover Customised Book Cover Designs Be Specifically, Beautiful and Affordable",
+  title: "Tailor-Made Cover Designs You Can Rely On",
   description:
-    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+    "We at NixxonTech are experts at designing captivating and inspirational book covers.  Your eBook will stand out in the market since each design is expertly created.  Because of our dedication to excellence, every component will be in harmony with your distinct creative vision, showcasing your work with style and expertise.",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/cover-design.png";
@@ -66,10 +64,12 @@ const services = [
     getStartedButton={intro.getStartedButton}
   />
   <ServicesRow services={services} />
-  <ArtWork />
+  <ArtWork
+    description="Numerous writers from a range of genres have benefited from NixxonTech's outstanding cover designs. Our staff makes sure that every cover, whether it is romantic or mystery, is carefully crafted to draw readers in and convey the essence of the narrative. ​"
+  />
   <Packages
-    title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
-    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    title="Affordable Cover Design Packages for Every Author"
+    description="Enjoy the creative process as we turn your idea into a stunning cover that increases the allure of your book. NixxonTech guarantees a smooth process from the first sketches to the finished, polished design, producing outcomes that go above and beyond."
   >
     <PackageCard
       topHeading="50 Pages"
@@ -108,7 +108,13 @@ const services = [
       ]}
     />
   </Packages>
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="Elevate Your Book with a Perfectly Designed Cover"
+    description="Dreaming of a captivating cover to match your incredible story? At NixxonTech, our creative designers ensure every detail of your cover reflects your vision and resonates with your audience."
+  />
+  <Testimonials
+    title="Hear From Our Satisfied Clients"
+    description="Are you looking for the ideal book cover that will draw attention to your work? Allow the staff at NixxonTech to realize your ideas with incomparable passion, creativity, and accuracy.  We'll work together to produce a cover that is powerful!"
+  />
   <Footer />
 </Layout>

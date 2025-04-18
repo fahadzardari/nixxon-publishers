@@ -5,15 +5,15 @@ import Footer from "../../components/common/Footer.astro";
 import ArtWork from "../../components/home/ArtWork.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title = "Boost Your Story Visually With Our Experts!";
+const title = "Bring Your Story to Life with Stunning Visuals! ";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Get the best art from our talented professionals to make your book visually appealing. You will get your desired illustrations that enhance your narrative. With our imaginative touch, bring your narrative to life in striking detail.";
 import GhostwritingImage from "../../assets/common/hero-pics/book-illustration.png";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title: "Elevate Your Book's Visual Appeal",
+  title: "Enhance Your Book’s Appeal with Illustrations That Inspire",
   description:
-    "You can improve the visual appeal of your literary work with Nixxon Publishing. Our attentive service will ensure that the illustrations complement the text to improve the book's visual appeal. From captivating cover designs to captivating interior graphics, we understand the critical role that visuals play in drawing readers in.<br/><br/>We pledge to unleash the creative potential in your book and create a jaw-dropping masterpiece that will enthral readers and leave a lasting impact. Nixxon Publishing is the way to go if you want your writing to be seen in a crowd. It's a tool for improving artistic work where every little detail counts.",
+    "Elevate your narrative with thoughtfully crafted images that go well with your writing. We make every element come to life, from the eye-catching cover art to the detailed internal illustrations, so your book stands out from the competition.<br><br>You will have a variety of options to pick from. Just share with us your desires and let us make a design that uniquely represents your brand. ",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/book-illustration.png";
@@ -25,32 +25,34 @@ import Planning from "../../assets/services-icons/our-planning.png";
 import Making from "../../assets/services-icons/compelling-videos.png";
 import Polishing from "../../assets/services-icons/polishing.png";
 
+// ...existing code...
 const services = [
   {
-    title: "Expert Illustration Services",
+    title: "Tailored Illustration Services",
     description:
-      "At Nixxon Publishers, we start with a thorough consultation with the customer. Before setting out on this adventure, we make sure we fully understand your vision and objectives for your book's illustrations.",
+      "Our staff makes sure each picture perfectly complements the concept and content of your book. We start by collaborating to understand your artistic goals and vision.",
     icon: Discuss,
   },
   {
-    title: "Creating Engaging eBook Cover Art",
+    title: "Eye-Catching Cover Art",
     description:
-      "Strategic planning and research are powerful tools, and we trust them. Each piece of artwork is supported by informed insights and a well-thought-out plan because our team painstakingly crafts cover designs that capture readers' attention.",
+      "Our skilled designers craft visually arresting cover art that grabs attention at first glance. We create covers that capture the spirit of your tale and captivate readers by fusing creativity and strategy.",
     icon: Planning,
   },
   {
-    title: "Artwork and Layout for a Whole Book",
+    title: "Interior Artwork and Layout Design",
     description:
-      "Making engaging illustrations is the first step in captivating your audience. If you want your message to be visually impactful, you need the artists at Nixxon Publishers to inject their imagination and skill into every illustration.",
+      "The interior of your book is enhanced by the engaging images that our team of artists produces, guaranteeing a smooth transition between text and images. For readers to stay interested, illustrations are essential.",
     icon: Making,
   },
   {
-    title: "Formatting for Print Books",
+    title: "Print-Ready Formatting",
     description:
-      "Our expert designers ensure your illustrations are perfectly formatted for print. We meticulously prepare your artwork to meet publishing standards, making sure every visual element enhances your story and resonates with your readers.",
+      "To guarantee that your illustrations are perfect for printing, we handle all formatting concerns. Each component is painstakingly polished to satisfy publishing requirements and give your book a polished appearance.",
     icon: Polishing,
   },
 ];
+// ...existing code...
 ---
 
 <Layout title="Book Illustration Service | Nixxon Publishers">
@@ -70,11 +72,16 @@ const services = [
   />
   <ServicesRow services={services} />
   <ArtWork
-    title="Wonderful Creations of Artwork"
+    title="A Portfolio of Excellence"
     subtitle=""
-    description="We've produced best-selling mystery and romance novels. Our creative writers at Nixxon Publishers Writing will delve into your story idea and capture its soul. The thorough evaluation uncovers your book's motivations, promoting readers' imaginations and satisfying their need for a well-written story."
+    description="To engage readers, every project is thoughtfully and imaginatively created. Whether they are engrossing children's stories or provocative novels, our graphics bring books to life."
   />
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="Affordable Solutions with Creative Quality"
+    description="Our affordable packages ensure top-notch quality without breaking your budget. Relax as we handle everything from conceptualizing illustrations to preparing them for publication."
+  />
+  <Testimonials
+    description="Take your book to global fame through our tailored services. Your ideas are presented in a fascinating way through our illustrations. "
+  />
   <Footer />
 </Layout>

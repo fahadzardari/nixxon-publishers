@@ -18,7 +18,7 @@ import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
   title: "Providing You Outstanding Book Services",
   description:
-    "Our dedication to quality at Nixxon Publishers exceeds expectations in the business, and it shows in the time and attention we give to each and every story. Our experienced service will see to it that every step of the process, from conception to publishing, enhances the overall quality of your creative work. To ensure that your book reflects our steadfast dedication to literary brilliance, we work tirelessly not only to fulfill but also exceed your expectations.",
+    "Providing quality-assured services is our priority at NixxonTech. Our staff makes every effort to satisfy your needs and help create a literary masterpiece that captures your original ideas. From the initial concept to final publication, every stage of your book's development is handled with care to ensure a polished and professional result. ",
   getStartedButton: true,
   headings: [
     "Professional and Experienced Writers",
@@ -47,11 +47,15 @@ const intro = {
     headings={intro.headings}
     leftColumnElements={4}
   />
-  <ArtWork />
+  <ArtWork
+    title="Remarkable Creations of Artwork"
+    subtitle="Explore Some of Our Most Loved Books"
+    description="To turn your story concepts into captivating narratives, our skilled writers at NixxonTech put in endless effort. Get the best services across a variety of genres including mystery, romance and many more. You will enjoy the entire process as much as our team does."
+  />
   <Categories />
   <Packages
     title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
-    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    description="Our ghostwriters are here to help in getting your ideas published. We not only listen to your thoughts but also structure them to turn your vision into reality. You just need to have faith in us and we will make it just the way you want!"
   >
     <PackageCard
       topHeading="50 Pages"
@@ -90,6 +94,8 @@ const intro = {
       ]}
     />
   </Packages>
-  <Testimonials />
+  <Testimonials
+    description="Get your desired services from a trustworthy agency all set you help you achieve your dreams."
+  />
   <Footer />
 </Layout>

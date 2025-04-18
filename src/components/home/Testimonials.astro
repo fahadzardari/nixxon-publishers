@@ -1,14 +1,15 @@
 ---
 import CommonHeaderSection from "../common/CommonHeaderSection.astro";
 import TestimonialCard from "../common/TestimonialCard.astro";
+const {
+  title = "What Our Clients Say About Us ",
+  subtitle = "",
+  description = "Thinking of getting your ideas published while not having to lift a finger? Our team of expert ghostwriters can help! We listen to your ideas, structure them, and provide excellent end-results that you’re looking for.",
+} = Astro.props;
 ---
 
 <section class="app-max-width py-[6dvw]">
-  <CommonHeaderSection
-    title="WHAT OUR CLIENTS SAY ABOUT US"
-    subtitle=""
-    description="Thinking of getting your ideas published while not having to lift a finger? Our team of expert ghostwriters can help! We listen to your ideas, structure them, and provide excellent end-results that you’re looking for."
-  />
+  <CommonHeaderSection title={title} subtitle="" description={description} />
 
   <div class="swiper testimonial-swiper flex items-center justify-center">
     <div class="swiper-wrapper">

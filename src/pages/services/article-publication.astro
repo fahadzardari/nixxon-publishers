@@ -4,20 +4,18 @@ import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/common/Footer.astro";
 import Testimonials from "../../components/home/Testimonials.astro";
 import ServiceHero from "../../components/common/ServiceHero.astro";
-const title =
-  "Boost Your Literary Profile with Our Article Publication Service";
+const title = "Elevate Your Writing With Our Article Publication Service";
 const description =
-  "Visit Nixxon publisher to experience Ebook Ghostwriting, where your creativity comes true. Our experienced ghostwriters collaborate with you to create personalized stories from your ideas. Our discreet and collaborative strategy will highlight your story and recognize you as the author of an engaging book. Contact Nixxon Publishers for ebook ghostwriting services.";
+  "Welcome to NixxonTech, where your creativity meets unparalleled precision through our professional article writing and publication services. Our skilled writers collaborate with you to craft custom articles tailored to your vision and audience. With our seamless and confidential process, we ensure your work is delivered with exceptional quality and positioned to make a lasting impact. Contact NixxonTech for your article writing needs today.";
 import GhostwritingImage from "../../assets/services/ghost-writing/hero.png";
 import Categories from "../../components/common/Categories.astro";
 import Packages from "../../components/common/Packages.astro";
 import PackageCard from "../../components/common/PackageCard.astro";
 import CommonIntro from "../../components/common/CommonIntro.astro";
 const intro = {
-  title:
-    "American Article Publishing Services You Can Trust to Deliver Exceptional Content",
+  title: "Reliable Article Writing Services You Can Trust",
   description:
-    "Explore fresh possibilities of expression with Nixxon Publisher Professional eBook Ghostwriting Service. Our professional ghostwriters will expertly capture your ideas and turn them into captivating prose while maintaining your distinct style. Have faith in us to transform your ideas into a work of literature that showcases your creativity and brings your story to life via our words.",
+    "At NixxonTech, we believe in crafting articles that exceed industry standards. From ideation to publication, every step of the process is carefully managed to bring out the best in your content. Your target audience will get information in a highly professional and compelling manner. ",
   getStartedButton: true,
 };
 import IntroImage from "../../assets/common/intro-pics/article-publication.png";
@@ -72,8 +70,8 @@ const services = [
   <ServicesRow services={services} />
   <Categories />
   <Packages
-    title="Find the Best Affordable Price and the Best eBook Ghostwriting Service"
-    description="You are able to relax and appreciate the process as we take your idea and transform it into a critically acclaimed book when Nixxon Publishers Writing is on your side. With just one brief, we will take care of your book's writing, publication, and marketing to ensure that it reaches the readers you want. That is the calibre of our work! these services in affordable packages"
+    title="Browse Through Our Well-Crafted Articles"
+    description="From the initial concept to the final draft, every phase is meticulously handled to maximize the impact of your content. We have a highly dedicated team ready to cater to your needs. You will experience professional services and complete satisfaction."
   >
     <PackageCard
       topHeading="50 Pages"
@@ -112,7 +110,13 @@ const services = [
       ]}
     />
   </Packages>
-  <Quote />
-  <Testimonials />
+  <Quote
+    title="Affordable Article Packages Designed for You"
+    description="As we turn your ideas into captivating stories that make an impact, you can relax and relish the ride. NixxonTech guarantees that your work, whether it be in the form of content production, editing, or publication, reaches its audience efficiently and with a level of quality that speaks for itself."
+  />
+  <Testimonials
+    title="Testimonials from Our Satisfied Clients"
+    description="Have a story or message you want to share effortlessly? NixxonTech’s experts listen carefully to your vision, structure it with precision, and deliver articles that meet and exceed your expectations. Let us help you bring your ideas to life!  "
+  />
   <Footer />
 </Layout>

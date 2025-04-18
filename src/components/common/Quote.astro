@@ -1,6 +1,10 @@
 ---
 import Image from "astro/components/Image.astro";
 import QuoteSideImage from "../../assets/common/quote-image.png";
+const {
+  title = "THE PERFECT SOLUTION TO YOUR BOOK WRITING EDITING AND PUBLISHING PROBLEMS!",
+  description = "Do you have an interesting story that you wish to convert in a book? We have a team of award-winning book writers who can bring your ideas into reality.",
+} = Astro.props;
 ---
 
 <section
@@ -13,20 +17,18 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
       id="quote-heading"
       class="split-heading text-lg font-semibold md:text-xl lg:text-2xl xl:text-4xl 2xl:text-5xl"
     >
-      THE PERFECT SOLUTION TO YOUR BOOK WRITING EDITING AND PUBLISHING PROBLEMS!
+      {title}
     </h2>
     <p
       class="quote-paragraph max-w-[90dvw] text-xs opacity-0 md:text-sm xl:text-base"
     >
-      Do you have an interesting story that you wish to convert in a book? We
-      have a team of award-winning book writers who can bring your ideas into
-      reality.
+      {description}
     </p>
     <div
       class="quote-buttons flex gap-x-4 text-sm font-semibold opacity-0 xl:text-base"
     >
       <a
-        href="/get-quote"
+        href="/contact-us"
         class="bg-primary-red quote-button-primary rounded-md px-6 py-2 text-center"
         role="button"
         aria-label="Request a free quote for book writing services"
@@ -34,7 +36,7 @@ import QuoteSideImage from "../../assets/common/quote-image.png";
         Get A Quote
       </a>
       <a
-        href="/contact"
+        href="/contact-us"
         class="quote-button-secondary rounded-md border border-white px-6 py-2 text-center"
         role="button"
         aria-label="Start a conversation with our team"
