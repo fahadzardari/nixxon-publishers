@@ -1,5 +1,6 @@
 ---
 import "../index.css";
+import ContactModal from "../components/common/ContactModal.astro";
 const { title } = Astro.props;
 ---
 
@@ -14,5 +15,20 @@ const { title } = Astro.props;
   </head>
   <body class="no-scrollbar w-screen overflow-x-hidden">
     <slot />
+    <ContactModal />
+    
+    <script>
+      // Global initialization for modal triggers
+      document.addEventListener('DOMContentLoaded', () => {
+        // Automatically attach event listeners to any elements with specific classes
+        document.querySelectorAll('.open-contact-modal, [data-modal="contact"]').forEach(element => {
+          element.addEventListener('click', () => {
+            // Find and dispatch custom event to open modal
+            const event = new CustomEvent('openContactModal');
+            document.dispatchEvent(event);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

@@ -3,8 +3,17 @@ import AddressIcon from "../../assets/contact-us/address.png";
 import CallIcon from "../../assets/contact-us/call.png";
 import EmailIcon from "../../assets/contact-us/mail.png";
 import Image from "astro/components/Image.astro";
+
+const backendURL = import.meta.env.PUBLIC_BACKEND_URL;
+const brandID = import.meta.env.PUBLIC_BRAND_ID;
 ---
 
+<style>
+  input,
+  textarea {
+    color: black;
+  }
+</style>
 <section class="app-max-width flex flex-col gap-y-8 py-[8dvw]">
   <div class="flex flex-col gap-x-8 gap-y-8 md:flex-row md:justify-between">
     <div class="flex flex-col md:w-1/2">
@@ -39,39 +48,56 @@ import Image from "astro/components/Image.astro";
       </div>
     </div>
     <form
+      id="contact-us-form"
       class="bg-primary-red flex flex-1 flex-col gap-y-2 rounded-md px-4 py-6 text-white md:px-6 md:py-8"
+      data-brandid={brandID}
+      data-backendurl={backendURL}
     >
+      <div
+        id="contact-us-feedback"
+        class="mb-2 hidden rounded bg-white px-4 py-2 text-center text-green-800"
+      >
+      </div>
       <div class="flex flex-col">
         <label class="text-sm font-semibold md:text-base">Name</label>
         <input
           type="text"
+          name="name"
+          required
           class="mb-2 rounded-lg bg-white px-1 py-1 text-base font-semibold md:mb-4 md:py-2 md:text-lg"
         />
       </div>
       <div class="flex flex-col">
         <label class="text-sm font-semibold md:text-base">Email</label>
         <input
-          type="text"
+          type="email"
+          name="email"
+          required
           class="mb-2 rounded-lg bg-white px-1 py-1 text-base font-semibold md:mb-4 md:py-2 md:text-lg"
         />
       </div>
       <div class="flex flex-col">
         <label class="text-sm font-semibold md:text-base">Phone</label>
         <input
-          type="text"
+          type="tel"
+          name="phone"
+          required
           class="mb-2 rounded-lg bg-white px-1 py-1 text-base font-semibold md:mb-4 md:py-2 md:text-lg"
         />
       </div>
       <div class="flex flex-col">
         <label class="text-sm font-semibold md:text-base">Message</label>
         <textarea
+          name="message"
           rows="3"
+          required
           class="mb-2 rounded-lg bg-white px-1 py-1 text-base font-semibold md:mb-4 md:py-2 md:text-lg"
         ></textarea>
       </div>
 
       <button
-        class="mx-auto w-fit rounded-md border border-white px-3 py-1 text-sm font-semibold md:px-4 md:py-2 md:text-base"
+        type="submit"
+        class="mx-auto w-fit cursor-pointer rounded-md border border-white px-3 py-1 text-sm font-semibold md:px-4 md:py-2 md:text-base"
       >
         Send Message
       </button>
@@ -89,3 +115,54 @@ import Image from "astro/components/Image.astro";
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-us-form");
+    const feedback = document.getElementById("contact-us-feedback");
+    const brandId = form?.dataset.brandid;
+    const backendURL = form?.dataset.backendurl;
+
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        data.brandId = brandId;
+        
+
+        fetch(backendURL + `/api/contact-requests`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (feedback) {
+              feedback.textContent = "Thank you! Your message has been sent.";
+              feedback.classList.remove("hidden");
+            }
+            form.reset();
+            setTimeout(() => {
+              if (feedback) feedback.classList.add("hidden");
+              window.location.pathname = "/thank-you";
+            }, 2000);
+          })
+          .catch((error) => {
+            if (feedback) {
+              feedback.textContent =
+                "There was an error submitting the form. Please try again.";
+              feedback.classList.remove("hidden");
+            }
+            setTimeout(() => {
+              if (feedback) feedback.classList.add("hidden");
+            }, 3000);
+            console.error("Error:", error);
+          });
+      });
+    }
+  });
+</script>

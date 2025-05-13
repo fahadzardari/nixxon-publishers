@@ -7,6 +7,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 /* Custom scrollbar for Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 1px;
