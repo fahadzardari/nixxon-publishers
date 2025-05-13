@@ -2,44 +2,67 @@
 const {
   topHeading = "50 Pages",
   points = ["50 Pages", "50 Pages", "50 Pages"],
+  price = "$500",
+  beforePrice = "$1000",
+  discount = "50%",
+  packageName = "Basic Package",
 } = Astro.props;
 import ChatIcon from "../../assets/common/chat.svg";
 import Image from "astro/components/Image.astro";
 ---
 
-<article class="relative overflow-hidden rounded-lg bg-[#F2F2F2]">
-  <h3
-    class="bg-primary-red w-full rounded-lg px-3 pt-2 pb-12 text-2xl font-semibold text-white xl:px-4 xl:text-3xl"
+<article class="relative overflow-hidden rounded-lg bg-[#F2F2F2] pb-4">
+  <div
+    class="bg-primary-red flex w-full items-center justify-between rounded-lg px-3 pt-2 pb-12 text-white xl:px-4"
   >
-    {topHeading}
-  </h3>
+    <div>
+      <span class="text-lg font-semibold lg:text-lg 2xl:text-xl">
+        {packageName}
+      </span>
+      <div class="flex items-center justify-between gap-x-2">
+        <h3 class="text-4xl font-semibold text-white xl:text-5xl">
+          {price}
+        </h3>
+      </div>
+    </div>
+    <div class="flex flex-col text-base lg:text-lg xl:text-xl">
+      <span class="font-semibold text-white line-through">
+        {beforePrice}
+      </span>
+      <span class="font-semibold text-white">
+        {discount} OFF
+      </span>
+    </div>
+  </div>
 
   <div
-    class="relative float-right -mt-10 mb-4 w-[95%] rounded-lg bg-white after:absolute after:top-[20%] after:right-4 after:h-[44%] after:w-[2px] after:bg-[black] after:content-['']"
+    class="relative float-right -mt-10 mb-4 h-[84%] w-[95%] rounded-lg bg-white after:absolute after:top-[20%] after:right-4 after:h-[44%] after:w-[2px] after:bg-[black] after:content-['']"
   >
-    <div class="flex flex-col gap-y-4 p-6">
-      <h4 class="canvas:text-base text-xs font-semibold xl:text-sm 2xl:text-xl">
-        THE ABOVE PACKAGE INCLUDES:
-      </h4>
-      <ul class="w-[90%] list-none pl-0">
-        {
-          points.map((point) => (
-            <li class="xs:text-xs canvas:text-sm my-2 flex items-center text-[11px] text-black xl:my-4 2xl:text-base">
-              <span class="mr-2 text-sm">•</span> {point}
-            </li>
-          ))
-        }
-      </ul>
-
+    <div class="flex h-full flex-col justify-between gap-y-4 px-6 pt-6 pb-6">
+      <div>
+        <h4
+          class="canvas:text-base text-xs font-semibold xl:text-sm 2xl:text-xl"
+        >
+          THE ABOVE PACKAGE INCLUDES:
+        </h4>
+        <ul class="w-[90%] list-none overflow-y-auto pl-0">
+          {
+            points.map((point) => (
+              <li class="xs:text-xs canvas:text-sm my-2 flex items-center text-[11px] text-black xl:my-4 2xl:text-[15px]">
+                <span class="mr-2 text-sm">•</span> {point}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
       <div class="flex justify-between gap-x-4">
         <a
-
           id="quote-button"
-          class="open-contact-modal flex items-center bg-primary-red rounded-md px-2 py-1 text-xs text-white xl:px-6 xl:py-2 xl:text-sm 2xl:text-lg"
+          class="open-contact-modal bg-primary-red flex items-center rounded-md px-2 py-1 text-xs text-white xl:px-6 xl:py-2 xl:text-sm 2xl:text-lg"
         >
           Get a Quote
         </a>
-        <button class="flex items-center open-chat-widget cursor-pointer">
+        <button class="open-chat-widget flex cursor-pointer items-center">
           <Image src={ChatIcon} alt="Chat Icon" class="mr-1 h-full xl:mr-2" />
           <div class="flex flex-col items-start justify-between">
             <span class="canvas:text-sm text-[10px] xl:text-xs 2xl:text-base">
