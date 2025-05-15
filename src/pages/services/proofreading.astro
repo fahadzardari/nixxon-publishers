@@ -53,7 +53,8 @@ const services = [
     icon: Polishing,
   },
 ];
-// ...existing code...
+import Packages from "../../components/common/Packages.astro";
+import PackageCard from "../../components/common/PackageCard.astro";
 ---
 
 <Layout title="Proofreading Service | Nixxon Publishers">
@@ -78,6 +79,79 @@ const services = [
     subtitle=""
     description="Each of the projects reflects our commitment to quality and attention to detail. You can trust us with all your work without any doubts."
   />
+  <Packages
+    title="Affordable Proofreading Packages to Meet Your Needs"
+    description="We provide a variety of packages to meet your needs, whether you are an author, publisher, or business owner. Our packages are designed to be affordable and flexible, allowing you to select the one that best meets your needs."
+  >
+    <PackageCard
+      packageName="Basic Proofreading Package"
+      price="$99"
+      beforePrice="$198"
+      discount="50%"
+      subtitle="Ideal for short stories, blog posts, or first-time authors needing a quick grammar check"
+      points={[
+        "Proofreading of up to <strong>5,000 words</strong>",
+        "<strong>Grammar, spelling & punctuation</strong> check",
+        "<strong>Consistent tense and tone</strong> correction",
+        "<strong>Improved sentence clarity</strong>",
+        "Basic <strong>typo correction & formatting cleanup</strong>",
+        "Delivery in <strong>Track Changes (MS Word)</strong> format",
+        "Final <strong>clean version + markup version</strong>",
+        "100% <strong>confidentiality guaranteed</strong>",
+        "1 round of <strong>minor revision included</strong>",
+        "<strong>Turnaround</strong>: 2–3 business days",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Start-Up Proofreading Package"
+      price="$199"
+      beforePrice="$398"
+      discount="50%"
+      subtitle="Perfect for authors preparing to publish, or coaches finalizing an eBook, course, or guide"
+      points={[
+        "Proofreading of up to <strong>15,000 words</strong>",
+        "<strong>Deep grammar & syntax check</strong>",
+        "<strong>Tone consistency</strong> + passive voice fixes",
+        "<strong>Dialogue clarity & flow enhancement</strong>",
+        "<strong>Typo, spacing, and structure corrections</strong>",
+        "Track Changes file with <strong>detailed markup</strong>",
+        "<strong>Style guide alignment</strong> (APA, MLA, Chicago — on request)",
+        "<strong>2 rounds of revision</strong>",
+        "Delivered in <strong>Word, PDF, or Google Docs</strong>",
+        "<strong>Turnaround</strong>: 4–6 business days",
+      ]}
+      bonus={[
+        "Free proofreading certificate for publishing platforms",
+        "Free checklist of suggested author improvements",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Standard Proofreading Package"
+      price="$399"
+      beforePrice="$798"
+      discount="50%"
+      subtitle="Built for published authors, business leaders, and professionals preparing manuscripts, whitepapers, or full-length books"
+      points={[
+        "Proofreading of up to <strong>30,000 words</strong>",
+        "<strong>Advanced consistency check</strong> (names, timelines, places)",
+        "<strong>Sentence structure refinement</strong> for clarity & rhythm",
+        "Elimination of <strong>repetitive & redundant phrasing</strong>",
+        "<strong>Fact-checking minor details</strong> (optional)",
+        "Delivered in both <strong>markup & clean formats</strong>",
+        "Custom <strong>author feedback sheet</strong>",
+        "Dedicated <strong>language expert reviewer</strong>",
+        "<strong>Unlimited revisions</strong> within project scope",
+        "<strong>Turnaround</strong>: 7–10 business days",
+      ]}
+      bonus={[
+        "Free proofreading + formatting tips guide",
+        "Priority support with a dedicated editor",
+        "Final review call to discuss changes (if requested)",
+      ]}
+    />
+  </Packages>
   <Quote
     title="Affordable and Reliable Solutions"
     description="Let us handle the technicalities while you focus on your creativity. Our affordable packages are designed with the purpose to lessen your burden."

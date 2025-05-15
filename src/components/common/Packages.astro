@@ -45,7 +45,7 @@ const {
   }
 
   <div
-    class="mt-8 flex flex-col justify-center gap-y-8 md:mt-16 md:flex-row md:gap-x-6"
+    class="mt-8 grid grid-cols-1 gap-y-8 md:mt-16 md:grid-cols-3 md:gap-x-6"
     id="package-cards-container"
   >
     <slot />
@@ -196,24 +196,24 @@ const {
     const cards = document.querySelectorAll(
       "#package-cards-container > article",
     );
-    cards.forEach((card) => {
-      // Add hover animation
-      card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-          y: -10,
-          // boxShadow: "0 22px 45px rgba(0, 0, 0, 0.1)",
-          duration: 0.8,
-        });
-      });
+    // cards.forEach((card) => {
+    //   // Add hover animation
+    //   card.addEventListener("mouseenter", () => {
+    //     gsap.to(card, {
+    //       y: -10,
+    //       // boxShadow: "0 22px 45px rgba(0, 0, 0, 0.1)",
+    //       duration: 0.8,
+    //     });
+    //   });
 
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-          y: 0,
-          // boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
-          duration: 0.8,
-        });
-      });
-    });
+    //   card.addEventListener("mouseleave", () => {
+    //     gsap.to(card, {
+    //       y: 0,
+    //       // boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)",
+    //       duration: 0.8,
+    //     });
+    //   });
+    // });
 
     // Add bounce effect to the active tab
     const activeTabButton = document.querySelector(

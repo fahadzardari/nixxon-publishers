@@ -42,6 +42,84 @@ import Quote from "../../components/common/Quote.astro";
     description="Our gifted authors at NixxonTech are experts at crafting captivating stories, whether they are elegant romances or gripping mystery thrillers. We go deeply into the core of your tale idea, making it come to life in a way that captivates readers and holds their attention through the very end. Every aspect is carefully considered to ensure that every story has resonance and a lasting impact."
     subtitle=""
   />
+  <Packages
+    title="Affordable Book Printing Packages to Meet Your Needs "
+    description="As we turn your written work into an interesting audiobook, unwind and take pleasure in the process. From narration to production, our staff takes care of everything, guaranteeing a smooth experience with outcomes that go above and above."
+  >
+    <PackageCard
+      packageName="Basic Bulk Print Package"
+      price="$499"
+      beforePrice="$998"
+      discount="50%"
+      subtitle="Best for budget-conscious authors launching their first print run with paperback books."
+      priceNote='for 100 paperback copies (Approx. $4.99/copy — 5"x8", B&W interior)'
+      points={[
+        '<strong>100 paperback copies</strong> (5"x8" or 6"x9")',
+        "<strong>Black & white interior printing</strong>",
+        "<strong>Standard 60 lb. white or cream paper</strong>",
+        "<strong>Glossy or matte cover finish</strong>",
+        "<strong>Full-color cover printing</strong>",
+        "<strong>Perfect-bound (glued spine)</strong>",
+        "<strong>Cover setup included</strong> (from provided file)",
+        "<strong>ISBN/barcode printing</strong> (optional)",
+        "<strong>Turnaround: 10–14 business days</strong>",
+        "<strong>Shipping to 1 address</strong> (within U.S./Canada/UK)",
+      ]}
+      addOns={[
+        "Upgrade to premium paper: +$0.50/copy",
+        "Add author copies with discounts",
+      ]}
+    />
+    <PackageCard
+      packageName="Start-Up Premium Print Package"
+      price="$899"
+      beforePrice="$1798"
+      discount="50%"
+      subtitle="Ideal for authors who want higher quality, more customization, and hardcover options."
+      priceNote="for 100 paperback or 50 hardcover copies"
+      points={[
+        "<strong>Choice of:</strong><ul class='ml-8 mt-1 mb-2 list-disc'><li>100 premium paperback copies</li><li>50 standard hardcover copies</li></ul>",
+        "<strong>High-quality 70 lb. paper</strong> (white or cream)",
+        "<strong>Satin or matte cover finish</strong>",
+        "<strong>Color interior printing</strong> (optional)",
+        "<strong>Full-wrap cover + spine layout</strong>",
+        "<strong>Interior formatting quality check</strong>",
+        "<strong>Print-ready file assistance</strong>",
+        "<strong>ISBN/barcode placement</strong>",
+        "<strong>Turnaround: 12–16 business days</strong>",
+        "<strong>Tracking & handling included</strong>",
+      ]}
+      bonus={[
+        "Free mock-up design for social media",
+        "Free ISBN registration guide (if author-owned)",
+      ]}
+    />
+    <PackageCard
+      packageName="Standard Deluxe Print & Ship Package"
+      price="$1999"
+      beforePrice="$3998"
+      discount="50%"
+      subtitle="Perfect for established authors, publishing agencies, and bulk orders with premium hardcover finishing."
+      priceNote="for 100 hardcover copies with premium features"
+      points={[
+        "<strong>100 hardcover copies</strong> with dust jacket or case laminate",
+        "<strong>Interior: Full-color or black & white</strong>",
+        "<strong>80 lb. premium paper</strong> – glossy or matte",
+        '<strong>Custom sizes available</strong> (6"x9", 8.5"x11", etc.)',
+        "<strong>Professional formatting & proof review</strong>",
+        "<strong>Foil stamping or embossing options</strong>",
+        "<strong>Cover design tweaks included</strong>",
+        "<strong>Proof copy included before bulk print</strong>",
+        "<strong>Worldwide shipping</strong> (charges may vary)",
+        "<strong>Turnaround: 14–20 business days</strong>",
+      ]}
+      bonus={[
+        "Free print proof & quality inspection",
+        "Priority production queue",
+        "Dedicated print project manager",
+      ]}
+    />
+  </Packages>
   <Quote />
   <Testimonials />
   <Footer />

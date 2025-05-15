@@ -82,7 +82,11 @@ const brandID = import.meta.env.PUBLIC_BRAND_ID;
       </p>
     </div>
 
-    <div id="contact-feedback" class="hidden mb-4 rounded bg-green-100 px-4 py-2 text-green-800 text-center"></div>
+    <div
+      id="contact-feedback"
+      class="mb-4 hidden rounded bg-green-100 px-4 py-2 text-center text-green-800"
+    >
+    </div>
 
     <form id="contact-form" class="space-y-4">
       <div>
@@ -227,7 +231,8 @@ const brandID = import.meta.env.PUBLIC_BRAND_ID;
           })
           .catch((error) => {
             if (feedback) {
-              feedback.textContent = "There was an error submitting the form. Please try again.";
+              feedback.textContent =
+                "There was an error submitting the form. Please try again.";
               feedback.classList.remove("hidden");
             }
             setTimeout(() => {

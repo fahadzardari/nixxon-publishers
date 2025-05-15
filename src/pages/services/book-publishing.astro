@@ -25,6 +25,8 @@ import Discuss from "../../assets/services-icons/discussion-with-customers.png";
 import Planning from "../../assets/services-icons/our-planning.png";
 import Making from "../../assets/services-icons/compelling-videos.png";
 import Polishing from "../../assets/services-icons/polishing.png";
+import Packages from "../../components/common/Packages.astro";
+import PackageCard from "../../components/common/PackageCard.astro";
 
 // ...existing code...
 const services = [
@@ -78,6 +80,80 @@ const services = [
     subtitle=""
     description="Get all that you need at one stop. We have a great team of professionals ready to serve you at its best."
   />
+  <Packages
+    title="Explore Our Tailored Packages"
+    description="We offer a variety of packages to suit your needs, whether you're a first-time author or a seasoned writer. Our services are designed to help you achieve your publishing goals."
+  >
+    <PackageCard
+      packageName="Basic Book Publishing Package"
+      price="$299"
+      beforePrice="$598"
+      discount="50%"
+      subtitle="For authors who want a straightforward, budget-friendly approach to getting their book published on major online platforms."
+      points={[
+        "<strong>Editorial Assessment</strong> (Basic Book Assessment)",
+        "<strong>Manuscript Editing</strong> (Copy Editing, Line Editing & Proofreading)",
+        "<strong>Book Formatting</strong> for one of all Three Formats",
+        "<strong>Publishing to Amazon KDP</strong> (Kindle Direct Publishing)",
+        "<strong>Amazon Author Central Setup</strong>",
+        "<strong>Basic Metadata Setup</strong> (Title, Description, Keywords, Categories)",
+        "<strong>One 30-Minute Consultation Call</strong> for publishing tips and advice",
+      ]}
+      bonus={[
+        "Free 10-Minute Book Launch Strategy Consultation",
+        "Amazon Book Listing Optimization (Basic keywords and description)",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Start-Up Book Publishing Package"
+      price="$599"
+      beforePrice="$1198"
+      discount="50%"
+      subtitle="For authors who want to publish their book across multiple platforms and ensure a professional look and feel for their published book."
+      points={[
+        "<strong>Book Formatting</strong> for eBook, Paperback & Hardcover",
+        "<strong>ISBN Assignment</strong> (eBook & Paperback)",
+        "<strong>Custom Book Cover Design</strong> (Professional design)",
+        "<strong>Publishing to Amazon KDP, Barnes & Noble Press, Apple Books, Kobo,</strong> and <strong>Google Play Books</strong>",
+        "<strong>Book Author Website Creation</strong> (Basic landing page)",
+        "<strong>Advanced Metadata Setup</strong> (Title, Description, Keywords, Categories, Author Bio)",
+        "<strong>Amazon Author Central Setup</strong> (with updated bio and photo)",
+        "<strong>Marketing Consultation</strong> (1 hour) to discuss launch and promotional strategies",
+        "<strong>2 Months of Post-Publication Support</strong> (help with updates and basic questions)",
+      ]}
+      bonus={[
+        "1 Free Social Media Graphics Pack for book promotion",
+        "Amazon Book Listing Optimization (Advanced keywords and metadata)",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Premium Book Publishing Package"
+      price="$1199"
+      beforePrice="$2398"
+      discount="50%"
+      subtitle="For authors who want a comprehensive, all-in-one publishing solution with global distribution and advanced services to maximize book sales."
+      points={[
+        "<strong>Premium Book Formatting</strong> for eBook, Paperback & Hardcover (multiple trim sizes available)",
+        "<strong>Custom ISBN Assignment</strong> (eBook, Paperback & Hardcover)",
+        "<strong>Premium Custom Book Cover Design</strong> (Unique and professional design tailored to your genre)",
+        "<strong>Publishing to Amazon KDP, Barnes & Noble Press, Apple Books, Kobo, Google Play Books, IngramSpark,</strong> and <strong>Smashwords</strong>",
+        "<strong>International Distribution</strong> (Publish your book in multiple languages and regions)",
+        "<strong>Custom Book Author Website</strong> with Integrated eCommerce (sell your book directly)",
+        "<strong>Advanced Metadata Setup</strong> (Keywords, Categories, Subtitle, Pricing, and Global Rights)",
+        "<strong>Amazon Author Central</strong> (Complete setup, with advanced promotional links, blog, and author bio)",
+        "<strong>Book Launch & Marketing Strategy</strong> (Comprehensive plan for launch, including press release)",
+        "<strong>Ongoing Post-Publication Support</strong> (6 months of updates, troubleshooting, and advice)",
+      ]}
+      bonus={[
+        "International Distribution Strategy (Outreach to global retailers)",
+        "Social Media Book Launch Pack (Premium visuals for Facebook, Instagram, and Twitter)",
+        "1 Free Book Trailer Video (30-60 seconds to promote on social media)",
+        "One Free Follow-Up Consultation Call after 3 months for advanced marketing strategies",
+      ]}
+    />
+  </Packages>
   <Quote
     title="Affordable Packages with Premium Results"
     description="Relax and focus on your creativity while we handle the publishing process. Our packages are designed to be budget-friendly while delivering high-quality services tailored to your needs."

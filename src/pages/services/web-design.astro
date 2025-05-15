@@ -50,6 +50,8 @@ const services = [
     icon: Polishing,
   },
 ];
+import Packages from "../../components/common/Packages.astro";
+import PackageCard from "../../components/common/PackageCard.astro";
 ---
 
 <Layout title="Web Design Service | Nixxon Publishers">
@@ -68,6 +70,80 @@ const services = [
     getStartedButton={intro.getStartedButton}
   />
   <ServicesRow services={services} />
+  <Packages
+    title="Affordable Web Design Packages to Meet Your Needs "
+    description="We provide a variety of packages to meet your needs, whether you are an author, publisher, or business owner. Our packages are designed to be affordable and flexible, allowing you to select the one that best meets your needs."
+  >
+    <PackageCard
+      packageName="Basic Author Website Package"
+      price="$299"
+      beforePrice="$598"
+      discount="50%"
+      subtitle="Perfect for first-time authors looking to establish a simple but elegant online presence"
+      points={[
+        "<strong>1-page scroll website</strong> (Home + About + Book Info + Contact Form)",
+        "<strong>Mobile-friendly & responsive design</strong>",
+        "Choice of <strong>pre-built layout templates</strong>",
+        "<strong>Basic author bio & book showcase</strong>",
+        "<strong>Contact form integration</strong>",
+        "<strong>Social media icons</strong> linked",
+        "<strong>Free SSL installation</strong> for security",
+        "<strong>1 round of revision</strong>",
+        "<strong>Free hosting for 1 month</strong> (optional)",
+        "Delivery within <strong>5–7 business days</strong>",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Start-Up Author Website Package"
+      price="$699"
+      beforePrice="$1398"
+      discount="50%"
+      subtitle="Ideal for active authors who need more pages and reader engagement tools"
+      points={[
+        "Up to <strong>5 pages</strong> (Home, About, Book(s), Blog, Contact)",
+        "<strong>Custom design layout</strong> to match author branding",
+        "<strong>Lead capture form</strong> for email list building",
+        "<strong>Blog setup</strong> with category filter",
+        "<strong>Newsletter integration</strong> (Mailchimp or ConvertKit)",
+        "<strong>SEO optimization</strong> for all pages",
+        "<strong>Mobile & tablet optimization</strong>",
+        "<strong>1-month free support & maintenance</strong>",
+        "<strong>2 rounds of revisions</strong>",
+        "Delivery in <strong>7–10 business days</strong>",
+      ]}
+      bonus={[
+        "Free domain consultation",
+        'One promotional <strong>pop-up banner setup</strong> (e.g., "Free Chapter" offer)',
+        "<strong>Social media feed integration</strong> (Instagram or Twitter)",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Standard Author Website Package"
+      price="$1499"
+      beforePrice="$2998"
+      discount="50%"
+      subtitle="For professional authors looking to scale their brand, build fan engagement, and sell directly from their website"
+      points={[
+        "Up to <strong>10 custom-designed pages</strong> (Home, About, Books, Reviews, Blog, Events, Contact, Shop, Media Kit, FAQ)",
+        "Built on <strong>WordPress or Shopify</strong> (as per author needs)",
+        "<strong>Ecommerce integration</strong> to sell books, audiobooks, or merchandise",
+        "<strong>Landing page design</strong> for lead magnets or book launches",
+        "<strong>Advanced SEO</strong> & performance optimization",
+        "<strong>Speed-optimized & mobile-first design</strong>",
+        "<strong>3 rounds of design revisions</strong>",
+        "Full <strong>training session</strong> on how to manage site content",
+        "<strong>Live chat integration</strong> (Tawk.to or Zendesk)",
+        "<strong>Dedicated project manager & post-launch support</strong> for 30 days",
+      ]}
+      bonus={[
+        "<strong>FREE blog post template & content upload</strong> (up to 3 posts)",
+        "<strong>FREE media kit design</strong> (1-page downloadable PDF)",
+        "<strong>Google Analytics & Meta Pixel installation</strong>",
+      ]}
+    />
+  </Packages>
   <Quote
     title="The Ultimate Web Design Solution for Authors and Publishers"
     description="Are you trying to build a solid internet reputation for your publishing house? Our skilled group of web designers is available to help you realize your idea. Enhancing your engagement with the desired audience is our aim that will eventually help your brand thrive in a digital landscape."

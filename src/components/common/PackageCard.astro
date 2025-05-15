@@ -2,58 +2,126 @@
 const {
   topHeading = "50 Pages",
   points = ["50 Pages", "50 Pages", "50 Pages"],
+  bonus = [],
+  addOns = [],
   price = "$500",
-  beforePrice = "$1000",
-  discount = "50%",
+  beforePrice = "",
+  discount = "",
   packageName = "Basic Package",
+  subtitle = "",
+  priceNote = "",
 } = Astro.props;
 import ChatIcon from "../../assets/common/chat.svg";
 import Image from "astro/components/Image.astro";
 ---
 
-<article class="relative overflow-hidden rounded-lg bg-[#F2F2F2] pb-4">
-  <div
-    class="bg-primary-red flex w-full items-center justify-between rounded-lg px-3 pt-2 pb-12 text-white xl:px-4"
-  >
+<article
+  class="relative max-h-[85vh] overflow-hidden rounded-lg bg-[#F2F2F2] pb-4"
+>
+  <div class="bg-primary-red rounded-lg px-3 pt-2 pb-12 text-white xl:px-4">
     <div>
       <span class="text-lg font-semibold lg:text-lg 2xl:text-xl">
         {packageName}
       </span>
-      <div class="flex items-center justify-between gap-x-2">
-        <h3 class="text-4xl font-semibold text-white xl:text-5xl">
-          {price}
-        </h3>
+
+      <span class="block text-[10px] font-normal text-white">
+        {subtitle}
+      </span>
+
+      <div class="mt-2 flex w-full items-center justify-between">
+        <div class="flex flex-col gap-x-1">
+          <h3 class="text-4xl font-semibold text-white xl:text-5xl">
+            {price}
+          </h3>
+          {
+            priceNote && (
+              <span class="text-[10px] text-white">({priceNote})</span>
+            )
+          }
+        </div>
+        <div>
+          {
+            beforePrice != "" && (
+              <div class="flex flex-col text-base lg:text-lg xl:text-xl">
+                <span class="font-semibold text-white line-through">
+                  {beforePrice}
+                </span>
+                <span class="font-semibold text-white">{discount} OFF</span>
+              </div>
+            )
+          }
+        </div>
       </div>
-    </div>
-    <div class="flex flex-col text-base lg:text-lg xl:text-xl">
-      <span class="font-semibold text-white line-through">
-        {beforePrice}
-      </span>
-      <span class="font-semibold text-white">
-        {discount} OFF
-      </span>
     </div>
   </div>
 
   <div
-    class="relative float-right -mt-10 mb-4 h-[84%] w-[95%] rounded-lg bg-white after:absolute after:top-[20%] after:right-4 after:h-[44%] after:w-[2px] after:bg-[black] after:content-['']"
+    class="relative float-right -mt-10 mb-4 h-[80%] w-[95%] rounded-lg bg-white after:absolute after:top-[20%] after:right-4 after:h-[44%] after:w-[2px] after:bg-[black] after:content-['']"
   >
     <div class="flex h-full flex-col justify-between gap-y-4 px-6 pt-6 pb-6">
-      <div>
+      <div class="scrollbar-container relative overflow-y-auto">
+        <!-- Scroll indicator - top shadow when scrolled -->
+        <div
+          class="scroll-indicator-top pointer-events-none absolute top-0 right-0 left-0 z-10 h-6 bg-gradient-to-b from-white to-transparent opacity-0"
+        >
+        </div>
+
         <h4
           class="canvas:text-base text-xs font-semibold xl:text-sm 2xl:text-xl"
         >
           THE ABOVE PACKAGE INCLUDES:
         </h4>
-        <ul class="w-[90%] list-none overflow-y-auto pl-0">
+        <ol class="w-[90%] overflow-y-auto pb-2 pl-0">
           {
-            points.map((point) => (
-              <li class="xs:text-xs canvas:text-sm my-2 flex items-center text-[11px] text-black xl:my-4 2xl:text-[15px]">
-                <span class="mr-2 text-sm">•</span> {point}
+            points.map((point, index) => (
+              <li class="xs:text-xs canvas:text-sm my-2 text-[11px] text-black xl:my-4 2xl:text-[15px]">
+                {/* <span class="mr-2 text-sm">•</span> */}
+                <span class="mr-2">{index + 1}.</span>
+
+                <span set:html={point} />
               </li>
             ))
           }
-        </ul>
+        </ol>
+        {
+          addOns.length > 0 && (
+            <div class="mt-2">
+              <h4 class="canvas:text-base text-primary-red text-xs font-semibold xl:text-sm 2xl:text-xl">
+                Add-ons:
+              </h4>
+              <ul class="w-[90%] list-none pl-0">
+                {addOns.map((item) => (
+                  <li class="xs:text-xs canvas:text-sm my-2 flex items-center text-[11px] text-black xl:my-3 2xl:text-[15px]">
+                    <span class="mr-1">•</span>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+        {
+          bonus.length > 0 && (
+            <div class="mt-2">
+              <h4 class="canvas:text-base text-primary-red text-xs font-semibold xl:text-sm 2xl:text-xl">
+                BONUS:
+              </h4>
+              <ul class="w-[90%] list-none pl-0">
+                {bonus.map((item) => (
+                  <li class="xs:text-xs canvas:text-sm my-2 flex items-center text-[11px] text-black xl:my-3 2xl:text-[15px]">
+                    <span class="mr-1">✅</span>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+        <!-- Scroll indicator - bottom shadow to show more content -->
+        <div
+          class="scroll-indicator-bottom pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-8 bg-gradient-to-t from-white to-transparent"
+        >
+        </div>
       </div>
       <div class="flex justify-between gap-x-4">
         <a
@@ -77,3 +145,41 @@ import Image from "astro/components/Image.astro";
     </div>
   </div>
 </article>
+
+<script>
+  // Add scroll behavior to show/hide indicators based on scroll position
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollContainers = document.querySelectorAll(".scrollbar-container");
+
+    scrollContainers.forEach((container) => {
+      const topIndicator = container.querySelector(".scroll-indicator-top");
+      const bottomIndicator = container.querySelector(
+        ".scroll-indicator-bottom",
+      );
+
+      // Initial check - hide bottom indicator if not scrollable
+      if (container.scrollHeight <= container.clientHeight) {
+        bottomIndicator.classList.add("opacity-0");
+      }
+
+      container.addEventListener("scroll", () => {
+        // Show top indicator when scrolled down
+        if (container.scrollTop > 10) {
+          topIndicator.classList.remove("opacity-0");
+        } else {
+          topIndicator.classList.add("opacity-0");
+        }
+
+        // Hide bottom indicator when near the end
+        if (
+          container.scrollTop + container.clientHeight >=
+          container.scrollHeight - 10
+        ) {
+          bottomIndicator.classList.add("opacity-0");
+        } else {
+          bottomIndicator.classList.remove("opacity-0");
+        }
+      });
+    });
+  });
+</script>

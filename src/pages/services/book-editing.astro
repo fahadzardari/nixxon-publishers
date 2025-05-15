@@ -18,8 +18,10 @@ const intro = {
 };
 import IntroImage from "../../assets/common/intro-pics/book-editing.png";
 import Categories from "../../components/common/Categories.astro";
-import StepProcess from "../../components/common/StepProcess.astro";
+
 import BookEditingProcess from "../../components/common/BookEditingProcess.astro";
+import Packages from "../../components/common/Packages.astro";
+import PackageCard from "../../components/common/PackageCard.astro";
 ---
 
 <Layout title="Book Editing Service | Nixxon Publishers">
@@ -44,6 +46,104 @@ import BookEditingProcess from "../../components/common/BookEditingProcess.astro
     subtitle=""
     description="Go through our series of accomplishments to see how we have achieved milestones and made a name in the book publishing industry."
   />
+  <Packages
+    title="Professional Book Editing Packages"
+    description="Transform your manuscript into a polished, publication-ready book with our comprehensive editing services. Choose the package that best suits your project's needs and budget."
+  >
+    <PackageCard
+      packageName="Basic Editing Package"
+      price="$199"
+      beforePrice="$398"
+      discount="50%"
+      subtitle="Perfect for authors who need a light edit to polish their manuscript, including grammar and basic structure checks."
+      points={[
+        "Up to <strong>15,000 words</strong>",
+        "<strong>Grammar and punctuation check</strong>",
+        "<strong>Sentence structure improvement</strong>",
+        "<strong>Spelling & consistency check</strong> (American/British English)",
+        "Basic <strong>flow and readability adjustments</strong>",
+        "<strong>Check for redundancy</strong>",
+        "No major content edits, only <strong>surface-level edits</strong>",
+        "Delivered in <strong>trackable Word doc</strong> with comments/suggestions",
+        "<strong>1 round of minor revisions</strong> included",
+        "Turnaround: <strong>5–7 business days</strong>",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Start-Up Manuscript Editing Package"
+      price="$499"
+      beforePrice="$998"
+      discount="50%"
+      subtitle="Ideal for authors who want a more in-depth edit to improve readability, flow, and narrative structure."
+      points={[
+        "Up to <strong>30,000 words</strong>",
+        "<strong>Comprehensive grammar, punctuation & style check</strong>",
+        "<strong>Reorganizing and restructuring</strong> paragraphs/sections (if needed)",
+        "<strong>Improved readability and flow</strong>",
+        "<strong>Voice/tone consistency</strong> across chapters",
+        "<strong>Formatting consistency</strong> (indentations, headings, subheadings)",
+        "<strong>1-to-1 author feedback</strong> on major changes",
+        "Minor <strong>fact-checking</strong> and <strong>content clarification</strong>",
+        "<strong>2 rounds of revisions</strong> included",
+        "Turnaround: <strong>7–10 business days</strong>",
+      ]}
+      bonus={[
+        "Free formatting guide for self-publishing",
+        "Professional style guide for future edits",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Standard Full Book Editing Package"
+      price="$1,199"
+      beforePrice="$2,398"
+      discount="50%"
+      subtitle="For seasoned authors, publishing houses, and serious writers who require a complete overhaul — from developmental to line editing."
+      points={[
+        "Up to <strong>75,000 words</strong>",
+        "<strong>Line editing</strong> (sentence-level structure and flow)",
+        "<strong>Content editing</strong> for plot, pacing, and character development",
+        "<strong>Consistency</strong> in tone, style, and voice",
+        "Full <strong>grammar, punctuation, and spelling check</strong>",
+        "<strong>Substantive edits</strong> to improve clarity, structure, and overall quality",
+        "<strong>Fact-checking and cross-referencing</strong> for accuracy",
+        "<strong>Formatting for print or digital</strong> (eBook or paperback)",
+        "<strong>3 rounds of revisions</strong> included",
+        "Turnaround: <strong>14–21 business days</strong>",
+      ]}
+      bonus={[
+        "Free Book Proofreading after editing",
+        "Detailed author consultation on manuscript direction",
+        "FREE guidance on how to submit to publishers",
+      ]}
+    />
+
+    <PackageCard
+      packageName="Premium Book Editing & Proofreading Package"
+      price="$2,499"
+      beforePrice="$4,998"
+      discount="50%"
+      subtitle="The ultimate package for authors or publishers aiming for perfection. Includes all stages of editing plus a final polish."
+      points={[
+        "Up to <strong>100,000 words</strong>",
+        "<strong>Developmental editing</strong>, including deep structural edits",
+        "<strong>Comprehensive line-by-line editing</strong>",
+        "<strong>Character and dialogue improvement</strong>",
+        "<strong>Plot pacing analysis and adjustments</strong>",
+        "Full <strong>spelling, grammar, and punctuation check</strong>",
+        "<strong>Fact-checking & cross-referencing</strong> (fiction and nonfiction)",
+        "<strong>Formatting for print, eBook, and audiobook scripts</strong>",
+        "<strong>4 rounds of revisions</strong> included",
+        "Turnaround: <strong>30 business days</strong>",
+      ]}
+      bonus={[
+        "Free final manuscript proofreading",
+        "Author coaching on self-publishing or submission process",
+        "Publishing consultation (optional)",
+      ]}
+    />
+  </Packages>
   <BookEditingProcess />
   <Testimonials />
   <Footer

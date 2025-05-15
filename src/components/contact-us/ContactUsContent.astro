@@ -130,7 +130,6 @@ const brandID = import.meta.env.PUBLIC_BRAND_ID;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         data.brandId = brandId;
-        
 
         fetch(backendURL + `/api/contact-requests`, {
           method: "POST",
