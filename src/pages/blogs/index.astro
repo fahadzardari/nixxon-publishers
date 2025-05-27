@@ -1,0 +1,426 @@
+---
+import Navbar from "../../components/common/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/common/Footer.astro";
+import { getPosts, getCategories } from "../../lib/wordpress";
+
+// Fetch all posts during build (with a reasonable limit)
+const allPosts = await getPosts(1, 100);
+const categories = await getCategories();
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+// Function to truncate excerpt
+function truncateExcerpt(excerpt: string, maxLength = 120) {
+  // Remove HTML tags
+  const text = excerpt.replace(/<\/?[^>]+(>|$)/g, "");
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
+}
+---
+
+<Layout
+  title="Blog | Nixxon Publishers"
+  metaTitle="Publishing Insights & Resources | Nixxon Publishers Blog"
+  description="Explore our collection of articles on book publishing, marketing strategies, and author success stories. Get expert advice to navigate your publishing journey."
+  tags="publishing blog, author resources, book marketing tips, publishing industry news, writing advice"
+>
+  <Navbar />
+
+  <section
+    class="blog-hero-section app-max-width bg-primary-blue pt-[80px] pb-10 text-white xl:pt-[150px] xl:pb-14"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <h1
+          id="blog-title"
+          class="mb-4 text-3xl leading-tight font-semibold lg:text-[40px] xl:text-4xl"
+        >
+          Publishing Insights & Resources
+        </h1>
+        <p
+          class="blog-description mb-8 w-[95%] text-sm xl:leading-[150%] 2xl:text-lg"
+        >
+          Stay updated with the latest trends, tips, and expert advice on book
+          publishing, marketing strategies, and author success stories. Our blog
+          is your resource for navigating the publishing journey.
+        </p>
+
+        <!-- Search Box (modified for client-side search) -->
+        <!-- <div class="blog-search-box mb-8 w-full max-w-xl">
+          <div class="flex">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search articles..."
+              class="flex-grow rounded-l-lg px-4 py-3 text-white focus:outline-none"
+              aria-label="Search blog articles"
+            />
+            <button
+              id="search-button"
+              class="rounded-r-lg bg-[#E7062E] px-6 py-3 font-medium"
+              aria-label="Search"
+            >
+              Search
+            </button>
+          </div>
+        </div> -->
+
+        <!-- Modified Category Filter for client-side filtering -->
+        <div class="blog-categories flex flex-wrap justify-center gap-2">
+          <button
+            type="button"
+            class="category-filter category-tag hover:bg-opacity-90 cursor-pointer rounded-full bg-[#E7062E] px-4 py-2 text-sm transition"
+            data-category=""
+          >
+            All
+          </button>
+          {
+            categories.map((category) => (
+              <button
+                type="button"
+                class="category-filter category-tag bg-opacity-20 hover:bg-opacity-90 cursor-pointer rounded-full bg-white px-4 py-2 text-sm text-black transition"
+                data-category={category.id.toString()}
+              >
+                {category.name}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="blog-posts app-max-width py-16">
+    <div class="container mx-auto px-4">
+      <div
+        id="posts-container"
+        class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {
+          allPosts.posts.map((post) => (
+            <article
+              class="blog-card overflow-hidden rounded-lg bg-white shadow-md transition-transform hover:translate-y-[-5px]"
+              data-title={post.title.rendered.replace(/<\/?[^>]+(>|$)/g, "")}
+              data-content={post.content.rendered.replace(
+                /<\/?[^>]+(>|$)/g,
+                "",
+              )}
+              data-excerpt={post.excerpt.rendered.replace(
+                /<\/?[^>]+(>|$)/g,
+                "",
+              )}
+              data-categories={post.categories.join(",")}
+            >
+              <a href={`/blogs/${post.slug}`} class="block">
+                <div class="blog-image h-48 overflow-hidden">
+                  <img
+                    src={
+                      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+                      "/images/default-blog-image.jpg"
+                    }
+                    alt={
+                      post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ||
+                      post.title.rendered
+                    }
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+                <div class="p-6">
+                  <h2
+                    class="mb-2 line-clamp-2 text-xl font-semibold"
+                    set:html={post.title.rendered}
+                  />
+                  <div class="mb-3 text-sm text-gray-500">
+                    {formatDate(post.date)}
+                  </div>
+                  <div
+                    class="mb-4 line-clamp-3 text-gray-700"
+                    set:html={truncateExcerpt(post.excerpt.rendered)}
+                  />
+                  <div class="text-primary-blue flex items-center font-medium">
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="ml-1 h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      <div id="no-results" class="hidden py-16 text-center text-black">
+        <h2 class="mb-2 text-2xl font-semibold">No Posts Found</h2>
+        <p class="text-gray-600">
+          Please try another search or browse all posts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-hero-section {
+    overflow-x: hidden;
+  }
+
+  .category-tag {
+    transition: all 0.3s ease;
+  }
+
+  .category-tag:hover {
+    transform: translateY(-2px);
+  }
+
+  .blog-card {
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const searchButton = document.getElementById("search-button");
+    const categoryButtons = document.querySelectorAll(".category-filter");
+    const posts = document.querySelectorAll(".blog-card");
+    const noResults = document.getElementById("no-results");
+
+    // Track active filters
+    let activeCategory = "";
+    let activeSearchTerm = "";
+
+    // Get URL parameters on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("category")) {
+      activeCategory = urlParams.get("category") || "";
+
+      // Update UI to show selected category
+      categoryButtons.forEach((button) => {
+        if (button.getAttribute("data-category") === activeCategory) {
+          updateCategoryUI(button);
+        }
+      });
+
+      // Apply initial category filter
+      filterByCategory(activeCategory);
+    }
+
+    // Function to update category button UI
+    function updateCategoryUI(selectedButton) {
+      // Reset all buttons
+      categoryButtons.forEach((button) => {
+        button.classList.remove("bg-[#E7062E]", "text-white");
+        button.classList.add("bg-opacity-20", "bg-white", "text-black");
+      });
+
+      // Highlight selected button
+      selectedButton.classList.remove(
+        "bg-opacity-20",
+        "bg-white",
+        "text-black",
+      );
+      selectedButton.classList.add("bg-[#E7062E]", "text-white");
+    }
+
+    // Function to filter by category
+    function filterByCategory(categoryId) {
+      activeCategory = categoryId;
+
+      // If also has search term, combine filters
+      if (activeSearchTerm) {
+        filterCombined();
+        return;
+      }
+
+      let visiblePosts = 0;
+
+      // Show all if no category selected
+      if (!categoryId) {
+        posts.forEach((post) => {
+          post.style.display = "block";
+          visiblePosts++;
+        });
+      } else {
+        // Filter posts by category
+        posts.forEach((post) => {
+          const postCategories = post
+            .getAttribute("data-categories")
+            .split(",");
+
+          if (postCategories.includes(categoryId)) {
+            post.style.display = "block";
+            visiblePosts++;
+          } else {
+            post.style.display = "none";
+          }
+        });
+      }
+
+      // Update URL without reloading page
+      updateURL();
+
+      // Show/hide no results message
+      toggleNoResults(visiblePosts);
+    }
+
+    // Function to perform search
+    function performSearch() {
+      activeSearchTerm = searchInput.value.toLowerCase().trim();
+
+      // If also has category filter, combine filters
+      if (activeCategory) {
+        filterCombined();
+        return;
+      }
+
+      let visiblePosts = 0;
+
+      if (activeSearchTerm === "") {
+        // If search is empty, show all posts
+        posts.forEach((post) => {
+          post.style.display = "block";
+          visiblePosts++;
+        });
+      } else {
+        // Filter posts based on search term
+        posts.forEach((post) => {
+          const title = post.getAttribute("data-title").toLowerCase();
+          const excerpt = post.getAttribute("data-excerpt").toLowerCase();
+          const content = post.getAttribute("data-content").toLowerCase();
+
+          if (
+            title.includes(activeSearchTerm) ||
+            excerpt.includes(activeSearchTerm) ||
+            content.includes(activeSearchTerm)
+          ) {
+            post.style.display = "block";
+            visiblePosts++;
+          } else {
+            post.style.display = "none";
+          }
+        });
+      }
+
+      // Update URL
+      updateURL();
+
+      // Show/hide no results message
+      toggleNoResults(visiblePosts);
+    }
+
+    // Function to apply both category and search filters
+    function filterCombined() {
+      let visiblePosts = 0;
+
+      posts.forEach((post) => {
+        const postCategories = post.getAttribute("data-categories").split(",");
+        const title = post.getAttribute("data-title").toLowerCase();
+        const excerpt = post.getAttribute("data-excerpt").toLowerCase();
+        const content = post.getAttribute("data-content").toLowerCase();
+
+        const matchesCategory =
+          !activeCategory || postCategories.includes(activeCategory);
+        const matchesSearch =
+          !activeSearchTerm ||
+          title.includes(activeSearchTerm) ||
+          excerpt.includes(activeSearchTerm) ||
+          content.includes(activeSearchTerm);
+
+        if (matchesCategory && matchesSearch) {
+          post.style.display = "block";
+          visiblePosts++;
+        } else {
+          post.style.display = "none";
+        }
+      });
+
+      // Update URL
+      updateURL();
+
+      // Show/hide no results message
+      toggleNoResults(visiblePosts);
+    }
+
+    // Function to toggle no results message
+    function toggleNoResults(visiblePosts) {
+      if (visiblePosts === 0) {
+        noResults.classList.remove("hidden");
+      } else {
+        noResults.classList.add("hidden");
+      }
+    }
+
+    // Function to update URL with current filters
+    function updateURL() {
+      const url = new URL(window.location);
+
+      // Update category parameter
+      if (activeCategory) {
+        url.searchParams.set("category", activeCategory);
+      } else {
+        url.searchParams.delete("category");
+      }
+
+      // Update search parameter
+      if (activeSearchTerm) {
+        url.searchParams.set("search", activeSearchTerm);
+      } else {
+        url.searchParams.delete("search");
+      }
+
+      // Update browser history without reload
+      window.history.pushState({}, "", url);
+    }
+
+    // Event listeners for category buttons
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const categoryId = button.getAttribute("data-category");
+        updateCategoryUI(button);
+        filterByCategory(categoryId);
+      });
+    });
+
+    // Search button click event
+    searchButton.addEventListener("click", performSearch);
+
+    // Search on Enter key
+    searchInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+
+    // Check for search param in URL
+    if (urlParams.has("search")) {
+      searchInput.value = urlParams.get("search") || "";
+      activeSearchTerm = searchInput.value.toLowerCase().trim();
+
+      // Apply initial search filter
+      if (activeCategory) {
+        filterCombined();
+      } else {
+        performSearch();
+      }
+    }
+  });
+</script>
