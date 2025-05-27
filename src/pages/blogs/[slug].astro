@@ -130,7 +130,7 @@ const imageAlt = post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || post.tit
     </div>
     
     <!-- Blog Content -->
-    <div class="blog-content container mx-auto px-4 pb-16">
+    <div class="blog-content app-max-width mx-auto px-4 pb-16">
       <div class="max-w-3xl mx-auto">
         <div class="prose prose-lg max-w-none" set:html={post.content.rendered} />
         
