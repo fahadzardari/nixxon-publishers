@@ -37,7 +37,7 @@ const navItems = [
   },
   {
     label: "Blogs",
-    href: "/blogs",
+    href: "https://blog.nixxonpublishers.com" // Link to your blog subdomain
   },
   { label: "Contact Us", href: "/contact-us" },
 ];
@@ -77,6 +77,25 @@ const currentPath = Astro.url.pathname;
               (item.href === "/" && currentPath === "/") ||
               (item.href !== "/" && currentPath.startsWith(item.href));
 
+            // For normal items without dropdown
+            if (!item.hasDropdown) {
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "py-1 transition duration-300",
+                      "text-white",
+                      { "nav-active font-semibold text-[#ff002d]": isActive },
+                    ]}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            }
+            
             if (item.hasDropdown) {
               const hasActiveChild = item.dropdownItems?.some((child) =>
                 currentPath.startsWith(child.href),
